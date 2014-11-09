@@ -1,4 +1,4 @@
-React - Community site SPA
+Community site SPA based on ReactJS
 =========
 A real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases.
 
