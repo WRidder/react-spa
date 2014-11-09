@@ -2,6 +2,8 @@ Community site SPA based on ReactJS
 =========
 A real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases.
 
+[NodeJS app as simple server](https://github.com/WRidder/react-spa-server)
+
 ### Goal
 Create a more advanced example (w.r.t. your average TODO app) of creating a SPA using ReactJS. Initially as a personal exercise to go *through the mud* once while hoping to share new insights gained during the process and discuss various approaches. 
 
