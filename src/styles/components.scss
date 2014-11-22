@@ -5,6 +5,14 @@
   padding: 10px 10px;
 }
 
+// Top bar
+.top-bar .name a {
+  line-height: 45px;
+  font-size: 1.0625rem;
+  margin: 0 0.4rem;
+  color: #FFFFFF;
+}
+
 // Loading indicator
 .loading {
   -webkit-animation:spin 1s linear infinite;

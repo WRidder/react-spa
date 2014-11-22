@@ -1,6 +1,7 @@
-var React = require('react');
-var Router = require('react-router');
+var React = require("react");
+var Router = require("react-router");
 var Link = Router.Link;
+var NavLink = require("./navLink.jsx"); //Router.Link;
 var $ = require("jquery");
 
 var Navigation = React.createClass({
@@ -11,16 +12,14 @@ var Navigation = React.createClass({
     return (
       <nav className="top-bar" data-topbar role="navigation">
         <ul className="title-area">
-          <li className="name">
-            <h1><Link to="/">Home</Link></h1>
-          </li>
+          <NavLink to="/" title="Home" className="name"/>
           <li className="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
 
         <section className="top-bar-section">
           <ul className="left">
-            <li className="active"><Link to="questions">Questions</Link></li>
-            <li><Link to="discussions">Discussions</Link></li>
+            <NavLink to="questions" title="Questions"/>
+            <NavLink to="discussions" title="Discussions"/>
             <li><a href="#">Chat</a></li>
             <li><a href="#">About</a></li>
           </ul>
