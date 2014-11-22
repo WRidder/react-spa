@@ -7,42 +7,36 @@ var Footer = React.createClass({
       <footer className="footer">
         <div className="row full-width">
           <div className="small-6 medium-6 large-2 columns">
-            <h4>Work With Me</h4>
+            <h4>Column 1</h4>
             <ul className="footer-links">
               <li>
-                <a href="#">What I Do</a>
+                <a href="#">Some</a>
               </li>
               <li>
-                <a href="#">Pricing</a>
+                <a href="#">Footer</a>
               </li>
               <li>
-                <a href="#">Events</a>
+                <a href="#">Links</a>
               </li>
               <li>
-                <a href="#">Blog</a>
-              </li>
-              <li>
-                <a href="#">FAQ's</a>
+                <a href="#">Here</a>
               </li>
             </ul>
           </div>
           <div className="small-6 medium-6 large-2 columns">
-            <h4>Follow Me</h4>
+            <h4>Column 2</h4>
             <ul className="footer-links">
               <li>
                 <a href="#">GitHub</a>
               </li>
               <li>
-                <a href="#">Facebook</a>
+                <a href="#">Some</a>
               </li>
               <li>
-                <a href="#">Twitter</a>
+                <a href="#">Other</a>
               </li>
               <li>
-                <a href="#">Instagram</a>
-              </li>
-              <li>
-                <a href="#">Dribbble</a>
+                <a href="#">Links</a>
               </li>
             </ul>
           </div>

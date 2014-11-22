@@ -1,7 +1,3 @@
-/**
- * Created by wilbert on 18-11-14.
- */
-"use strict";
 var reflux = require("reflux");
 var cfg = require("../config.json");
 var $ = require("jquery");
