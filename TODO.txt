@@ -1,0 +1,12 @@
+Optimization
+- Remove unused css on build (should be able to check that)
+- CSS lint
+
+Caching
+- API call caching
+
+Security
+- Implement OWASP guidelines (https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series)
+- http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication#477579
+Accessibility
+- See: https://carmenwiki.osu.edu/display/10292/HTML5+Accessibility+Code+Examples

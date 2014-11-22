@@ -1,0 +1,31 @@
+{
+  "name": "react-spa-server",
+  "version": "0.0.1",
+  "description": "Simple server application for react-spa",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WRidder/react-spa.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "node-inspector": "~0.7.4"
+  },
+  "dependencies": {
+    "socket.io": "~1.2.0",
+    "express": "~4.10.2",
+    "body-parser": "~1.9.2",
+    "backbone": "~1.1.2",
+    "lodash": "~2.4.1",
+    "express-session": "~1.9.1",
+    "passport": "~0.2.1",
+    "passport-local": "~1.0.0",
+    "connect-flash": "~0.1.1",
+    "bcrypt-nodejs": "0.0.3",
+    "q": "~1.1.1"
+  }
+}

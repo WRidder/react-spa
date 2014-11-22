@@ -1,0 +1,38 @@
+var React = require("react");
+var Router = require("react-router");
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var Routes = Router.Routes;
+var Link = Router.Link;
+var NotFoundRoute = Router.NotFoundRoute;
+
+// Components
+var App = require("./../components/app.jsx");
+var NotFound = require("./../components/notfound.jsx");
+var Home = require("./../components/home.jsx");
+var QuestionList = require("./../components/questionList.jsx");
+var Question = require("./../components/question.jsx");
+var QuestionNotFound = require("./../components/notfound/question.jsx");
+var Discussions = require("./../components/discussions.jsx");
+
+// TODO: set location to "history" when full page reload is supported by the server
+
+var routes = (
+  <Routes location="hash">
+    <Route name="app" path="/" handler={App}>
+      {/* Question routes*/}
+      <Route name="questions" path="questions" handler={QuestionList}/>
+      <Route name="question" path="questions/:questionId" handler={Question}/>
+      <Route name="questionWithTitle" path="questions/:questionId/:questionTitle" handler={Question}/>
+      <Route path="questions/:questionId/" handler={Question}/>
+      <Route name="question404" path="questions/404" handler={QuestionNotFound}/>
+
+      {/* Discussion routes*/}
+      <Route name="discussions" handler={Discussions}/>
+      <DefaultRoute handler={Home}/>
+      <NotFoundRoute handler={NotFound}/>
+    </Route>
+  </Routes>
+);
+
+React.renderComponent(routes, document.body);

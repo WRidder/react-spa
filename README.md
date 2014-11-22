@@ -1,8 +1,20 @@
 Community site SPA based on ReactJS
 =========
-A real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases.
+A real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in *./server*.
 
-[NodeJS app as simple server](https://github.com/WRidder/react-spa-server)
+### Installation
+1. Run *$ npm install* in the base directory
+2. Run *$ bower install* in the base directory
+3. Run *$ npm install* in the ./server directory
+4. Start the server in ./server using *$ node server.js*. Should open a port on 8080.
+5. Run *$ gulp* in the base directory, this will open a browser with the application on http://localhost:3000/
+
+### Current state
+#### Project
+* **Discovery**
+* Proof of concept
+* Refactoring
+* Stabilizing
 
 ### Goal
 Create a more advanced example (w.r.t. your average TODO app) of creating a SPA using ReactJS. Initially as a personal exercise to go *through the mud* once while hoping to share new insights gained during the process and discuss various approaches. 

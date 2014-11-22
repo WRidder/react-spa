@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Admin",
+      "password": "$2a$08$EteaH5Gn8VVwe2nO0ZAroudOwB5xODzo0EJh8DnAzq8KIeTQ9MtAq",
+      "privileges": ["user", "admin"]
+    },
+    {
+      "id": 2,
+      "username": "James",
+      "password": "$2a$08$fxU3/5BxuXm1OjgvAAZYHu6aMmRLuME5Ay7C/it4sKGApS27Fl3Du",
+      "privileges": ["user"]
+    },
+    {
+      "id": 3,
+      "username": "Katy",
+      "password": "$2a$08$VUD/0fAIlGnif.7iCtUhg.Djt8MK4g2ax9.bZpfuv2/I47xylKMx2",
+      "privileges": ["user"]
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "accepted_answer_id": 1,
+      "title": "Answer to life and all that?",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis ligula vitae lectus malesuada, ut scelerisque velit molestie. In eu pulvinar erat, ac porttitor augue."
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "accepted_answer_id": null,
+      "title": "What do you think of your bike?",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis ligula vitae lectus malesuada, ut scelerisque velit molestie. In eu pulvinar erat, ac porttitor augue."
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "accepted_answer_id": null,
+      "title": "Is XKCD real?",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis ligula vitae lectus malesuada, ut scelerisque velit molestie. In eu pulvinar erat, ac porttitor augue."
+    }
+  ],
+  "answers": [
+    {
+      "id": 1,
+      "user_id": 3,
+      "parent_id": 1,
+      "content": "Etiam sagittis dolor quis leo sollicitudin, in commodo augue varius.",
+      "votes": [1, 3]
+    },
+    {
+      "id": 2,
+      "user_id": 3,
+      "parent_id": 2,
+      "content": "Duis pellentesque rutrum arcu quis tincidunt.",
+      "votes": [1]
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "parent_id": 1,
+      "content": "Etiam sagittis dolor quis leo sollicitudin, in commodo augue varius.",
+      "votes": []
+    }
+  ],
+  "pages": [
+    {
+      "id": 1,
+      "title": "Home",
+      "Content": "Ut vestibulum ipsum quis magna finibus, eu lacinia justo suscipit. Etiam laoreet risus at lectus mattis vestibulum. Proin sed lectus bibendum massa sodales tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse cursus sollicitudin accumsan. Nunc lacinia eu nisi eget varius. Praesent aliquam nisi vitae est bibendum, in eleifend odio iaculis. Ut sit amet ante justo. Sed ac massa posuere, posuere sapien id, tempor mauris. Sed condimentum mattis ipsum, in porta leo rutrum ac. Duis pharetra justo quis ex ullamcorper consequat. Nullam fermentum augue elit, in feugiat mi rhoncus et. Sed aliquam, ipsum vitae vestibulum varius, nisi ligula elementum mauris, ac pellentesque libero libero sed urna. Cras sed pulvinar massa, ut lacinia nisi. Nulla facilisi."
+    },
+    {
+      "id": 2,
+      "title": "About",
+      "Content": "Aenean suscipit luctus ante. Phasellus vitae nibh eu mi faucibus volutpat. Donec a vestibulum erat. Sed euismod sapien dui, id scelerisque mauris iaculis ut. In efficitur aliquet nisi eget tincidunt. Duis ac pellentesque nisl. Aliquam hendrerit enim eu nisi tristique tincidunt. Vestibulum tellus arcu, finibus et euismod vitae, suscipit non leo. Praesent ornare velit elit, et accumsan lectus eleifend in. Donec efficitur volutpat risus, tincidunt malesuada mi blandit a. Suspendisse ac ultrices lorem, ut hendrerit elit. Donec efficitur aliquet risus eu auctor. Ut eget elit eget augue efficitur lacinia at quis tortor."
+    }
+  ]
+}
