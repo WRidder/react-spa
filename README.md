@@ -81,6 +81,7 @@ This will be by no means a production ready application. Objectives and goals ar
 * [Reflux](https://github.com/spoike/refluxjs)
 * [React-router](https://github.com/rackt/react-router/)
 * [ImmutableJS](https://github.com/facebook/immutable-js)
+* [Material-ui](https://github.com/callemall/material-ui)
 * [SocketIO](http://socket.io/)
 
 ### Best practices
