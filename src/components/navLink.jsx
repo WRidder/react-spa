@@ -15,7 +15,7 @@ var NavigationLink = React.createClass({
   },
   getDefaultProps: function () {
     return {
-      activeClassName: 'active'
+      activeClassName: "active"
     };
   },
   getClassName: function () {
@@ -24,7 +24,6 @@ var NavigationLink = React.createClass({
     if (this.props.className) {
       classNames[this.props.className] = true;
     }
-
     if (this.isActive(this.props.to, this.props.params, this.props.query)) {
       classNames[this.props.activeClassName] = true;
     }

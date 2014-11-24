@@ -11,8 +11,8 @@ A real-time single page application based on React and (Re)flux to discover best
 5. Run *$ gulp* in the base directory, this will open a browser with the application on http://localhost:3000/
 
 ### Current state
-* > **Discovery** <
-* Proof of concept
+* Discovery
+* > **Proof of concept** <
 * Refactoring
 * Stabilizing
 

@@ -10,6 +10,8 @@ var Inbox = React.createClass({
     return (
       <div>
         <h1>Discussions</h1>
+        <span>Some material-ui tests</span>
+        <br/>
         <PaperButton type={PaperButton.Types.RAISED} label="Default" />
         <Icon icon="action-home" />
         <this.props.activeRouteHandler/>

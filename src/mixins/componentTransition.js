@@ -1,4 +1,4 @@
-var restApiActions = require("./../actions/restApiActions");
+var restApiActions = require("./../actions/resourceActions");
 var $ = require("jquery");
 
 var componentTransition = function(type, id, childrenType) {

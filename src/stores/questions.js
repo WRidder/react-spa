@@ -1,4 +1,4 @@
-var restApiActions = require("./../actions/restApiActions");
+var restApiActions = require("./../actions/resourceActions");
 var Reflux = require("reflux");
 var Immutable = require("immutable");
 
@@ -9,6 +9,15 @@ var QuestionsStore = Reflux.createStore({
     type: "questions",
     id: null,
     childrenType: null
+  },
+  getInitialState: function() {
+    return this.data;
+  },
+
+  // Helpers
+  forThisStore: function(type, id, childrenType) {
+    id = (this.resourceDef.id) ? !!id : !id;
+    return type == this.resourceDef.type && id && childrenType == this.resourceDef.childrenType;
   },
 
   // Event handlers
@@ -27,15 +36,6 @@ var QuestionsStore = Reflux.createStore({
     if (this.forThisStore.apply(null, arguments)) {
       console.log("questions loading failed!");
     }
-  },
-
-  // Helpers
-  forThisStore: function(type, id, childrenType) {
-    id = (this.resourceDef.id) ? !!id : !id;
-    return type == this.resourceDef.type && id && childrenType == this.resourceDef.childrenType;
-  },
-  getInitialState: function() {
-    return this.data;
   }
 });
 module.exports = QuestionsStore;

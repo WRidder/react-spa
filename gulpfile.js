@@ -53,20 +53,10 @@ var pkgs = (function () {
 }());
 
 // The default task
-gulp.task('default', ['serve']);
+gulp.task('default', ['watch']);
 
 // Clean up
 gulp.task('clean', del.bind(null, [DEST]));
-
-// 3rd party libraries
-/*gulp.task('vendor', function() {
- return merge(
- *//*gulp.src('./node_modules/jquery/dist*//**//**')
- .pipe(gulp.dest(DEST + '/vendor/jquery-' + pkgs.jquery)),
- gulp.src('./node_modules/bootstrap/dist/fonts*//**//**')
- .pipe(gulp.dest(DEST + '/fonts'))*//*
- );
- });*/
 
 // Static files
 gulp.task('assets', function () {
@@ -89,27 +79,6 @@ gulp.task('images', function () {
     .pipe(gulp.dest(DEST + '/images'))
     .pipe($.size({title: 'images'}));
 });
-
-// HTML pages
-//gulp.task('pages', function () {
-//  //src.pages = ['src/pages*//***/*//*.js', 'src/pages/404.html'];
-//  src.pages = ['src/pages/Index.js'];
-//  var render = $.render({template: './src/pages/_template.html'})
-//    .on('error', function (err) {
-//      console.log(err);
-//      render.end();
-//    });
-//  return gulp.src(src.pages)
-//    .pipe($.changed(DEST, {extension: '.html'}))
-//    .pipe($.if('*.js', render))
-//    .pipe($.if(RELEASE, $.htmlmin({
-//      removeComments: true,
-//      collapseWhitespace: true,
-//      minifyJS: true
-//    }), $.jsbeautifier()))
-//    .pipe(gulp.dest(DEST))
-//    .pipe($.size({title: 'pages'}));
-//});
 
 gulp.task('index', function() {
   src.index = "src/index.html";
@@ -185,12 +154,12 @@ gulp.task('bundle', function (cb) {
   var bundler = webpack(config);
 
   function bundle(err, stats) {
+    console.log("JS files changed");
     if (err) {
       throw new $.util.PluginError('webpack', err);
     }
 
     !!argv.verbose && $.util.log('[webpack]', stats.toString({colors: true}));
-
     if (!started) {
       started = true;
       return cb();
@@ -226,17 +195,7 @@ gulp.task('serve', function (cb) {
       //       will present a certificate warning in the browser.
       // https: true,
       server: {
-        baseDir: DEST,
-        // Allow web page requests without .html file extension in URLs
-        middleware: function (req, res, cb) {
-          var uri = url.parse(req.url);
-          if (uri.pathname.length > 1 &&
-            path.extname(uri.pathname) === '' &&
-            fs.existsSync(DEST + uri.pathname + '.html')) {
-            req.url = uri.pathname + '.html' + (uri.search || '');
-          }
-          cb();
-        }
+        baseDir: DEST
       }
     });
 
@@ -247,6 +206,18 @@ gulp.task('serve', function (cb) {
     gulp.watch(DEST + '/**/*.*', function (file) {
       browserSync.reload(path.relative(__dirname, file.path));
     });
+    cb();
+  });
+});
+
+gulp.task('watch', function (cb) {
+  watch = true;
+
+  runSequence('build', function () {
+    gulp.watch(src.assets, ['assets']);
+    gulp.watch(src.images, ['images']);
+    gulp.watch(src.index, ['index']);
+    gulp.watch(["src/styles/**.*"], ['styles']);
     cb();
   });
 });

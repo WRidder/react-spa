@@ -5,6 +5,13 @@
   padding: 10px 10px;
 }
 
+// Header
+@media #{$small-only} {
+  .logo-bar {
+    display: none;
+  }
+}
+
 // Top bar
 .top-bar .name a {
   line-height: 45px;
@@ -94,4 +101,30 @@ $text-color: #fff;
   li {
     margin-top: 0.2rem;
   }
+}
+
+// Signup panel
+.signup-panel {
+  i {
+    //font-size: 30px;
+    line-height: 45px;
+    color: #999;
+  }
+}
+
+.login-panel {
+  i {
+    line-height: 45px;
+    color: #999;
+  }
+}
+
+// DEBUG
+.db-element-update {
+  background-color: #FF0000;
+  -webkit-transition: background-color 5s ease-in-out;
+  -moz-transition: background-color 5s ease-in-out;
+  -o-transition: background-color 5s ease-in-out;
+  -ms-transition: background-color 5s ease-in-out;
+  transition: background-color 5s ease-in-out;
 }

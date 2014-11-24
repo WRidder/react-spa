@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="<%= description %>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/vendor/modernizr.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
   </head>
   <body>
-    <!--[if lt IE 8]>
+    <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <script src="js/vendor/fastclick.js"></script>
-    <script src="js/app.js"></script>
+    <script src="/js/vendor/fastclick.js"></script>
+    <script>
+      // Custom browser reloader
+      var socket = io.connect("http://" + document.domain + ":9000");
+      socket.on('serverFilesChanged', function (data) {
+        window.location.reload(true);
+      });
+    </script>
+    <script src="/js/app.js"></script>
   </body>
 </html>

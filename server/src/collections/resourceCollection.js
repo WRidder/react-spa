@@ -1,6 +1,3 @@
-/**
- * Created by wilbert on 14-11-14.
- */
 var Backbone = require("backbone");
 var _ = require("lodash");
 

@@ -1,5 +1,5 @@
 /**
- * Created by wilbert on 9-11-14.
+ * Created by Wilbert van de Ridder on 9-11-14.
  */
 
 console.log("Starting server...");
@@ -8,6 +8,7 @@ console.log("Starting server...");
 require("./routes/auth");
 require("./routes/api");
 require("./routes/sockets");
-
+require("./routes/pushState");
+require("./routes/browserReload");
 
 console.log("Server started");

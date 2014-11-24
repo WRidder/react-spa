@@ -2,17 +2,19 @@ var React = require("react");
 var Router = require("react-router");
 var Navigation = require("./navigation.jsx");
 var Breadcrumbs = require("./breadcrumbs.jsx");
+var HeaderSession = require("./headerSession.jsx");
 var Link = Router.Link;
 
 var Header = React.createClass({
   render: function() {
     return (
       <header>
-        <div class="row">
-          <div class="large-3 columns">
-            <Link to="/"><img src="./logo.png" /></Link>
+        <div className="row logo-bar">
+          <div className="large-3 medium-3 columns">
+            <Link to="/"><img src="/logo.png" /></Link>
           </div>
-          <div class="large-9 columns">
+          <div className="large-9 medium-9 columns">
+            <HeaderSession/>
           </div>
         </div>
         <Navigation/>

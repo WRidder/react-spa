@@ -1,19 +1,14 @@
-/**
- * Created by wilbert on 15-11-14.
- */
-
 var router = require('express').Router();
 var server = require("./../config/server");
 var auth = require('./../controllers/auth');
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Routes
-router.post('/login', auth.login);
-router.post('/logout', auth.logout);
-router.get('/login/success', auth.loginSuccess);
-router.get('/login/failure', auth.loginFailure);
-router.post('/signup', auth.signup);
-router.get('/signup/success', auth.signupSuccess);
-router.get('/signup/failure', auth.signupFailure);
+router.post('/login', urlencodedParser, auth.login, auth.loginCallback);
+router.get('/logout', auth.logout);
+router.post('/signup', urlencodedParser, auth.signup);
+router.get('/session', auth.checkSession);
 
 // Register routes
 server.appInstance.use('/auth', router);

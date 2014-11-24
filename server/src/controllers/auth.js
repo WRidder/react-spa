@@ -1,6 +1,4 @@
 /**
- * Created by wilbert on 14-11-14.
- *
  * see: http://stackoverflow.com/questions/19024878/simple-login-page-in-nodejs-using-express-and-passport-with-mongodb
  */
 
@@ -10,16 +8,15 @@ module.exports = {
 
   // Login a user
   login: passport.authenticate('local-login', {
-    successRedirect: '/auth/login/success',
-    failureRedirect: '/auth/login/failure',
     failureFlash : true // allow flash messages
   }),
-
-  // on Login Success callback
-  loginSuccess: function(req, res){
+  loginCallback: function(req, res) {
     res.json({
       success: true,
-      user: req.session.passport.user
+      user: {
+        id: req.user.get("id"),
+        username: req.user.get("username")
+      }
     });
   },
 
@@ -48,7 +45,7 @@ module.exports = {
   signupSuccess: function(req, res){
     res.json({
       success: true,
-      user: req.session.passport.user
+      user: req.user
     });
   },
 
@@ -58,5 +55,16 @@ module.exports = {
       success:false,
       message: req.flash('signupMessage')
     });
+  },
+
+  checkSession: function(req, res) {
+    if (req.isAuthenticated()) {
+      res.json(req.user);
+    }
+    else {
+      res.json({
+        message: "no session found"
+      });
+    }
   }
 };

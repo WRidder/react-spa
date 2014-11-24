@@ -1,27 +1,32 @@
-/**
- * Created by wilbert on 14-11-14.
- */
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').Server(app);
-var bodyParser = require('body-parser');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var sessionMiddleware = require("./sessionMiddleware");
+var compression = require('compression');
 
 // Allow cross domain for local client
 var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //res.header('Access-Control-Allow-Origin', req.headers.origin);
   next();
 };
 
 // Express
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(allowCrossDomain);
 app.use(sessionMiddleware);
+app.use(function (req, res, next) {
+  res.removeHeader("X-Powered-By");
+  next();
+});
+app.use(compression({
+  threshold: 1024
+})); // gzip support; requires res.flush() for SSE!! (https://github.com/expressjs/compression#server-sent-events)
+
+// Static file serving
+app.use(express.static(__dirname + "/../../../build"));
 
 // Passport
 require('./passport')(passport); // pass passport for configuration
@@ -32,7 +37,6 @@ app.use(flash());
 // Start the server
 var port = process.env.PORT || 8080;
 server.listen(port);
-
 
 module.exports = {
   serverInstance: server,

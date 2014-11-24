@@ -1,7 +1,3 @@
-/**
- * Created by wilbert on 15-11-14.
- */
-
 var _ = require("lodash");
 var accessControl = require("./../helper/accessControl");
 var responses = require("./../helper/response");

@@ -1,7 +1,3 @@
-/**
- * Created by wilbert on 15-11-14.
- */
-
 var base = require("./base");
 var db = require("./../db");
 var bcrypt = require('bcrypt-nodejs');

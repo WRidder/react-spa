@@ -1,7 +1,3 @@
-/**
- * Created by wilbert on 15-11-14.
- */
-
 module.exports = {
   "200": {
     status: 200,

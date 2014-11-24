@@ -1,7 +1,3 @@
-/**
- * Created by wilbert on 15-11-14.
- */
-
 var Resource = require("./../database/models/resource");
 var _ = require("lodash");
 

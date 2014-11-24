@@ -1,6 +1,3 @@
-/**
- * Created by wilbert on 12-11-14.
- */
 var _ = require("lodash");
 var data = require("./../data.json");
 var ResourceCollection = require("./../collections/resourceCollection");

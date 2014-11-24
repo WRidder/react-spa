@@ -1,6 +1,4 @@
 /**
- * Created by wilbert on 15-11-14.
- *
  * See: https://github.com/scotch-io/easy-node-authentication
  */
 
@@ -11,7 +9,10 @@ var User = require("./../database/models/user");
 
 module.exports = function (passport) {
   passport.serializeUser(function (user, done) {
-    done(null, user);
+    done(null,{
+      id: user.get("id"),
+      username: user.get("username")
+    });
   });
   passport.deserializeUser(function (user, done) {
     done(null, user);
@@ -67,10 +68,7 @@ module.exports = function (passport) {
           if (!valid) {
             return done(null, false, req.flash('loginMessage', "Username and/or password invalid"));
           }
-          return done(null, {
-            id: user.get("id"),
-            username: user.get("username")
-          });
+          return done(null, user);
         });
       });
     }
