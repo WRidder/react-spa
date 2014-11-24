@@ -4,11 +4,11 @@
 A real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in *./server*.
 
 ### Installation
-1. Run *$ npm install* in the base directory
+1. Run *$ npm install* in the base and in the ./server directory
 2. Run *$ bower install* in the base directory
-3. Run *$ npm install* in the ./server directory
-4. Start the server in ./server using *$ node server.js*. Should open a port on 8080.
-5. Run *$ gulp* in the base directory, this will open a browser with the application on http://localhost:3000/
+3. Start the server in ./server using *$ node server.js*. Should open a port on 8080.
+4. Run *$ gulp* in the base directory. This will watch for file changes and build when necessary.
+5. Navigate your browser to http://localhost:8080; will reload on client changes.
 
 ### Current state
 * Discovery
@@ -100,3 +100,7 @@ This will be by no means a production ready application. Objectives and goals ar
 
 #### Books
 * [Developing a React.js Edge](http://shop.oreilly.com/product/9781939902122.do)
+
+### Changelog
+[22-nov-14] Initial version
+[24-nov-14] Sessions (login/logout/profile); html5 puhsState; single server
