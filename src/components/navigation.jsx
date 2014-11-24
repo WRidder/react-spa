@@ -3,12 +3,21 @@ var Router = require("react-router");
 var Link = Router.Link;
 var NavLink = require("./navLink.jsx"); //Router.Link;
 var $ = require("jquery");
+var connect= require("./../libraries/tmp_connect");
+var sessionStore = require("./../stores/session");
+var ImmutableRenderMixin = require("react-immutable-render-mixin");
+
+var LogoutLink = require("./logoutLink.jsx");
 
 var Navigation = React.createClass({
+  mixins: [connect(sessionStore, "session"), ImmutableRenderMixin],
   componentDidMount: function() {
     $(document).foundation();
   },
   render: function() {
+    var profileLink = (this.state.session.get("auth")) ? (<NavLink to="/profile" title="Profile" className="profile"/>) : "";
+    var loginoutLink = (this.state.session.get("auth")) ? (<li className="logout"><LogoutLink/></li>) : (<NavLink to="/login" title="Login" className="login"/>);
+
     return (
       <nav className="top-bar" data-topbar role="navigation">
         <ul className="title-area">
@@ -22,6 +31,8 @@ var Navigation = React.createClass({
             <NavLink to="discussions" title="Discussions"/>
             <li><a href="#">Chat</a></li>
             <li><a href="#">About</a></li>
+            {profileLink}
+            {loginoutLink}
           </ul>
         </section>
       </nav>

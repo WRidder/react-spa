@@ -6,6 +6,7 @@ var connect= require("./../libraries/tmp_connect");
 var sessionActions = require("./../actions/sessionActions");
 var sessionStore = require("./../stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
+var LogoutLink = require("./logoutLink.jsx");
 
 var HeaderSession = React.createClass({
   mixins: [connect(sessionStore), ImmutableRenderMixin],
@@ -18,9 +19,8 @@ var HeaderSession = React.createClass({
     if (this.state.get("auth")) {
       content = (
         <div>
-          <span className="right">Welcome {this.state.get("username")}!</span><br/>
-          <Link className="right" to="profile">Profile</Link><br/>
-          <a className="right" href="#" onClick={this.logoutHandler}>Logout</a>
+          <Link className="right" to="profile">{this.state.get("username")}</Link><span className="right">Welcome&nbsp;</span><br/>
+          <LogoutLink className="right"/>
         </div>
       );
     }

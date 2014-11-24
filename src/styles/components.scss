@@ -12,6 +12,23 @@
   }
 }
 
+// Navigation
+// Header
+
+@media #{$medium-up} {
+  .top-bar {
+    .profile {
+      display: none;
+    }
+    .logout {
+      display: none;
+    }
+    .login {
+      display: none;
+    }
+  }
+}
+
 // Top bar
 .top-bar .name a {
   line-height: 45px;
