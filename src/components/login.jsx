@@ -37,6 +37,7 @@ var Login = React.createClass({
         <div className="large-12 columns">
           <div className="login-panel">
             <h1>Login</h1>
+            <span>Accounts: (Admin/Admin), (Katy/Katy), (James/James)</span><br/><br/>
             <form>
               <div className="row collapse">
                 <div className="small-2 columns">
