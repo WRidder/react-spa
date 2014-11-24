@@ -22,7 +22,7 @@ module.exports = actions;
 
 // Action handlers
 actions.loadResource.listen(function(type, id, childrenType, promise) {
-  $.get(cfg.server.location + "api/" + [type, id, childrenType].filter(function(e){return e;}).join("/"))
+  $.get("http://" + window.location.host + "/api/" + [type, id, childrenType].filter(function(e){return e;}).join("/"))
     .done(function(data) {
       actions.loadResourceSuccess(type, id, childrenType, data);
       promise.resolve();

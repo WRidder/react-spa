@@ -28,9 +28,8 @@ module.exports = actions;
 
 // Action handlers
 actions.login.listen(function(username, password) {
-    $.post(cfg.server.location + "auth/login", {username: username, password: password})
+    $.post("http://" + window.location.host + "/auth/login", {username: username, password: password})
     .done(function(data) {
-      console.log("login data", data);
       if (data.success) {
         actions.loginSuccess(data.user);
       }
@@ -44,7 +43,7 @@ actions.login.listen(function(username, password) {
 });
 
 actions.logout.listen(function(username, password) {
-  $.get(cfg.server.location + "auth/logout")
+  $.get("http://" + window.location.host + "/auth/logout")
     .done(function(data) {
       actions.logoutSuccess();
     })

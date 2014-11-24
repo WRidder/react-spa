@@ -21,8 +21,6 @@ var Login = React.createClass({
   },
   handleSubmit: function() {
     if (this.validate()) {
-      console.log("username: " + this.state.username);
-      console.log("Password: " + this.state.password);
       sessionActions.login(this.state.username, this.state.password);
     }
   },
