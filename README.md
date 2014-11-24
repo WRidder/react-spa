@@ -102,5 +102,5 @@ This will be by no means a production ready application. Objectives and goals ar
 * [Developing a React.js Edge](http://shop.oreilly.com/product/9781939902122.do)
 
 ### Changelog
-[22-nov-14] Initial version
-[24-nov-14] Sessions (login/logout/profile); html5 puhsState; single server
+**[22-nov-14]** Initial version  
+**[24-nov-14]** Sessions (login/logout/profile); html5 puhsState; single server
