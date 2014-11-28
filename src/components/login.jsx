@@ -12,6 +12,22 @@ var sessionActions = require("./../actions/sessionActions");
 var Login = React.createClass({
   mixins: [connect(sessionStore, "session")],
 
+  // Transition
+  statics: {
+    willTransitionTo: function (transition, params) {
+      if (sessionStore.isLoggedIn()) {
+        transition.redirect("profile");
+      }
+    }
+  },
+
+  componentWillUpdate: function() {
+    var router = require("./../core/router");
+    if (sessionStore.isLoggedIn()) {
+      router.transitionTo("profile");
+    }
+  },
+
   // Helpers
   handerUsernameChange: function(e) {
     this.setState({username: e.target.value});

@@ -1,7 +1,5 @@
 var Reflux = require("reflux");
 var Immutable = require("immutable");
-var Router = require("react-router");
-
 var sessionActions = require("./../actions/sessionActions");
 
 var defaultData = {
@@ -40,6 +38,11 @@ var SessionStore = Reflux.createStore({
   onLogoutSuccess: function() {
     this.setData(defaultData);
     this.trigger(this.data);
+  },
+
+  // API
+  isLoggedIn: function() {
+    return this.data.get("auth");
   }
 });
 module.exports = SessionStore;

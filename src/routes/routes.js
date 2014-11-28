@@ -39,6 +39,4 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.body);
-});
+module.exports = routes;

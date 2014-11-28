@@ -1,5 +1,4 @@
 var sessionActions = require("./../actions/sessionActions");
-var cfg = require("../config.json");
 var $ = require("jquery");
 
 // Check session
