@@ -1,4 +1,6 @@
 var React = require("react");
+var Router = require("react-router");
+var RouteHandler = Router.RouteHandler;
 var mui = require("material-ui");
 var PaperButton = mui.PaperButton;
 var Icon = mui.Icon;
@@ -14,7 +16,7 @@ var Inbox = React.createClass({
         <br/>
         <PaperButton type={PaperButton.Types.RAISED} label="Default" />
         <Icon icon="action-home" />
-        <this.props.activeRouteHandler/>
+        <RouteHandler />
 
         <form>
           <Checkbox name="checkboxName" value="checkboxValue1" />

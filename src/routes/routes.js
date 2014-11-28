@@ -18,29 +18,27 @@ var Question = require("./../components/question.jsx");
 var QuestionNotFound = require("./../components/notfound/question.jsx");
 var Discussions = require("./../components/discussions.jsx");
 
-// TODO: set location to "history" when full page reload is supported by the server
-
 var routes = (
-  <Routes location="history">
-    <Route name="app" path="/" handler={App}>
-      {/* Session routes */}
-      <Route name="login" path="login" handler={Login}/>
-      <Route name="signup" path="signup" handler={Signup}/>
-      <Route name="profile" path="profile" handler={Profile}/>
+  <Route name="app" path="/" handler={App}>
+    {/* Session routes */}
+    <Route name="login" path="login" handler={Login}/>
+    <Route name="signup" path="signup" handler={Signup}/>
+    <Route name="profile" path="profile" handler={Profile}/>
 
-      {/* Question routes*/}
-      <Route name="questions" path="questions" handler={QuestionList}/>
-      <Route name="question" path="questions/:questionId" handler={Question}/>
-      <Route name="questionWithTitle" path="questions/:questionId/:questionTitle" handler={Question}/>
-      <Route path="questions/:questionId/" handler={Question}/>
-      <Route name="question404" path="questions/404" handler={QuestionNotFound}/>
+    {/* Question routes*/}
+    <Route name="questions" path="questions" handler={QuestionList}/>
+    <Route name="question" path="questions/:questionId" handler={Question}/>
+    <Route name="questionWithTitle" path="questions/:questionId/:questionTitle" handler={Question}/>
+    <Route path="questions/:questionId/" handler={Question}/>
+    <Route name="question404" path="questions/404" handler={QuestionNotFound}/>
 
-      {/* Discussion routes*/}
-      <Route name="discussions" handler={Discussions}/>
-      <DefaultRoute handler={Home}/>
-      <NotFoundRoute handler={NotFound}/>
-    </Route>
-  </Routes>
+    {/* Discussion routes*/}
+    <Route name="discussions" handler={Discussions}/>
+    <DefaultRoute handler={Home}/>
+    <NotFoundRoute handler={NotFound}/>
+  </Route>
 );
 
-React.renderComponent(routes, document.body);
+Router.run(routes, Router.HistoryLocation, function (Handler) {
+  React.render(<Handler/>, document.body);
+});

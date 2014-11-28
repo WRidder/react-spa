@@ -2,16 +2,14 @@ var React = require("react");
 var Router = require("react-router");
 var classSet = require('react/lib/cx');
 var Navigation = Router.Navigation;
-var ActiveState = Router.ActiveState;
+var State = Router.State;
 var Link = Router.Link;
 
 var NavigationLink = React.createClass({
-  mixins: [ActiveState, Navigation],
+  mixins: [State, Navigation],
   propTypes: {
     activeClassName: React.PropTypes.string.isRequired,
-    to: React.PropTypes.string.isRequired,
-    params: React.PropTypes.object,
-    query: React.PropTypes.object
+    to: React.PropTypes.string.isRequired
   },
   getDefaultProps: function () {
     return {

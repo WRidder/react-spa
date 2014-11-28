@@ -1,5 +1,6 @@
 var React = require("react");
 var Router = require("react-router");
+var RouteHandler = Router.RouteHandler;
 
 // Components
 var Header = require("./header.jsx");
@@ -11,7 +12,7 @@ var App = React.createClass({
       <section>
         <Header/>
         <div className="main">
-          <this.props.activeRouteHandler/>
+          <RouteHandler />
         </div>
         <Footer/>
       </section>
