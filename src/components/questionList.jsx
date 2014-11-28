@@ -26,7 +26,7 @@ var Question = React.createClass({
     var slug = slugger(title);
     return (
       <div className="question">
-        <Paper zDepth="1">
+        <Paper zDepth={1}>
           <div className="inner">
             <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>{title}</Link>
           </div>
@@ -40,7 +40,7 @@ var QuestionList = React.createClass({
   mixins: [connect(questionsStore), ImmutableRenderMixin, componentTransitionMixin("questions")],
   asQuestion: function(item) {
     return (
-      <Question content={item}/>
+      <Question content={item} key={item.get("id")}/>
     );
   },
   render: function() {

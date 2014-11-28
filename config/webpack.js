@@ -36,18 +36,8 @@ module.exports = function(release) {
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),
       new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.optimize.AggressiveMergingPlugin()/*,
-      new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jQuery": "jquery"
-      })*/
-    ] : [/*
-      new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jQuery": "jquery"
-      })*/],
+      new webpack.optimize.AggressiveMergingPlugin()
+    ] : [],
 
     resolve: {
       extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
@@ -56,11 +46,11 @@ module.exports = function(release) {
 
     module: {
       preLoaders: [
-        {
+        /*{
           test: /\.js$/,
           exclude: /node_modules/,
           loader: 'jshint'
-        }
+        }*/
       ],
 
       loaders: [

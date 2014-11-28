@@ -58,7 +58,9 @@
     "gulp-sourcemaps": "~1.2.8",
     "imports-loader": "~0.6.3",
     "gulp-order": "~1.1.1",
-    "json-loader": "~0.5.1"
+    "json-loader": "~0.5.1",
+    "connect-livereload": "~0.5.2",
+    "tiny-lr": "~0.1.4"
   },
   "jest": {
     "rootDir": "src",

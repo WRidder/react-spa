@@ -28,6 +28,8 @@
     "bcrypt-nodejs": "0.0.3",
     "q": "~1.1.2",
     "chokidar": "~0.11.1",
-    "compression": "~1.2.1"
+    "compression": "~1.2.1",
+    "connect-livereload": "~0.5.2",
+    "tiny-lr": "~0.1.4"
   }
 }

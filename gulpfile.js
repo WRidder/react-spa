@@ -14,7 +14,7 @@ var path = require('path');
 var merge = require('merge-stream');
 var runSequence = require('run-sequence');
 var webpack = require('webpack');
-var browserSync = require('browser-sync');
+//var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var argv = require('minimist')(process.argv.slice(2));
 
@@ -175,8 +175,23 @@ gulp.task('bundle', function (cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['assets', 'index', 'styles', 'bundle', 'vendor'], cb);
+  runSequence(['assets', 'index', 'styles', 'livereload', 'bundle', 'vendor'], cb);
 });
+
+// Setup live reload
+var tinylr;
+gulp.task('livereload', function() {
+  tinylr = require('tiny-lr')();
+  tinylr.listen(35729);
+});
+
+function notifyLiveReload(fileName) {
+  tinylr.changed({
+    body: {
+      files: [fileName]
+    }
+  });
+}
 
 // Launch a lightweight HTTP Server
 gulp.task('serve', function (cb) {
@@ -186,7 +201,7 @@ gulp.task('serve', function (cb) {
   watch = true;
 
   runSequence('build', function () {
-    browserSync({
+    /*browserSync({
       notify: false,
       // Customize the BrowserSync console logging prefix
       logPrefix: 'RSK',
@@ -197,14 +212,15 @@ gulp.task('serve', function (cb) {
       server: {
         baseDir: DEST
       }
-    });
+    });*/
 
     gulp.watch(src.assets, ['assets']);
     gulp.watch(src.images, ['images']);
     gulp.watch(src.index, ['index']);
     gulp.watch(["src/styles/**.*"], ['styles']);
     gulp.watch(DEST + '/**/*.*', function (file) {
-      browserSync.reload(path.relative(__dirname, file.path));
+      var fileName = path.relative(__dirname, file.path);
+      //browserSync.reload(fileName);
     });
     cb();
   });
@@ -218,6 +234,10 @@ gulp.task('watch', function (cb) {
     gulp.watch(src.images, ['images']);
     gulp.watch(src.index, ['index']);
     gulp.watch(["src/styles/**.*"], ['styles']);
+    gulp.watch(DEST + '/**/*.*', function (file) {
+      var fileName = path.relative(__dirname, file.path);
+      notifyLiveReload(fileName);
+    });
     cb();
   });
 });

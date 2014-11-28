@@ -9,6 +9,8 @@ require("./routes/auth");
 require("./routes/api");
 require("./routes/sockets");
 require("./routes/pushState");
-require("./routes/browserReload");
+
+// Init devserver
+//require("./config/webpackDevServer");
 
 console.log("Server started");

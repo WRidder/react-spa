@@ -25,6 +25,9 @@ app.use(compression({
   threshold: 1024
 })); // gzip support; requires res.flush() for SSE!! (https://github.com/expressjs/compression#server-sent-events)
 
+// Live reload support
+app.use(require('connect-livereload')({port: 35729}));
+
 // Static file serving
 app.use(express.static(__dirname + "/../../../build"));
 

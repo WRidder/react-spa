@@ -19,7 +19,7 @@ var Question = React.createClass({
     if (view.state) {
       content = (
           <div className="question">
-            <Paper zDepth="1">
+            <Paper zDepth={1}>
               <div className="inner">
                 <h1>{view.state.get("title")}</h1>
                 <p>{view.state.get("content")}</p>
