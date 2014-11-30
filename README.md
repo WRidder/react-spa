@@ -1,7 +1,7 @@
-# Community site SPA based on ReactJS 
+# Community site SPA based on ReactJS (PoC)
 [![Build Status](https://travis-ci.org/WRidder/react-spa.svg?branch=master)](https://travis-ci.org/WRidder/react-spa)
 
-A real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in *./server*.
+A Proof of Concept real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in *./server*.
 
 ### Installation
 1. Run *$ npm install* in the base and in the ./server directory
