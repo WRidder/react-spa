@@ -6,6 +6,11 @@ var DataInterface = (function() {
   var _inDom = inDOMEnvironment;
   var _response = {};
   var _error = false;
+  var _profiling = false;
+  var _profile = {
+    get: {},
+    post: {}
+  };
 
   // constructor
   function DataInterface(){}
@@ -24,6 +29,11 @@ var DataInterface = (function() {
       var dataProvider = require("./../core/syncDataProvider");
       _response = dataProvider.getDataByPath(path);
 
+      // Profiling
+      if (_profiling) {
+        _profile.get[path] = _response;
+      }
+
       return this;
     }
   };
@@ -40,6 +50,11 @@ var DataInterface = (function() {
       console.log("di(node) post: ", path, data);
       var dataProvider = require("./../core/syncDataProvider");
       _response = dataProvider.getDataByPath(path);
+
+      // Profiling
+      if (_profiling) {
+        _profile.post[path] = _response;
+      }
 
       return this;
     }
@@ -58,6 +73,19 @@ var DataInterface = (function() {
       callback(null, "", "");
     }
     return this;
+  };
+
+  // Helper methods
+  DataInterface.prototype.enableProfiling = function(enable) {
+    _profiling = true;
+  };
+
+  DataInterface.prototype.disableProfiling = function(enable) {
+    _profiling = false;
+  };
+
+  DataInterface.prototype.getProfile = function() {
+    return _profile;
   };
 
   return DataInterface;

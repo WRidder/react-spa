@@ -23,11 +23,11 @@ var QuestionStore = Reflux.createStore({
   },
 
   // Action handlers
-  onLoadResource: function(type, id, childrenType) {
+/*  onLoadResource: function(type, id, childrenType) {
     if (this.forThisStore.apply(null, arguments)) {
       this.data = Immutable.Map({});
     }
-  },
+  },*/
   onLoadResourceSuccess: function(type, id, childrenType, data) {
     if (this.forThisStore.apply(null, arguments)) {
       this.data = this.data.merge(data);
