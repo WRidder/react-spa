@@ -175,7 +175,7 @@ gulp.task('bundle', function (cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['assets', /*'index',*/ 'styles', 'livereload', 'bundle', 'vendor'], cb);
+  runSequence(['assets', 'styles', 'bundle', 'vendor'], cb);
 });
 
 // Setup live reload
@@ -193,43 +193,10 @@ function notifyLiveReload(fileName) {
   });
 }
 
-// Launch a lightweight HTTP Server
-gulp.task('serve', function (cb) {
-
-  var url = require('url');
-  var fs = require('fs');
-  watch = true;
-
-  runSequence('build', function () {
-    /*browserSync({
-      notify: false,
-      // Customize the BrowserSync console logging prefix
-      logPrefix: 'RSK',
-      // Run as an https by uncommenting 'https: true'
-      // Note: this uses an unsigned certificate which on first access
-      //       will present a certificate warning in the browser.
-      // https: true,
-      server: {
-        baseDir: DEST
-      }
-    });*/
-
-    gulp.watch(src.assets, ['assets']);
-    gulp.watch(src.images, ['images']);
-    //gulp.watch(src.index, ['index']);
-    gulp.watch(["src/styles/**.*"], ['styles']);
-    gulp.watch(DEST + '/**/*.*', function (file) {
-      var fileName = path.relative(__dirname, file.path);
-      //browserSync.reload(fileName);
-    });
-    cb();
-  });
-});
-
 gulp.task('watch', function (cb) {
   watch = true;
 
-  runSequence('build', function () {
+  runSequence('build', 'livereload', function () {
     gulp.watch(src.assets, ['assets']);
     gulp.watch(src.images, ['images']);
     //gulp.watch(src.index, ['index']);
