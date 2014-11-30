@@ -1,6 +1,5 @@
 var reflux = require("reflux");
-var cfg = require("../config.json");
-var $ = require("jquery");
+var dataInterface = require("./../core/dataInterface");
 
 // Create actions
 var actions = reflux.createActions([
@@ -28,8 +27,8 @@ module.exports = actions;
 
 // Action handlers
 actions.login.listen(function(username, password) {
-    $.post("http://" + window.location.host + "/auth/login", {username: username, password: password})
-    .done(function(data) {
+  dataInterface.post("/auth/login", {username: username, password: password})
+    .then(function(data) {
       if (data.success) {
         actions.loginSuccess(data.user);
       }
@@ -37,17 +36,17 @@ actions.login.listen(function(username, password) {
         actions.loginFail(data.message);
       }
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {
+    .catch(function(jqXHR, textStatus, errorThrown) {
       actions.loginError(textStatus, errorThrown);
     });
 });
 
 actions.logout.listen(function(username, password) {
-  $.get("http://" + window.location.host + "/auth/logout")
-    .done(function(data) {
+  dataInterface.get("/auth/logout")
+    .then(function(data) {
       actions.logoutSuccess();
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {
+    .catch(function(jqXHR, textStatus, errorThrown) {
       actions.logoutError(textStatus, errorThrown);
     });
 });

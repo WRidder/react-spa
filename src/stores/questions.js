@@ -21,11 +21,6 @@ var QuestionsStore = Reflux.createStore({
   },
 
   // Event handlers
-  onLoadResource: function(type, id, childrenType) {
-    if (this.forThisStore.apply(null, arguments)) {
-      this.data = Immutable.List([]);
-    }
-  },
   onLoadResourceSuccess: function(type, id, childrenType, data) {
     if (this.forThisStore.apply(null, arguments)) {
       this.data = Immutable.fromJS(data);

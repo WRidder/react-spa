@@ -175,7 +175,7 @@ gulp.task('bundle', function (cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['assets', 'index', 'styles', 'livereload', 'bundle', 'vendor'], cb);
+  runSequence(['assets', /*'index',*/ 'styles', 'livereload', 'bundle', 'vendor'], cb);
 });
 
 // Setup live reload
@@ -216,7 +216,7 @@ gulp.task('serve', function (cb) {
 
     gulp.watch(src.assets, ['assets']);
     gulp.watch(src.images, ['images']);
-    gulp.watch(src.index, ['index']);
+    //gulp.watch(src.index, ['index']);
     gulp.watch(["src/styles/**.*"], ['styles']);
     gulp.watch(DEST + '/**/*.*', function (file) {
       var fileName = path.relative(__dirname, file.path);
@@ -232,7 +232,7 @@ gulp.task('watch', function (cb) {
   runSequence('build', function () {
     gulp.watch(src.assets, ['assets']);
     gulp.watch(src.images, ['images']);
-    gulp.watch(src.index, ['index']);
+    //gulp.watch(src.index, ['index']);
     gulp.watch(["src/styles/**.*"], ['styles']);
     gulp.watch(DEST + '/**/*.*', function (file) {
       var fileName = path.relative(__dirname, file.path);

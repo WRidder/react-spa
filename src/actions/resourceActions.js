@@ -1,6 +1,5 @@
 var reflux = require("reflux");
-var cfg = require("../config.json");
-var $ = require("jquery");
+var dataInterface = require("./../core/dataInterface");
 
 // Create actions
 var actions = reflux.createActions([
@@ -20,15 +19,19 @@ var actions = reflux.createActions([
 ]);
 module.exports = actions;
 
+// Set sync
+actions.loadResource.sync = true;
+actions.loadResourceSuccess.sync = true;
+actions.loadResourceFail.sync = true;
+
 // Action handlers
-actions.loadResource.listen(function(type, id, childrenType, promise) {
-  $.get("http://" + window.location.host + "/api/" + [type, id, childrenType].filter(function(e){return e;}).join("/"))
-    .done(function(data) {
+actions.loadResource.listen(function(type, id, childrenType) {
+  console.log("load resource action");
+  dataInterface.get("/api/" + [type, id, childrenType].filter(function(e){return e;}).join("/"))
+    .then(function(data) {
       actions.loadResourceSuccess(type, id, childrenType, data);
-      promise.resolve();
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {
+    .catch(function(jqXHR, textStatus, errorThrown) {
       actions.loadResourceFail(type, id, childrenType, textStatus, errorThrown);
-      promise.resolve();
     });
 });

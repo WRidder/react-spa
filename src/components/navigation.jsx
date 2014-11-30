@@ -1,8 +1,7 @@
 var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
-var NavLink = require("./navLink.jsx"); //Router.Link;
-var $ = require("jquery");
+var NavLink = require("./navLink.jsx");
 var connect= require("./../libraries/tmp_connect");
 var sessionStore = require("./../stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
@@ -12,6 +11,7 @@ var LogoutLink = require("./logoutLink.jsx");
 var Navigation = React.createClass({
   mixins: [connect(sessionStore, "session"), ImmutableRenderMixin],
   componentDidMount: function() {
+    var $ = require("jquery");
     $(document).foundation();
   },
   render: function() {

@@ -29,7 +29,9 @@ app.use(compression({
 app.use(require('connect-livereload')({port: 35729}));
 
 // Static file serving
-app.use(express.static(__dirname + "/../../../build"));
+app.use(express.static(__dirname + "/../../../build", {
+  index: false
+}));
 
 // Passport
 require('./passport')(passport); // pass passport for configuration

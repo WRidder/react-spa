@@ -4,7 +4,6 @@ var connect= require("./../libraries/tmp_connect");
 
 var mui = require("material-ui");
 var Icon = mui.Icon;
-var PaperButton = mui.PaperButton;
 
 var sessionStore = require("./../stores/session");
 var sessionActions = require("./../actions/sessionActions");
@@ -22,10 +21,16 @@ var Login = React.createClass({
   },
 
   componentWillUpdate: function() {
-    var router = require("./../core/router");
+    var router = require("./../core/router").router;
     if (sessionStore.isLoggedIn()) {
       router.transitionTo("profile");
     }
+  },
+
+  // Validation
+  componentDidUpdate: function() {
+    var $ = require("jquery");
+    $(document).foundation();
   },
 
   // Helpers
@@ -35,7 +40,10 @@ var Login = React.createClass({
   handlePasswordChange: function(e) {
     this.setState({password: e.target.value});
   },
-  handleSubmit: function() {
+  handleSubmit: function(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
     if (this.validate()) {
       sessionActions.login(this.state.username, this.state.password);
     }
@@ -52,13 +60,16 @@ var Login = React.createClass({
           <div className="login-panel">
             <h1>Login</h1>
             <span>Accounts: (Admin/Admin), (Katy/Katy), (James/James)</span><br/><br/>
-            <form>
+            <form data-abide onSubmit={this.handleSubmit}>
               <div className="row collapse">
                 <div className="small-2 columns">
                   <span className="prefix"><i><Icon icon="social-person" /></i></span>
                 </div>
                 <div className="small-10  columns">
-                  <input type="text" placeholder="Username" onChange={this.handerUsernameChange}/>
+                  <div className="name-field">
+                    <input type="text" placeholder="Username" required pattern="[a-zA-Z]+" onChange={this.handerUsernameChange}/>
+                    <small className="error">Name is required and must be a string.</small>
+                  </div>
                 </div>
               </div>
               <div className="row collapse">
@@ -69,8 +80,8 @@ var Login = React.createClass({
                   <input type="text" placeholder="Password" onChange={this.handlePasswordChange}/>
                 </div>
               </div>
+              <button type="submit">Submit</button>
             </form>
-            <PaperButton type={PaperButton.Types.FLAT} label="Login" onClick={this.handleSubmit}/>
           </div>
         </div>
       </div>

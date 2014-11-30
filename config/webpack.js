@@ -19,7 +19,11 @@ module.exports = function(release) {
     output: {
       filename: 'app.js',
       path: './build/js/',
-      publicPatch: './build/'
+      publicPath: './build/',
+
+      // Library settings
+      library: "reactspa",
+      libraryTarget: "umd"
     },
 
     cache: !release,

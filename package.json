@@ -13,7 +13,8 @@
     "socket.io-client": "1.2.1",
     "material-ui": "~0.3.0",
     "jquery": "~2.1.1",
-    "react-immutable-render-mixin": "~0.6.5"
+    "react-immutable-render-mixin": "~0.6.5",
+    "q": "~1.1.2"
   },
   "devDependencies": {
     "browser-sync": "^1.7.1",

@@ -1,9 +1,9 @@
 var sessionActions = require("./../actions/sessionActions");
-var $ = require("jquery");
+var dataInterface = require("./../core/dataInterface");
 
 // Check session
-$.get("http://" + window.location.host + "/auth/session")
-  .done(function(data) {
+dataInterface.get("/auth/session")
+  .then(function(data) {
     if (data.id) {
       sessionActions.loginSuccess(data);
     }

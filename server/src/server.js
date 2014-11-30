@@ -8,9 +8,8 @@ console.log("Starting server...");
 require("./routes/auth");
 require("./routes/api");
 require("./routes/sockets");
-require("./routes/pushState");
+//require("./routes/pushState");
+require("./routes/isomorphic");
 
-// Init devserver
-//require("./config/webpackDevServer");
 
 console.log("Server started");
