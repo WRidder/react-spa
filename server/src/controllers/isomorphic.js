@@ -22,7 +22,7 @@ var routes = [
     handler: function (type) {
       var result = Resource.getAllResources(type);
       if (result.status === 200) {
-        return result;
+        return result.content;
       }
       else {
         return {};
@@ -34,7 +34,7 @@ var routes = [
     handler: function (type, type_id) {
       var result = Resource.getResourceById(type, type_id);
       if (result.status === 200) {
-        return result;
+        return result.content;
       }
       else {
         return {};
@@ -46,7 +46,7 @@ var routes = [
     handler: function (parent_type, parent_type_id, type) {
       var result = Resource.getResourcesByParentId(parent_type, parent_type_id, type);
       if (result.status === 200) {
-        return result;
+        return result.content;
       }
       else {
         return {};
@@ -83,8 +83,7 @@ var getData = function(path) {
   }
 
   if (handler) {
-    var data = route.handler.apply(null, handlerArgs);
-    return data.content;
+    return route.handler.apply(null, handlerArgs);;
   }
   else {
     return {};
@@ -119,20 +118,31 @@ var waterPlant = function(path, callback) {
   }
 };
 
+var enableHtmlCache = true;
+var htmlCache = {};
+
 module.exports = {
   renderApp: function(req, res) {
     try {
-      // Check if profile is available for this path
-      if (!_.has(profiles, req.path)) {
-        // No profile present, do a profile run
-        var reactspa = getSpaInstance();
-        reactspa.renderToString(req.path, {}, true);
-        profiles[req.path] = reactspa.getProfile();
+      if (enableHtmlCache && _.has(htmlCache, req.path)) {
+        console.log("serving from cache..");
+        res.send(htmlCache[req.path]);
       }
+      else {
+        // Check if profile is available for this path
+        if (!_.has(profiles, req.path)) {
+          // No profile present, do a profile run
+          var reactspa = getSpaInstance();
+          reactspa.renderToString(req.path, {}, true);
+          profiles[req.path] = reactspa.getProfile();
+        }
 
-      waterPlant(req.path, function(water) {
-        res.send(htmlTemplate({content: getSpaInstance().renderToString(req.path, water, true)}));
-      });
+        waterPlant(req.path, function(water) {
+          var html = htmlTemplate({content: getSpaInstance().renderToString(req.path, water, true)});
+          htmlCache[req.path] = html;
+          res.send(html);
+        });
+      }
     }
     catch(e) {
       console.log("Isomorphic render error: ", e);
