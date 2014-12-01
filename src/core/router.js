@@ -1,5 +1,5 @@
 // router.js
-var routes = require('./../routes/routes');
+var routes = require('./../routes/routes.jsx');
 var React = require('react');
 var reactRouter = require('react-router');
 
@@ -15,7 +15,7 @@ module.exports = {
     // Run the app
     router.run(function (Handler, state) {
       //console.log("navigation occurred: ", state);
-      React.render(<Handler/>, document.body);
+      React.render(React.createElement(Handler), document.body);
     });
     this.router = router;
 
@@ -24,7 +24,7 @@ module.exports = {
   renderToString: function(path) {
     var content;
     reactRouter.run(routes, path, function(Handler) {
-      content = React.renderToString(<Handler/>);
+      content = React.renderToString(React.createElement(Handler));
     });
     return content;
   }

@@ -83,9 +83,6 @@ This will be by no means a production ready application. Objectives and goals ar
 * [Material-ui](https://github.com/callemall/material-ui)
 * [SocketIO](http://socket.io/)
 
-### Best practices
-* [SMACCS](https://smacss.com/)
-
 ### Foundations
 * [React starter kit](https://github.com/kriasoft/react-starter-kit)
 
@@ -102,6 +99,7 @@ This will be by no means a production ready application. Objectives and goals ar
 * [Developing a React.js Edge](http://shop.oreilly.com/product/9781939902122.do)
 
 ### Changelog
+**[01-dec-14]** Improving isomorphic rendering  
 **[30-nov-14]** Isomorphic app support  
 **[24-nov-14]** Sessions (login/logout/profile); html5 puhsState; single server  
 **[22-nov-14]** Initial version

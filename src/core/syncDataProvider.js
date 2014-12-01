@@ -8,6 +8,9 @@ var syncDataProvider = {
       return data[path];
     }
     return {};
+  },
+  dry: function() {
+    data = {};
   }
 };
 

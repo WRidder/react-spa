@@ -27,18 +27,18 @@ module.exports = function(release) {
     },
 
     cache: !release,
-    debug: !release,
+    debug: false,//!release,
     devtool: false,
 
-    stats: {
+    /*stats: {
       colors: true,
       reasons: !release
-    },
+    },*/
 
     plugins: release ? [
       new webpack.DefinePlugin({'process.env.NODE_ENV': '"production"'}),
       new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.AggressiveMergingPlugin()
     ] : [],
@@ -48,13 +48,36 @@ module.exports = function(release) {
       modulesDirectories: ['src', 'node_modules', "src/helper"]
     },
 
+    // more options in the optional jshint object
+    jshint: {
+      // any jshint option http://www.jshint.com/docs/options/
+      // i. e.
+      camelcase: true,
+
+      // jshint errors are displayed by default as warnings
+      // set emitErrors to true to display them as errors
+      emitErrors: true,
+
+      // jshint to not interrupt the compilation
+      // if you want any file with jshint errors to fail
+      // set failOnHint to true
+      failOnHint: true,
+
+      // custom reporter function
+/*      reporter: function(errors) {
+        //console.log("args: ", arguments);
+        this.emitWarning("nooes", this.resourcePath);
+        //console.log(errors);
+      }*/
+    },
+
     module: {
       preLoaders: [
-        /*{
+       {
           test: /\.js$/,
-          exclude: /node_modules/,
+          exclude: /node_modules|bower_components/,
           loader: 'jshint'
-        }*/
+        }
       ],
 
       loaders: [

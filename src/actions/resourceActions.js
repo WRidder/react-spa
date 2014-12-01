@@ -26,7 +26,6 @@ actions.loadResourceFail.sync = true;
 
 // Action handlers
 actions.loadResource.listen(function(type, id, childrenType) {
-  console.log("load resource action");
   dataInterface.get("/api/" + [type, id, childrenType].filter(function(e){return e;}).join("/"))
     .then(function(data) {
       actions.loadResourceSuccess(type, id, childrenType, data);

@@ -25,6 +25,9 @@ var actions = reflux.createActions([
 ]);
 module.exports = actions;
 
+// Set sync
+actions.loginSuccess.sync = true;
+
 // Action handlers
 actions.login.listen(function(username, password) {
   dataInterface.post("/auth/login", {username: username, password: password})

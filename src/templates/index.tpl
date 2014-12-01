@@ -17,7 +17,7 @@
 <script src="/js/vendor/fastclick.js"></script>
 <script src="/js/app.js"></script>
 <script>
-  reactspa.renderToDom();
+  reactspa.renderToDom(<%= water %>);
 </script>
 </body>
 </html>

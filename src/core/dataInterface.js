@@ -1,5 +1,6 @@
 var Q = require("q");
 var inDOMEnvironment = typeof window !== 'undefined';
+var dataProvider = require("./../core/syncDataProvider");
 
 var DataInterface = (function() {
   // "private" variables
@@ -17,24 +18,30 @@ var DataInterface = (function() {
 
   // Rest methods
   DataInterface.prototype.get = function(path) {
-    if (_inDom) {
-      var $ = require("jquery");
-      return Q.when($.get("http://" + window.location.host + path)).then(function(result) {
-        console.log("di(dom) get (" + path + "): ", result);
-        return result;
-      });
+    // Check for hydrated data
+    var hydratedData = dataProvider.getDataByPath(path);
+    if(Object.getOwnPropertyNames(hydratedData).length !== 0){
+      _response = hydratedData;
+      return this;
     }
     else {
-      console.log("di(node) get: ", path);
-      var dataProvider = require("./../core/syncDataProvider");
-      _response = dataProvider.getDataByPath(path);
-
-      // Profiling
-      if (_profiling) {
-        _profile.get.push(path);
+      if (_inDom) {
+        var $ = require("jquery");
+        return Q.when($.get("http://" + window.location.host + path)).then(function(result) {
+          //console.log("di(dom) get (" + path + "): ", result);
+          return result;
+        });
       }
+      else {
+        //console.log("di(node) get: ", path);
+        _response = dataProvider.getDataByPath(path);
 
-      return this;
+        // Profiling
+        if (_profiling) {
+          _profile.get.push(path);
+        }
+        return this;
+      }
     }
   };
 
@@ -42,12 +49,12 @@ var DataInterface = (function() {
     if (_inDom) {
       var $ = require("jquery");
       return Q.when($.post("http://" + window.location.host + path, data)).then(function(result) {
-        console.log("di(dom) post (" + path + "): ", result);
+        //console.log("di(dom) post (" + path + "): ", result);
         return result;
       });
     }
     else {
-      console.log("di(node) post: ", path, data);
+      //console.log("di(node) post: ", path, data);
       var dataProvider = require("./../core/syncDataProvider");
       _response = dataProvider.getDataByPath(path);
 

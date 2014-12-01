@@ -80,12 +80,6 @@ gulp.task('images', function () {
     .pipe($.size({title: 'images'}));
 });
 
-gulp.task('index', function() {
-  src.index = "src/index.html";
-  return gulp.src(src.index)
-    .pipe(gulp.dest("build/"));
-});
-
 gulp.task('libraries', function() {
   var src = [
     "bower_components/jquery/dist/jquery.min.js",
@@ -159,7 +153,7 @@ gulp.task('bundle', function (cb) {
       throw new $.util.PluginError('webpack', err);
     }
 
-    !!argv.verbose && $.util.log('[webpack]', stats.toString({colors: true}));
+    (true || !!argv.verbose) && $.util.log('[webpack]', stats.toString({colors: true}));
     if (!started) {
       started = true;
       return cb();
@@ -180,9 +174,10 @@ gulp.task('build', ['clean'], function (cb) {
 
 // Setup live reload
 var tinylr;
-gulp.task('livereload', function() {
+gulp.task('livereload', function(cb) {
   tinylr = require('tiny-lr')();
   tinylr.listen(35729);
+  cb();
 });
 
 function notifyLiveReload(fileName) {

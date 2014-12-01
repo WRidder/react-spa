@@ -55,8 +55,15 @@ var routes = [
   },
   {
     path: '/auth/session',
-    handler: function (type) {
-      return {message: "no session found"};
+    handler: function (req) {
+      if (req.isAuthenticated()) {
+        return req.user;
+      }
+      else {
+        return {
+          message: "no session found"
+        };
+      }
     }
   }
 ];
@@ -64,7 +71,7 @@ var routes = [
 // Data caches
 var profiles = {};
 var reservoir = {};
-var getData = function(path) {
+var getData = function(path, req) {
   // Match path with handler
   var handler;
   var handlerArgs = [];
@@ -81,9 +88,11 @@ var getData = function(path) {
       break;
     }
   }
+  // Add request object
+  handlerArgs.push(req);
 
   if (handler) {
-    return route.handler.apply(null, handlerArgs);;
+    return handler.apply(null, handlerArgs);
   }
   else {
     return {};
@@ -91,9 +100,9 @@ var getData = function(path) {
 };
 
 // Cache creator
-var waterPlant = function(path, callback) {
+var waterPlant = function(path, callback, req, preventCache) {
   // Check if cache is available for this path
-  if (_.has(reservoir, path)) {
+  if (_.has(reservoir, path) && !preventCache) {
     // Check if deferred, if so, wait for it to resolve
     if (_.has(reservoir[path], "when")) {
       reservoir[path].when(function(data) {
@@ -109,7 +118,7 @@ var waterPlant = function(path, callback) {
 
     // Loop get routes
     _.forEach(profiles[path].get, function(val) {
-      data[val] = getData(val);
+      data[val] = getData(val, req);
     });
     reservoir[path] = data;
 
@@ -123,9 +132,10 @@ var htmlCache = {};
 
 module.exports = {
   renderApp: function(req, res) {
+    var authenticated = req.isAuthenticated();
     try {
-      if (enableHtmlCache && _.has(htmlCache, req.path)) {
-        console.log("serving from cache..");
+      if (enableHtmlCache && _.has(htmlCache, req.path) && !authenticated) {
+        console.log("Cache hit!");
         res.send(htmlCache[req.path]);
       }
       else {
@@ -138,14 +148,20 @@ module.exports = {
         }
 
         waterPlant(req.path, function(water) {
-          var html = htmlTemplate({content: getSpaInstance().renderToString(req.path, water, true)});
-          htmlCache[req.path] = html;
+          var html = htmlTemplate({
+            content: getSpaInstance().renderToString(req.path, water, true),
+            water: JSON.stringify(water)
+          });
+          if (!authenticated) {
+            htmlCache[req.path] = html;
+          }
           res.send(html);
-        });
+        }, req, authenticated);
       }
     }
     catch(e) {
       console.log("Isomorphic render error: ", e);
+      console.log(e.stack);
     }
   }
 };
