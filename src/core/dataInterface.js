@@ -8,8 +8,8 @@ var DataInterface = (function() {
   var _error = false;
   var _profiling = false;
   var _profile = {
-    get: {},
-    post: {}
+    get: [],
+    post: []
   };
 
   // constructor
@@ -31,7 +31,7 @@ var DataInterface = (function() {
 
       // Profiling
       if (_profiling) {
-        _profile.get[path] = _response;
+        _profile.get.push(path);
       }
 
       return this;
@@ -53,7 +53,7 @@ var DataInterface = (function() {
 
       // Profiling
       if (_profiling) {
-        _profile.post[path] = _response;
+        _profile.post.push(path);
       }
 
       return this;
