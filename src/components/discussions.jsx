@@ -2,10 +2,6 @@ var React = require("react");
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var mui = require("material-ui");
-var PaperButton = mui.PaperButton;
-var Icon = mui.Icon;
-var Checkbox = mui.Checkbox;
-var Toggle = mui.Toggle;
 
 var Inbox = React.createClass({
   render: function() {
@@ -14,16 +10,16 @@ var Inbox = React.createClass({
         <h1>Discussions</h1>
         <span>Some material-ui tests</span>
         <br/>
-        <PaperButton type={PaperButton.Types.RAISED} label="Default" />
-        <Icon icon="action-home" />
+        <mui.FlatButton label="Default" />
+        <mui.Icon icon="action-home" />
         <RouteHandler />
 
         <form>
-          <Checkbox name="checkboxName" value="checkboxValue1" />
-          <Checkbox name="checkboxName" value="checkboxValue2" />
-          <Checkbox name="checkboxName" value="checkboxValue3" />
+          <mui.Checkbox name="checkboxName" value="checkboxValue1" />
+          <mui.Checkbox name="checkboxName" value="checkboxValue2" />
+          <mui.Checkbox name="checkboxName" value="checkboxValue3" />
         </form>
-        <Toggle />
+        <mui.Toggle />
       </div>
     );
   }

@@ -4,14 +4,15 @@ var fs = require("fs");
 var pathToRegexp = require('path-to-regexp');
 var server = require("./../config/server");
 var Resource = require("./../database/models/resource");
+require("./../helpers/uncache")(require);
 
 // Create template
 var htmlTemplate = _.template(fs.readFileSync(path.resolve("./../../src/templates/index.tpl")).toString());
 
 // Load library, make sure it's freshly instantiated
 var getSpaInstance = function() {
-  delete require.cache[require.resolve("./../../../build/js/app")];
-  return require("./../../../build/js/app");
+  require.uncache("./../../../build/js/app");
+  return new require("./../../../build/js/app");
 };
 
 // Define routes
@@ -93,6 +94,7 @@ var getData = function(path, req) {
 
   if (handler) {
     return handler.apply(null, handlerArgs);
+
   }
   else {
     return {};
@@ -103,15 +105,7 @@ var getData = function(path, req) {
 var waterPlant = function(path, callback, req, preventCache) {
   // Check if cache is available for this path
   if (_.has(reservoir, path) && !preventCache) {
-    // Check if deferred, if so, wait for it to resolve
-    if (_.has(reservoir[path], "when")) {
-      reservoir[path].when(function(data) {
-        callback(data);
-      });
-    }
-    else {
-      callback(reservoir[path]);
-    }
+    callback(reservoir[path]);
   }
   else {
     var data = {};
@@ -120,14 +114,17 @@ var waterPlant = function(path, callback, req, preventCache) {
     _.forEach(profiles[path].get, function(val) {
       data[val] = getData(val, req);
     });
-    reservoir[path] = data;
+    if (!preventCache) {
+      reservoir[path] = data;
+    }
 
     // Callback with data
     callback(data);
   }
 };
 
-var enableHtmlCache = true;
+var enableHtmlCache = false;
+var enableIsomorphicApp = false;
 var htmlCache = {};
 
 module.exports = {
@@ -137,6 +134,13 @@ module.exports = {
       if (enableHtmlCache && _.has(htmlCache, req.path) && !authenticated) {
         console.log("Cache hit!");
         res.send(htmlCache[req.path]);
+      }
+      else if (!enableIsomorphicApp) {
+        var html = htmlTemplate({
+          content: null,
+          water: null
+        });
+        res.send(html);
       }
       else {
         // Check if profile is available for this path

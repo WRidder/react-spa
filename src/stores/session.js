@@ -30,10 +30,13 @@ var SessionStore = Reflux.createStore({
     });
     this.trigger(this.data);
   },
-  onLoginFail: function(data) {
+  onLoginFail: function(msg) {
     this.setData(defaultData);
-    this.setData({msg: data.message});
+    this.setData({msg: msg});
     this.trigger(this.data);
+
+    // Clear volatile message
+    this.setData({msg: null});
   },
   onLogoutSuccess: function() {
     this.setData(defaultData);

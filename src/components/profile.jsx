@@ -4,14 +4,15 @@ var connect= require("./../libraries/tmp_connect");
 
 var sessionStore = require("./../stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
+var authRouteMixin = require("./../mixins/authRoute");
 
 var Profile = React.createClass({
-  mixins: [connect(sessionStore), ImmutableRenderMixin],
+  mixins: [ImmutableRenderMixin, authRouteMixin],
   render: function() {
     return (
       <div>
-        <h1>Profile: {this.state.get("username")}</h1>
-        <span>id: {this.state.get("id")}</span>
+        <h1>Profile: {this.state.session.get("username")}</h1>
+        <span>id: {this.state.session.get("id")}</span>
       </div>
     );
   }

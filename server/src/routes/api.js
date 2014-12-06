@@ -2,7 +2,7 @@ var restRouter = require('express').Router();
 var server = require("./../config/server");
 var rest = require("./../controllers/rest");
 var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
+var urlEncodedParser = bodyParser.urlencoded({ extended: true });
 
 // Routes
 // Get
@@ -11,7 +11,7 @@ restRouter.get('/:type/:type_id', rest.getResourceById);
 restRouter.get('/:parent_type/:parent_type_id/:type', rest.getResourcesByParentId);
 
 // Post
-restRouter.post('/:type', jsonParser, rest.createResourceByType);
+restRouter.post('/:type', urlEncodedParser, rest.createResourceByType);
 
 // Put
 restRouter.delete('/:type/:type_id', rest.updateResource);

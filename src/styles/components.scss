@@ -145,3 +145,29 @@ $text-color: #fff;
   -ms-transition: background-color 5s ease-in-out;
   transition: background-color 5s ease-in-out;
 }
+
+// Input
+.mui-input-description {
+  font-size: .8em;
+}
+
+.mui-input-error {
+  font-size: .8em;
+}
+
+.mui-input input:focus + .mui-input-placeholder, .mui-input input:valid + .mui-input-placeholder {
+  top: -1.6em;
+}
+
+// Input valid colors
+/*.mui-input input:focus + .mui-input-placeholder, .mui-input input:valid + .mui-input-placeholder {
+  color: green;
+}
+
+.mui-input input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description, .mui-input input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
+  color: green;
+}
+
+.mui-input input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before, .mui-input input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after, .mui-input input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before, .mui-input input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
+  background-color: green;
+}*/

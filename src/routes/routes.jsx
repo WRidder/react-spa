@@ -15,28 +15,30 @@ var Signup = require("./../components/signup.jsx");
 var Profile = require("./../components/profile.jsx");
 var QuestionList = require("./../components/questionList.jsx");
 var Question = require("./../components/question.jsx");
+var QuestionNew = require("./../components/questionNew.jsx");
 var QuestionNotFound = require("./../components/notfound/question.jsx");
 var Discussions = require("./../components/discussions.jsx");
 
-var routes = (
-  <Route name="app" path="/" handler={App}>
-    {/* Session routes */}
-    <Route name="login" path="login" handler={Login}/>
-    <Route name="signup" path="signup" handler={Signup}/>
-    <Route name="profile" path="profile" handler={Profile}/>
+    var routes = (
+      <Route name="app" path="/" handler={App}>
+        {/* Session routes */}
+        <Route name="login" path="login" handler={Login}/>
+        <Route name="signup" path="signup" handler={Signup}/>
+        <Route name="profile" path="profile" handler={Profile}/>
 
-    {/* Question routes*/}
-    <Route name="questions" path="questions" handler={QuestionList}/>
-    <Route name="question" path="questions/:questionId" handler={Question}/>
-    <Route name="questionWithTitle" path="questions/:questionId/:questionTitle" handler={Question}/>
-    <Route path="questions/:questionId/" handler={Question}/>
-    <Route name="question404" path="questions/404" handler={QuestionNotFound}/>
+        {/* Question routes*/}
+        <Route name="questions" path="questions" handler={QuestionList}/>
+        <Route name="questionsNew" path="questions/new" handler={QuestionNew}/>
+        <Route name="question" path="questions/:questionId" handler={Question}/>
+        <Route name="questionWithTitle" path="questions/:questionId/:questionTitle" handler={Question}/>
+        <Route path="questions/:questionId/" handler={Question}/>
+        <Route name="question404" path="questions/404" handler={QuestionNotFound}/>
 
-    {/* Discussion routes*/}
-    <Route name="discussions" handler={Discussions}/>
-    <DefaultRoute handler={Home}/>
-    <NotFoundRoute handler={NotFound}/>
-  </Route>
-);
+        {/* Discussion routes*/}
+        <Route name="discussions" handler={Discussions}/>
+        <DefaultRoute handler={Home}/>
+        <NotFoundRoute handler={NotFound}/>
+      </Route>
+    );
 
 module.exports = routes;

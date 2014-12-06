@@ -107,26 +107,25 @@ gulp.task('styles', function () {
   var material_filter = $.filter(['!material-ui.less']);
 
   src.styles = [
-    "src/styles/style.sass",
-    "src/styles/material-ui.less",
-    "src/styles/foundation_icons.less"
+    "src/styles/style.sass"//,
+    //"src/styles/material-ui.less",
+    //"src/styles/foundation_icons.less"
   ];//'src/styles/**.{css,less,sass}';
   return gulp.plumbedSrc(src.styles)
     //.pipe($.sourcemaps.init())
-    .pipe(less_filter)
-      .pipe($.less({
-        strictMath: true,
-        sourceMap: !RELEASE,
-        sourceMapBasepath: __dirname
-      }))
-    .pipe(less_filter.restore())
     .pipe(sass_filter)
       .pipe($.sass({
         sourceMap: !RELEASE,
         sourceMapBasepath: __dirname
       }))
     .pipe(sass_filter.restore())
-
+    .pipe(less_filter)
+    .pipe($.less({
+      strictMath: true,
+      sourceMap: !RELEASE,
+      sourceMapBasepath: __dirname
+    }))
+    .pipe(less_filter.restore())
     .pipe(material_filter)
       .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
       .pipe($.csscomb())

@@ -9,6 +9,9 @@ var actions = reflux.createActions([
   "loadResourceFail",
 
   // Create
+  "createResource",
+  "createResourceSuccess",
+  "createResourceFail",
 
   // Update
 
@@ -17,12 +20,6 @@ var actions = reflux.createActions([
   // Error
   "resourceNotFound"
 ]);
-module.exports = actions;
-
-// Set sync
-actions.loadResource.sync = true;
-actions.loadResourceSuccess.sync = true;
-actions.loadResourceFail.sync = true;
 
 // Action handlers
 actions.loadResource.listen(function(type, id, childrenType) {
@@ -34,3 +31,23 @@ actions.loadResource.listen(function(type, id, childrenType) {
       actions.loadResourceFail(type, id, childrenType, textStatus, errorThrown);
     });
 });
+
+actions.createResource.listen(function(type, data, navigateTo) {
+  dataInterface.post("/api/" + [type].filter(function(e){return e;}).join("/"), data)
+    .then(function(data) {
+      actions.createResourceSuccess(type, data);
+
+      // Navigate to resource
+      if (navigateTo) {
+        var router = require("./../core/router").router;
+        var urlCreator = require("./../helper/resourceUrlCreator");
+        var url = urlCreator(type, data);
+        router.transitionTo(url);
+      }
+    })
+    .catch(function(jqXHR, textStatus, errorThrown) {
+      actions.createResourceFail(type, id, childrenType, textStatus, errorThrown);
+    });
+});
+
+module.exports = actions;

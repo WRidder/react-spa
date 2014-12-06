@@ -54,12 +54,26 @@ var Login = React.createClass({
 
   // Element
   render: function() {
+    // Show message if available
+    var msg;
+    if (this.state.session.get("msg")) {
+      msg = (
+        <div data-alert className="alert-box alert">
+          {this.state.session.get("msg")}
+          <a href="#" className="close">&times;</a>
+        </div>
+      );
+    }
+    else {
+      msg = null;
+    }
+
     return (
       <div className="row">
         <div className="large-12 columns">
           <div className="login-panel">
             <h1>Login</h1>
-            <span>Accounts: (Admin/Admin), (Katy/Katy), (James/James)</span><br/><br/>
+            {msg}
             <form data-abide onSubmit={this.handleSubmit}>
               <div className="row collapse">
                 <div className="small-2 columns">
@@ -82,6 +96,7 @@ var Login = React.createClass({
               </div>
               <button type="submit">Submit</button>
             </form>
+            <span>Accounts: (Admin/Admin), (Katy/Katy), (James/James)</span><br/><br/>
           </div>
         </div>
       </div>

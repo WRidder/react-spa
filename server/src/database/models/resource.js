@@ -46,14 +46,22 @@ module.exports = _.extend(base, {
   },
 
   // Post (create) operations
-  createResourceByType: function(type, content) {
+  createResourceByType: function(type, content, user) {
     return this.ac("createResourceByType", function() {
+      if (!user) {
+        return this.resp("404", {
+          reason: "User not authenticated"
+        });
+      }
+
       if (_.has(db, type)) {
+        content.user_id = user.id;
         var id = db[type].createResource(content);
         if (id) {
           return this.resp("201", {
             content: {
-              id: id
+              id: id,
+              type: type
             }
           });
         }

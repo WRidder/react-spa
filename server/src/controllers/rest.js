@@ -39,12 +39,16 @@ module.exports = {
 
   // Create
   createResourceByType: function(req, res) {
-    var result = Resource.createResourceByType(req.params.type, req.body);
-    if (result.status === 201) {
-      res.json(result.content);
+    var result = Resource.createResourceByType(req.params.type, req.body, req.user);
+
+    // Get resource
+    var resource = Resource.getResourceById(result.content.type, result.content.id);
+
+    if (resource.status === 200) {
+      res.json(resource.content);
     }
     else {
-      res.sendStatus(404);
+      res.status(404).json(result.reason);
     }
   },
 
@@ -59,4 +63,4 @@ module.exports = {
     var result = Resource.removeResource(req.params.type, req.params.type_id);
     res.sendStatus(result.status);
   }
-}
+};

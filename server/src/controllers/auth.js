@@ -3,29 +3,40 @@
  */
 
 var passport = require('passport');
+var _ = require("lodash");
 
 module.exports = {
-
-  // Login a user
-  login: passport.authenticate('local-login', {
-    failureFlash : true // allow flash messages
-  }),
-  loginCallback: function(req, res) {
-    res.json({
-      success: true,
-      user: {
-        id: req.user.get("id"),
-        username: req.user.get("username")
+  // User login
+  login: function(req, res, next) {
+    passport.authenticate('local-login', function (err, user) {
+      if (user) {
+        // Create session
+        req.logIn(user, function(err) {
+          if (err) {
+            res.json({
+              success: false,
+              message: "Error establishing session"
+            });
+          }
+          else {
+            res.json({
+              success: true,
+              user: {
+                id: user.get("id"),
+                username: user.get("username")
+              }
+            });
+          }
+        });
       }
-    });
-  },
-
-  // on Login Failure callback
-  loginFailure: function(req, res){
-    res.json({
-      success: false,
-      message: req.flash('loginMessage')
-    });
+      else
+        var flashMsg = req.flash('loginMessage');
+        var msg = (_.isArray(flashMsg)) ? _.first(flashMsg) : flashMsg;
+        res.json({
+          success: false,
+          message: msg
+        });
+    })(req, res, next);
   },
 
   // Log out a user
