@@ -27,13 +27,13 @@ module.exports = function(release) {
     },
 
     cache: !release,
-    debug: false,//!release,
+    debug: !release,
     devtool: false,
 
-    /*stats: {
+    stats: {
       colors: true,
       reasons: !release
-    },*/
+    },
 
     plugins: release ? [
       new webpack.DefinePlugin({'process.env.NODE_ENV': '"production"'}),

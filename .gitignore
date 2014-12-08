@@ -7,4 +7,3 @@ node_modules
 npm-debug.log
 .idea
 ./server/node_modules
-

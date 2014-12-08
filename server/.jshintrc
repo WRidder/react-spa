@@ -1,0 +1,19 @@
+{
+  "camelcase": true,
+  "immed": true,
+  "indent": 2,
+  "latedef": true,
+  "newcap": true,
+  //"quotmark": "double",
+
+  "esnext": true,
+  "globalstrict": true,
+
+  "browser": false,
+  "node": true,
+
+  "globals": {
+    "require": false,
+    "__dirname": false
+  }
+}

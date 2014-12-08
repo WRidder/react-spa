@@ -4,7 +4,8 @@ var NotFound = React.createClass({
   render: function() {
     return (
       <div>
-        <span>Path not found..</span>
+        <h1>404</h1>
+        <span>Path not found.. :(</span>
       </div>
     );
   }
