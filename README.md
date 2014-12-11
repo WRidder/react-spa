@@ -7,8 +7,9 @@ A Proof of Concept real-time single page application based on React and (Re)flux
 1. Run *$ npm install* in the base and in the ./server directory
 2. Run *$ bower install* in the base directory
 3. Start the server in ./server using *$ node server.js*. Should open a port on 8080.
-4. Run *$ gulp* in the base directory. This will watch for file changes and build when necessary.
-5. Navigate your browser to http://localhost:8080; will reload on client changes.
+4. [optional] Install gulp globally using *npm install -g gulp*
+5. Run *$ gulp* in the base directory. This will watch for file changes and build when necessary.
+6. Navigate your browser to http://localhost:8080; will reload on client changes.
 
 ### Current state
 * Discovery

@@ -19,7 +19,6 @@
     "setimmediate2": "~1.1.4"
   },
   "devDependencies": {
-    "browser-sync": "^1.7.2",
     "del": "^1.1.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.0.0",
@@ -29,7 +28,6 @@
     "gulp-gh-pages": "^0.4.0",
     "gulp-htmlmin": "^0.2.0",
     "gulp-if": "^1.2.5",
-    "gulp-imagemin": "^2.0.0",
     "gulp-jsbeautifier": "^0.0.4",
     "gulp-jshint": "~1.9.0",
     "gulp-less": "^2.0.1",
@@ -41,7 +39,6 @@
     "gulp-size": "^1.1.0",
     "gulp-uglify": "^1.0.2",
     "gulp-util": "^3.0.1",
-    "jest-cli": "^0.2.0",
     "jshint": "^2.5.10",
     "jshint-loader": "^0.8.0",
     "jshint-stylish": "~1.0.0",
@@ -50,11 +47,9 @@
     "minimist": "^1.1.0",
     "protractor": "^1.5.0",
     "psi": "^0.1.6",
-    "react": "^0.12.1",
     "run-sequence": "^1.0.2",
     "url-loader": "^0.5.5",
     "webpack": "^1.4.13",
-    "webpack-dev-server": "^1.6.6",
     "gulp-sass": "~1.2.4",
     "gulp-filter": "~1.0.2",
     "gulp-concat": "~2.4.2",
@@ -65,17 +60,8 @@
     "connect-livereload": "~0.5.2",
     "tiny-lr": "~0.1.4"
   },
-  "jest": {
-    "rootDir": "src",
-    "scriptPreprocessor": "../config/preprocessor.js",
-    "unmockedModulePathPatterns": [
-      "react"
-    ]
-  },
   "scripts": {
     "start": "gulp",
-    "test": "jest",
-    "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update"
+    "preupdate-webdriver": "npm install"
   }
 }

@@ -13,11 +13,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "node-inspector": "~0.8.0"
+    "node-inspector": "~0.8.1"
   },
   "dependencies": {
     "socket.io": "~1.2.1",
-    "express": "~4.10.4",
+    "express": "~4.10.5",
     "body-parser": "~1.10.0",
     "backbone": "~1.1.2",
     "lodash": "~2.4.1",
@@ -27,8 +27,8 @@
     "connect-flash": "~0.1.1",
     "bcrypt-nodejs": "0.0.3",
     "q": "~1.1.2",
-    "chokidar": "~0.11.1",
-    "compression": "~1.2.1",
+    "chokidar": "~0.12.1",
+    "compression": "~1.2.2",
     "connect-livereload": "~0.5.2",
     "tiny-lr": "~0.1.4",
     "path-to-regexp": "~1.0.1"
