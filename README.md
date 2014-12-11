@@ -2,14 +2,14 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/WRidder/react-spa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/WRidder/react-spa.svg?branch=master)](https://travis-ci.org/WRidder/react-spa)
 
-A Proof of Concept real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in *./server*.
+A Proof of Concept real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in `./server`.
 
 ### Installation
-1. Run *$ npm install* in the base and in the ./server directory
-2. Run *$ bower install* in the base directory
-3. Start the server in ./server using *$ node src/server.js*. Should open a port on 8080.
-4. [optional] Install gulp globally using *npm install -g gulp*
-5. Run *$ gulp* in the base directory. This will watch for file changes and build when necessary.
+1. Run `$ npm install` in the base and in the ./server directory
+2. Run `$ bower install` in the base directory
+3. Start the server in ./server using `$ node src/server.js`. Should open a port on 8080.
+4. **[optional]** Install gulp globally using `npm install -g gulp`
+5. Run `$ gulp` in the base directory. This will watch for file changes and build when necessary.
 6. Navigate your browser to http://localhost:8080; will reload on client changes.
 
 Tested using npm 2.1.0 and node 0.10.33
