@@ -1,5 +1,4 @@
 # Community site SPA based on ReactJS (PoC)
-
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/WRidder/react-spa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/WRidder/react-spa.svg?branch=master)](https://travis-ci.org/WRidder/react-spa)
 
@@ -12,6 +11,8 @@ A Proof of Concept real-time single page application based on React and (Re)flux
 4. [optional] Install gulp globally using *npm install -g gulp*
 5. Run *$ gulp* in the base directory. This will watch for file changes and build when necessary.
 6. Navigate your browser to http://localhost:8080; will reload on client changes.
+
+Tested using npm 2.1.0 and node 0.10.33
 
 ### Current state
 * Discovery
