@@ -1,12 +1,12 @@
 var React = require("react");
 var reflux = require("reflux");
-var connect= require("./../libraries/tmp_connect");
+var connect= require("./../../libraries/tmp_connect");
 
 var mui = require("material-ui");
 var Icon = mui.Icon;
 var PaperButton = mui.PaperButton;
 
-var sessionStore = require("./../stores/session");
+var sessionStore = require("./../../stores/session");
 
 var Signup = React.createClass({
   mixins: [connect(sessionStore)],

@@ -3,8 +3,8 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 // Components
-var Header = require("./header.jsx");
-var Footer = require("./footer.jsx");
+var Header = require("./core/header.jsx");
+var Footer = require("./core/footer.jsx");
 
 var App = React.createClass({
   render: function() {

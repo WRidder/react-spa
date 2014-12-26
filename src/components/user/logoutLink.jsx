@@ -2,7 +2,7 @@ var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
 
-var sessionActions = require("./../actions/sessionActions");
+var sessionActions = require("./../../actions/sessionActions");
 
 var LogoutLink = React.createClass({
   logoutHandler: function(e) {

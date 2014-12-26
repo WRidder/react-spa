@@ -2,11 +2,11 @@ var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
 var NavLink = require("./navLink.jsx");
-var connect= require("./../libraries/tmp_connect");
-var sessionStore = require("./../stores/session");
+var connect= require("./../../libraries/tmp_connect");
+var sessionStore = require("./../../stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
 
-var LogoutLink = require("./logoutLink.jsx");
+var LogoutLink = require("./../user/logoutLink.jsx");
 
 var Navigation = React.createClass({
   mixins: [connect(sessionStore, "session"), ImmutableRenderMixin],
