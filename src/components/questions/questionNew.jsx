@@ -1,10 +1,10 @@
 var React = require("react");
 var Router = require("react-router");
 var mui = require("material-ui");
-var sessionStore = require("./../../stores/session");
-var approveTransitionMixin = require("../../mixins/approveTransition");
-var authRouteMixin = require("./../../mixins/authRoute");
-var resourceActions = require("./../../actions/resourceActions");
+var sessionStore = require("client/stores/session");
+var approveTransitionMixin = require("client/mixins/approveTransition");
+var authRouteMixin = require("client/mixins/authRoute");
+var resourceActions = require("client/actions/resourceActions");
 
 var NewQuestion = React.createClass({
   mixins: [authRouteMixin, approveTransitionMixin],

@@ -1,12 +1,12 @@
 var React = require("react");
 var reflux = require("reflux");
-var connect= require("./../../libraries/tmp_connect");
+var connect= require("client/libraries/tmp_connect");
 
 var mui = require("material-ui");
 var Icon = mui.Icon;
 
-var sessionStore = require("./../../stores/session");
-var sessionActions = require("./../../actions/sessionActions");
+var sessionStore = require("client/stores/session");
+var sessionActions = require("client/actions/sessionActions");
 
 var Login = React.createClass({
   mixins: [connect(sessionStore, "session")],
@@ -21,7 +21,7 @@ var Login = React.createClass({
   },
 
   componentWillUpdate: function() {
-    var router = require("./../../core/router").router;
+    var router = require("client/core/router").router;
     if (sessionStore.isLoggedIn()) {
       router.transitionTo("profile");
     }

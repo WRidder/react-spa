@@ -5,11 +5,11 @@ var mui = require("material-ui");
 var Icon = mui.Icon;
 var Paper = mui.Paper;
 var reflux = require("reflux");
-var connect= require("./../../libraries/tmp_connect");
+var connect= require("client/libraries/tmp_connect");
 
-var questionStore = require("./../../stores/question");
+var questionStore = require("client/stores/question");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
-var componentTransitionMixin = require("../../mixins/componentTransition");
+var componentTransitionMixin = require("client/mixins/componentTransition");
 
 var Question = React.createClass({
   mixins: [connect(questionStore), ImmutableRenderMixin, componentTransitionMixin("questions", "questionId")],

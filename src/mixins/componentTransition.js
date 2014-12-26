@@ -1,4 +1,4 @@
-var restApiActions = require("./../actions/resourceActions");
+var restApiActions = require("client/actions/resourceActions");
 
 var componentTransition = function(type, id, childrenType) {
   return {

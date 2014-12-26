@@ -1,6 +1,6 @@
 var Reflux = require("reflux");
 var Immutable = require("immutable");
-var sessionActions = require("./../actions/sessionActions");
+var sessionActions = require("client/actions/sessionActions");
 
 var defaultData = {
   id: -1,

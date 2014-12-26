@@ -1,5 +1,5 @@
 var reflux = require("reflux");
-var dataInterface = require("./../core/dataInterface");
+var dataInterface = require("client/core/dataInterface");
 
 // Create actions
 var actions = reflux.createActions([
@@ -39,8 +39,8 @@ actions.createResource.listen(function(type, data, navigateTo) {
 
       // Navigate to resource
       if (navigateTo) {
-        var router = require("./../core/router").router;
-        var urlCreator = require("./../helper/resourceUrlCreator");
+        var router = require("client/core/router").router;
+        var urlCreator = require("client/helper/resourceUrlCreator");
         var url = urlCreator(type, data);
         router.transitionTo(url);
       }

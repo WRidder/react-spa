@@ -2,7 +2,7 @@ var Reflux = require("reflux");
 var Immutable = require("immutable");
 var Router = require("react-router");
 
-var resourceActions = require("./../actions/resourceActions");
+var resourceActions = require("client/actions/resourceActions");
 
 var QuestionStore = Reflux.createStore({
   listenables: resourceActions,

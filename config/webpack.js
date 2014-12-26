@@ -1,7 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
-
+var path = require('path');
 /**
  * Get configuration for Webpack
  *
@@ -45,8 +45,13 @@ module.exports = function(release) {
 
     resolve: {
       extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
-      modulesDirectories: ['src', 'node_modules', "src/helper"]
+      modulesDirectories: ['node_modules', 'bower_components'],
+      alias: {
+        client: path.join(__dirname, "../src")
+      }
     },
+
+
 
     // more options in the optional jshint object
     jshint: {

@@ -7,17 +7,17 @@ var Link = Router.Link;
 var NotFoundRoute = Router.NotFoundRoute;
 
 // Components
-var App = require("./../components/app.jsx");
-var NotFound = require("./../components/core/notfound.jsx");
-var Home = require("./../components/pages/home.jsx");
-var Login = require("./../components/user/login.jsx");
-var Signup = require("./../components/user/signup.jsx");
-var Profile = require("./../components/user/profile.jsx");
-var QuestionList = require("./../components/questions/questionList.jsx");
-var Question = require("./../components/questions/question.jsx");
-var QuestionNew = require("./../components/questions/questionNew.jsx");
-var QuestionNotFound = require("./../components/questions/questionNotFound.jsx");
-var Discussions = require("./../components/discussions/discussions.jsx");
+var App = require("client/components/app.jsx");
+var NotFound = require("client/components/core/notfound.jsx");
+var Home = require("client/components/pages/home.jsx");
+var Login = require("client/components/user/login.jsx");
+var Signup = require("client/components/user/signup.jsx");
+var Profile = require("client/components/user/profile.jsx");
+var QuestionList = require("client/components/questions/questionList.jsx");
+var Question = require("client/components/questions/question.jsx");
+var QuestionNew = require("client/components/questions/questionNew.jsx");
+var QuestionNotFound = require("client/components/questions/questionNotFound.jsx");
+var Discussions = require("client/components/discussions/discussions.jsx");
 
     var routes = (
       <Route name="app" path="/" handler={App}>

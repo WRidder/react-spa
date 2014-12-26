@@ -1,1 +1,1 @@
-require("imports?jQuery=jquery!./../../bower_components/foundation/js/foundation.min");
+require("imports?jQuery=jquery!foundation/js/foundation.min");

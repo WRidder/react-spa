@@ -1,5 +1,5 @@
 // router.js
-var routes = require('./../routes/routes.jsx');
+var routes = require('client/routes/routes.jsx');
 var React = require('react');
 var reactRouter = require('react-router');
 

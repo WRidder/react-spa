@@ -3,7 +3,7 @@
  * @type {exports}
  */
 var Reflux = require("reflux"),
-_ = require("./../../node_modules/reflux/src/utils");
+_ = require("reflux/src/utils");
 
 module.exports = function(listenable,key){
     return {

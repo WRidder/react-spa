@@ -1,6 +1,6 @@
 var Q = require("q");
 var inDOMEnvironment = typeof window !== 'undefined';
-var dataProvider = require("./../core/syncDataProvider");
+var dataProvider = require("client/core/syncDataProvider");
 
 var DataInterface = (function() {
   // "private" variables
@@ -55,7 +55,7 @@ var DataInterface = (function() {
     }
     else {
       //console.log("di(node) post: ", path, data);
-      var dataProvider = require("./../core/syncDataProvider");
+      var dataProvider = require("client/core/syncDataProvider");
       _response = dataProvider.getDataByPath(path);
 
       // Profiling

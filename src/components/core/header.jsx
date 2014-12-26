@@ -2,7 +2,7 @@ var React = require("react");
 var Router = require("react-router");
 var Navigation = require("./navigation.jsx");
 var Breadcrumbs = require("./breadcrumbs.jsx");
-var HeaderSession = require("./../user/headerSession.jsx");
+var HeaderSession = require("client/components/user/headerSession.jsx");
 var Link = Router.Link;
 
 var Header = React.createClass({

@@ -1,5 +1,5 @@
-var sessionActions = require("./../actions/sessionActions");
-var dataInterface = require("./../core/dataInterface");
+var sessionActions = require("client/actions/sessionActions");
+var dataInterface = require("client/core/dataInterface");
 
 // Check session
 dataInterface.get("/auth/session")

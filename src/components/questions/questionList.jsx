@@ -1,14 +1,14 @@
 var React = require("react");
 var reflux = require("reflux");
-var connect= require("./../../libraries/tmp_connect");
+var connect= require("client/libraries/tmp_connect");
 var Router = require("react-router");
 var Link = Router.Link;
 var mui = require("material-ui");
 
-var questionsStore = require("./../../stores/questions");
+var questionsStore = require("client/stores/questions");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
-var componentTransitionMixin = require("../../mixins/componentTransition");
-var slugger = require("helper/slug");
+var componentTransitionMixin = require("client/mixins/componentTransition");
+var slugger = require("client/helper/slug");
 
 var Question = React.createClass({
   mixins: [React.addons.LinkedStateMixin, ImmutableRenderMixin],

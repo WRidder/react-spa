@@ -1,10 +1,10 @@
 var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
-var connect= require("./../../libraries/tmp_connect");
+var connect= require("client/libraries/tmp_connect");
 
-var sessionActions = require("./../../actions/sessionActions");
-var sessionStore = require("./../../stores/session");
+var sessionActions = require("client/actions/sessionActions");
+var sessionStore = require("client/stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
 var LogoutLink = require("./logoutLink.jsx");
 

@@ -8,19 +8,19 @@ Reflux.nextTick(require('setimmediate2'));
 Reflux.PublisherMethods.triggerAsync = Reflux.PublisherMethods.trigger;
 
 // Init actions
-require("./actions/resourceActions");
-require("./actions/sessionActions");
+require("client/actions/resourceActions");
+require("client/actions/sessionActions");
 
 // Init stores
-require("./stores/question");
-require("./stores/questions");
-require("./stores/session");
+require("client/stores/question");
+require("client/stores/questions");
+require("client/stores/session");
 
 // Data interface
-var DI = require("./core/dataInterface");
+var DI = require("client/core/dataInterface");
 
 // Init routes
-var router = require('./core/router');
+var router = require('client/core/router');
 
 module.exports = {
   init: function() {
@@ -29,30 +29,30 @@ module.exports = {
   renderToDom: function(water) {
     // Check if initial data is available
     if (water) {
-      require("./core/syncDataProvider").hydrate(water);
+      require("client/core/syncDataProvider").hydrate(water);
     }
 
     // Dom libraries
-    require("./libraries/foundation");
+    require("client/libraries/foundation");
 
     // Init session
-    require("./helper/initSession");
+    require("client/helper/initSession");
 
     // Render
     router.renderToDom();
 
     // Clear initial data
-    require("./core/syncDataProvider").dry();
+    require("client/core/syncDataProvider").dry();
   },
   renderToString: function(path, water, profile) {
     // Init data interface profiler
     DI.enableProfiling(profile);
 
     // Hydrate data
-    require("./core/syncDataProvider").hydrate(water || {});
+    require("client/core/syncDataProvider").hydrate(water || {});
 
     // Init session
-    require("./helper/initSession");
+    require("client/helper/initSession");
 
     // Render application
     return router.renderToString(path || "/");

@@ -1,10 +1,10 @@
 var React = require("react");
 var Router = require("react-router");
-var connect= require("./../../libraries/tmp_connect");
+var connect= require("client/libraries/tmp_connect");
 
-var sessionStore = require("./../../stores/session");
+var sessionStore = require("client/stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
-var authRouteMixin = require("./../../mixins/authRoute");
+var authRouteMixin = require("client/mixins/authRoute");
 
 var Profile = React.createClass({
   mixins: [ImmutableRenderMixin, authRouteMixin],

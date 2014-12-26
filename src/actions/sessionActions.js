@@ -1,5 +1,5 @@
 var reflux = require("reflux");
-var dataInterface = require("./../core/dataInterface");
+var dataInterface = require("client/core/dataInterface");
 
 // Create actions
 var actions = reflux.createActions([
