@@ -21,6 +21,9 @@ var Discussions = require("client/components/discussions/discussions.jsx");
 
     var routes = (
       <Route name="app" path="/" handler={App}>
+        <DefaultRoute handler={Home}/>
+        <NotFoundRoute handler={NotFound}/>
+
         {/* Session routes */}
         <Route name="login" path="login" handler={Login}/>
         <Route name="signup" path="signup" handler={Signup}/>
@@ -36,8 +39,6 @@ var Discussions = require("client/components/discussions/discussions.jsx");
 
         {/* Discussion routes*/}
         <Route name="discussions" handler={Discussions}/>
-        <DefaultRoute handler={Home}/>
-        <NotFoundRoute handler={NotFound}/>
       </Route>
     );
 

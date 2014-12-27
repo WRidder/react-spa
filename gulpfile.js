@@ -99,8 +99,10 @@ gulp.task('fonts', function() {
 
 gulp.task('vendor', ['libraries', 'fonts']);
 
+gulp.task('styles', ['sass-styles', 'mui-styles']);
+
 // CSS style sheets
-gulp.task('styles', function () {
+gulp.task('sass-styles', function () {
   // Add filters for sass and less files
   var sass_filter = $.filter('*.sass');
   var less_filter = $.filter('*.less');
@@ -136,6 +138,22 @@ gulp.task('styles', function () {
     .pipe($.if(RELEASE, $.minifyCss()))
 
     //.pipe($.sourcemaps.write())
+    .pipe(gulp.dest(DEST + '/css'))
+    .pipe($.size({title: 'style'}));
+});
+
+gulp.task('mui-styles', function () {
+  src.styles = [
+    "src/styles/material-ui.less"
+  ];
+  return gulp.plumbedSrc(src.styles)
+    .pipe($.less({
+      strictMath: true,
+      sourceMap: !RELEASE,
+      sourceMapBasepath: __dirname
+    }))
+    .on('error', console.error.bind(console))
+    .pipe($.if(RELEASE, $.minifyCss()))
     .pipe(gulp.dest(DEST + '/css'))
     .pipe($.size({title: 'style'}));
 });
