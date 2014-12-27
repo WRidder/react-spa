@@ -51,6 +51,11 @@ module.exports = function(release) {
       }
     },
 
+    externals: {
+      // require("jquery") is external and available
+      //  on the global var jQuery
+      "jquery": "jQuery"
+    },
 
 
     // more options in the optional jshint object

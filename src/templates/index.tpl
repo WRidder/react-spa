@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/material-ui.css">
   <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/vendor/jquery.min.js"></script>
   <script src="/js/vendor/modernizr.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <body>
@@ -14,7 +16,6 @@
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <%= content %>
-<script src="/js/vendor/fastclick.js"></script>
 <script type="text/javascript">
   WebFontConfig = {
     google: { families: [ 'Roboto::latin' ] }
@@ -29,6 +30,7 @@
     s.parentNode.insertBefore(wf, s);
   })();
 </script>
+<script src="/js/vendor/foundation.min.js"></script>
 <script src="/js/app.js"></script>
 <script>
   reactspa.renderToDom(<%= water %>);

@@ -32,9 +32,6 @@ module.exports = {
       require("client/core/syncDataProvider").hydrate(water);
     }
 
-    // Dom libraries
-    require("client/libraries/foundation");
-
     // Init session
     require("client/helper/initSession");
 
