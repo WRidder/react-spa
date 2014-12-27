@@ -9,41 +9,87 @@ var PaperButton = mui.PaperButton;
 var sessionStore = require("client/stores/session");
 
 var Signup = React.createClass({
-  mixins: [connect(sessionStore)],
+  mixins: [connect(sessionStore, "session")],
+
+  // Transition
+  statics: {
+    willTransitionTo: function (transition, params) {
+      if (sessionStore.isLoggedIn()) {
+        transition.redirect("profile");
+      }
+    }
+  },
+
+  componentWillUpdate: function() {
+    var router = require("client/core/router").router;
+    if (sessionStore.isLoggedIn()) {
+      router.transitionTo("profile");
+    }
+  },
+
+  // Helpers
+  handleSubmit: function(evt) {
+    evt.preventDefault();
+    var username = this.refs.username.getValue();
+    var password = this.refs.password.getValue();
+
+    if (this.validate(username, password)) {
+      sessionActions.login(username, password);
+    }
+  },
+  validate: function(username, password) {
+    // Check title
+    if (!username) {
+      this.setState({usernameError: "Username cannot be empty!"});
+      username = false;
+    }
+    else {
+      this.setState({usernameError: null});
+    }
+
+    // Check content
+    if (!password) {
+      this.setState({passwordError: "Password cannot be empty!"});
+      password = false;
+    }
+    else {
+      this.setState({passwordError: null});
+    }
+    return username && password;
+  },
+  clearErrors: function() {
+    this.setState({usernameError: null});
+    this.setState({passwordError: null});
+  },
+
+  // Element
   render: function() {
+    // Show message if available
+    var msg;
+    if (this.state.session.get("msg")) {
+      msg = (
+        <div data-alert className="alert-box alert">
+          {this.state.session.get("msg")}
+          <a href="#" className="close">&times;</a>
+        </div>
+      );
+    }
+    else {
+      msg = null;
+    }
+
     return (
       <div className="row">
         <div className="large-12 columns">
-          <div className="signup-panel">
-            <h1>Sign up</h1>
-            <form>
-              <div className="row collapse">
-                <div className="small-2  columns">
-                  <span className="prefix"><i><Icon icon="social-person" /></i></span>
-                </div>
-                <div className="small-10 columns">
-                  <input type="text" placeholder="Full Name"/>
-                </div>
-              </div>
-              <div className="row collapse">
-                <div className="small-2 columns">
-                  <span className="prefix"><i><Icon icon="content-mail" /></i></span>
-                </div>
-                <div className="small-10  columns">
-                  <input type="text" placeholder="Email"/>
-                </div>
-              </div>
-              <div className="row collapse">
-                <div className="small-2 columns ">
-                  <span className="prefix"><i><Icon icon="action-lock" /></i></span>
-                </div>
-                <div className="small-10 columns ">
-                  <input type="text" placeholder="Password"/>
-                </div>
-              </div>
-            </form>
-            <PaperButton type={PaperButton.Types.FLAT} label="Sign up" />
-          </div>
+          <h1>Signup</h1>
+          {msg}
+          <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
+            <div className="row collapse">
+              <mui.Input ref="username" type="text" required={true} name="username" placeholder="Username" description="Your username" error={this.state.usernameError}/>
+              <mui.Input multiline={false} ref="password" type="text" required={true} name="Password" placeholder="Password" description="Your password" error={this.state.passwordError}/>
+              <mui.FlatButton type="submit" label="Create account" primary={true}/>
+            </div>
+          </form>
         </div>
       </div>
     );

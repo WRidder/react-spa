@@ -13,6 +13,17 @@
 }
 
 // Navigation
+.navlink {
+  margin: 0 24px 0 10px;
+  margin-top: 18px;
+  text-transform: uppercase;
+  background-color: rgba(0,0,0,0);
+  display: inline-block;
+  .mui-icon {
+    line-height: 24px !important;
+    margin-right: 5px;
+  }
+}
 // Header
 
 @media #{$medium-up} {
