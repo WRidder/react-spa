@@ -4,6 +4,8 @@
 
 A Proof of Concept real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in `./server`.
 
+[**Demo on heroku**](http://stormy-lake-7478.herokuapp.com/)
+
 ### Installation
 1. Run `$ npm install` in the base and in the ./server directory
 2. Run `$ bower install` in the base directory
