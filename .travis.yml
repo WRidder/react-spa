@@ -1,8 +1,15 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 before_script:
-  - npm install -g gulp
-  - npm install -g bower
-  - bower install
+- npm install -g gulp
+- npm install -g bower
+- bower install
 script: gulp build
+deploy:
+  provider: heroku
+  api_key:
+    secure: NeZ3hQ6LJlC82aCtpVD5Ytk/MLZ655TEQCYwQwmRoqfYSCQh3tIZz2f0peQGT2eU9lqgkgBIAbOM9T51Bku//NWbCXRhl3jZDWHfE5EBZM8MeckLdbd+lRmgaSxlnWk0njf8HM7RoteL2s37e5wAE7blUxfH7OLWdiMUOsXH6UI=
+  app: react-spa
+  on:
+    repo: WRidder/react-spa
