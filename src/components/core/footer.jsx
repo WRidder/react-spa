@@ -6,7 +6,7 @@ var Footer = React.createClass({
     return (
       <footer className="footer">
         <div className="row full-width">
-          <div className="small-6 medium-6 large-2 columns">
+          <div className="small-6 medium-6 large-6 xlarge-6 columns">
             <h4>Column 1</h4>
             <ul className="footer-links">
               <li>
@@ -23,7 +23,7 @@ var Footer = React.createClass({
               </li>
             </ul>
           </div>
-          <div className="small-6 medium-6 large-2 columns">
+          <div className="small-6 medium-6 large-6 xlarge-6 columns">
             <h4>Column 2</h4>
             <ul className="footer-links">
               <li>

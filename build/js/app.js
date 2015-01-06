@@ -7560,7 +7560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var App = React.createClass({displayName: 'App',
 	  render: function() {
 	    return (
-	      React.createElement("section", null, 
+	      React.createElement("section", {className: "row"}, 
 	        React.createElement(Header, null), 
 	        React.createElement("div", {className: "main"}, 
 	          React.createElement(RouteHandler, null)
@@ -8360,7 +8360,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return (
 	      React.createElement("footer", {className: "footer"}, 
 	        React.createElement("div", {className: "row full-width"}, 
-	          React.createElement("div", {className: "small-6 medium-6 large-2 columns"}, 
+	          React.createElement("div", {className: "small-6 medium-6 large-6 xlarge-6 columns"}, 
 	            React.createElement("h4", null, "Column 1"), 
 	            React.createElement("ul", {className: "footer-links"}, 
 	              React.createElement("li", null, 
@@ -8377,7 +8377,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              )
 	            )
 	          ), 
-	          React.createElement("div", {className: "small-6 medium-6 large-2 columns"}, 
+	          React.createElement("div", {className: "small-6 medium-6 large-6 xlarge-6 columns"}, 
 	            React.createElement("h4", null, "Column 2"), 
 	            React.createElement("ul", {className: "footer-links"}, 
 	              React.createElement("li", null, 
