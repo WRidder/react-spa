@@ -11,6 +11,7 @@
   <script src="/js/vendor/modernizr.js"></script>
   <script src="/js/vendor/fastclick.js"></script>
   <link rel="shortcut icon" href="/favicon.ico" />
+  <!-- Version: 0.1 -->
 </head>
 <body>
 <!--[if lte IE 8]>
