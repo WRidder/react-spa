@@ -5885,6 +5885,9 @@ th.hide-for-touch {
   margin: 0 0.4rem;
   color: #FFFFFF; }
 
+.top-bar-section .mui-icon {
+  font-size: 0.8125rem; }
+
 .loading {
   -webkit-animation: spin 1s linear infinite;
   -moz-animation: spin 1s linear infinite;

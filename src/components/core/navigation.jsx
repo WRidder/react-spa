@@ -29,8 +29,7 @@ var Navigation = React.createClass({
           <ul className="left">
             <NavLink to="questions" title="Questions"/>
             <NavLink to="discussions" title="Discussions"/>
-            <li><a href="#">Chat</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="https://github.com/WRidder/react-spa/" target="_blank"><i className="mui-icon mui-icon-github"></i> GitHub</a></li>
              {profileLink}
              {loginoutLink}
           </ul>

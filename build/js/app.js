@@ -10732,8 +10732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          React.createElement("ul", {className: "left"}, 
 	            React.createElement(NavLink, {to: "questions", title: "Questions"}), 
 	            React.createElement(NavLink, {to: "discussions", title: "Discussions"}), 
-	            React.createElement("li", null, React.createElement("a", {href: "#"}, "Chat")), 
-	            React.createElement("li", null, React.createElement("a", {href: "#"}, "About")), 
+	            React.createElement("li", null, React.createElement("a", {href: "https://github.com/WRidder/react-spa/", target: "_blank"}, React.createElement("i", {className: "mui-icon mui-icon-github"}), " GitHub")), 
 	             profileLink, 
 	             loginoutLink
 	          )
