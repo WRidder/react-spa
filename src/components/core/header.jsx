@@ -10,10 +10,10 @@ var Header = React.createClass({
     return (
       <header>
         <div className="row logo-bar">
-          <div className="large-3 medium-3 columns">
+          <div className="xxlarge-3 xlarge-3 large-3 medium-3 columns">
             <Link to="/"><img src="/logo.png" /></Link>
           </div>
-          <div className="large-9 medium-9 columns">
+          <div className="xxlarge-9 xlarge-9 large-9 medium-9 columns">
             <HeaderSession/>
           </div>
         </div>
