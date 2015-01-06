@@ -60,7 +60,11 @@
     "tiny-lr": "~0.1.4"
   },
   "scripts": {
-    "start": "gulp",
+	"postinstall": "cd ./server && npm install",
+    "start": "cd ./server/ && node ./src/server.js",
     "preupdate-webdriver": "npm install"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }
