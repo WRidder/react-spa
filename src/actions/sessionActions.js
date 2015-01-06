@@ -21,7 +21,10 @@ var actions = reflux.createActions([
   // Logout
   "logout",
   "logoutSuccess",
-  "logoutError"
+  "logoutError",
+
+  // Set session info
+  "setLoginReturnPath"
 ]);
 module.exports = actions;
 

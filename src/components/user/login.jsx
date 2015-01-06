@@ -17,13 +17,23 @@ var Login = React.createClass({
       if (sessionStore.isLoggedIn()) {
         transition.redirect("profile");
       }
+    },
+
+    willTransitionFrom: function () {
+      sessionActions.setLoginReturnPath(null);
     }
   },
 
   componentWillUpdate: function() {
     var router = require("client/core/router").router;
+
     if (sessionStore.isLoggedIn()) {
-      router.transitionTo("profile");
+      if (this.state.session.get("returnPath")) {
+        router.transitionTo(this.state.session.get("returnPath"));
+      }
+      else {
+        router.transitionTo("profile");
+      }
     }
   },
 

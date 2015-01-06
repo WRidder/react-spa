@@ -6,7 +6,7 @@ var reactRouter = require('react-router');
 module.exports = {
   router: null,
   renderToDom: function() {
-    // we can create a router before "running" it
+    // Create a router
     var router = reactRouter.create({
       routes: routes,
       location: reactRouter.HistoryLocation
@@ -14,7 +14,6 @@ module.exports = {
 
     // Run the app
     router.run(function (Handler, state) {
-      //console.log("navigation occurred: ", state);
       React.render(React.createElement(Handler), document.body);
     });
     this.router = router;

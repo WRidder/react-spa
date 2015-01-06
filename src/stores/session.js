@@ -7,7 +7,8 @@ var defaultData = {
   username: null,
   auth: false,
   roles: ["guest"],
-  msg: null
+  msg: null,
+  returnPath: null
 };
 
 var SessionStore = Reflux.createStore({
@@ -41,6 +42,11 @@ var SessionStore = Reflux.createStore({
   onLogoutSuccess: function() {
     this.setData(defaultData);
     this.trigger(this.data);
+  },
+
+  // Session information
+  onSetLoginReturnPath: function(path) {
+    this.setData({returnPath: path});
   },
 
   // API
