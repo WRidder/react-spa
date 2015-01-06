@@ -7,6 +7,12 @@ A Proof of Concept real-time single page application based on React and (Re)flux
 [**Demo on heroku**](http://react-spa.herokuapp.com/)
 
 ### Installation
+#### Just running the demo
+1. Run `$ npm install` in the ./server directory
+2. Start the server in ./server using `$ node src/server.js`. Should open a port on 8080.
+3. Navigate your browser to http://localhost:8080.
+
+#### For developers
 1. Run `$ npm install` in the base and in the ./server directory
 2. Run `$ bower install` in the base directory
 3. Start the server in ./server using `$ node src/server.js`. Should open a port on 8080.
