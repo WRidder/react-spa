@@ -69,8 +69,24 @@ var NewQuestion = React.createClass({
           <h1>New Question</h1>
           <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
             <div className="row collapse">
-              <mui.Input ref="title" type="text" required={true} name="title" placeholder="Title" description="The title of your question." error={this.state.titleError}/>
-              <mui.Input multiline={true} rows={2} ref="content" type="text" required={true} name="content" placeholder="Content" description="The content of your question." error={this.state.contentError}/>
+              <mui.TextField
+                ref="title"
+                name="title"
+                type="text"
+                required={true}
+                errorText={this.state.titleError}
+                floatingLabelText="The title of your question" />
+              <br/>
+              <mui.TextField
+                ref="content"
+                name="content"
+                type="text"
+                required={true}
+                errorText={this.state.contentError}
+                multiLine={true}
+                rows={2}
+                floatingLabelText="The content of your question" />
+              <br/>
               <mui.FlatButton type="submit" label="Submit" />
             </div>
           </form>

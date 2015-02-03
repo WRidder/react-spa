@@ -95,8 +95,22 @@ var Login = React.createClass({
           {msg}
           <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
             <div className="row collapse">
-              <mui.Input ref="username" type="text" required={true} name="username" placeholder="Username" description="Your username" error={this.state.usernameError}/>
-              <mui.Input multiline={false} ref="password" type="text" required={true} name="Password" placeholder="Password" description="Your password" error={this.state.passwordError}/>
+              <mui.TextField
+                ref="username"
+                name="username"
+                required={true}
+                errorText={this.state.usernameError}
+                type="text"
+                floatingLabelText="Username" />
+              <br/>
+              <mui.TextField
+                ref="password"
+                name="password"
+                required={true}
+                errorText={this.state.passwordError}
+                type="password"
+                floatingLabelText="Password" />
+              <br/>
               <mui.FlatButton type="submit" label="Submit" primary={true}/>
             </div>
           </form>
