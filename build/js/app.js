@@ -94,6 +94,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Init session
 	    __webpack_require__(9);
 
+	    // Temporary tap event plugin
+	    var injectTapEventPlugin = __webpack_require__(339);
+	    injectTapEventPlugin();
+
 	    // Render
 	    router.renderToDom();
 
@@ -8349,7 +8353,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          React.createElement("form", {onSubmit: this.handleSubmit, onChange: this.clearErrors}, 
 	            React.createElement("div", {className: "row collapse"}, 
 	              React.createElement(mui.Input, {ref: "title", type: "text", required: true, name: "title", placeholder: "Title", description: "The title of your question.", error: this.state.titleError}), 
-	              React.createElement(mui.Input, {multiline: false, ref: "content", type: "text", required: true, name: "content", placeholder: "Content", description: "The content of your question.", error: this.state.contentError}), 
+	              React.createElement(mui.Input, {multiline: true, rows: 2, ref: "content", type: "text", required: true, name: "content", placeholder: "Content", description: "The content of your question.", error: this.state.contentError}), 
 	              React.createElement(mui.FlatButton, {type: "submit", label: "Submit"})
 	            )
 	          )
@@ -8401,7 +8405,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        React.createElement("br", null), 
 	        React.createElement(mui.DatePicker, {
 	          name: "PortraitDialogDate", 
-	          placeholder: "Portrait Dialog", 
+	          placeholder: "Pick a date", 
 	          inlinePlaceholder: true}), 
 	        React.createElement("br", null), 
 	        React.createElement(mui.FlatButton, {label: "Default"}), 

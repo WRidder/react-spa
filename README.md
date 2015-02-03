@@ -4,7 +4,8 @@
 
 A Proof of Concept real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in `./server`.
 
-[**Demo on heroku**](http://react-spa.herokuapp.com/)
+<a href="http://react-spa.herokuapp.com/" target="_blank">**Demo on heroku**</a>  
+(Automatically deployed from this repository on travis build)
 
 ### Installation
 #### Just running the demo
@@ -66,8 +67,10 @@ This will be by no means a production ready application. Objectives and goals ar
   * Can create questions, discussions and comments. 
   * Can delete own comments
 * Moderator
-  * Can delete comments, discssions and comments from other users
+  * Can edit/delete questions, discussions and comments from other users
 * Administrator
+  * Can access adminstrative area
+  * Can list/disable/remove users
 
 #### Layout
 **Home page**

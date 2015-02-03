@@ -38,6 +38,10 @@ module.exports = {
     // Init session
     require("client/helper/initSession");
 
+    // Temporary tap event plugin
+    var injectTapEventPlugin = require("react-tap-event-plugin");
+    injectTapEventPlugin();
+
     // Render
     router.renderToDom();
 

@@ -44,12 +44,16 @@
 .top-bar .name a {
   line-height: 45px;
   font-size: 1.0625rem;
-  margin: 0 0.4rem;
+  margin: 0 10px;
   color: #FFFFFF;
 }
 
 .top-bar-section .mui-icon {
   font-size: 0.8125rem;
+}
+
+.logo-bar {
+  padding: 0 10px;
 }
 
 // Loading indicator

@@ -11,7 +11,7 @@ var Inbox = React.createClass({
         <br/>
         <mui.DatePicker
           name="PortraitDialogDate"
-          placeholder="Portrait Dialog"
+          placeholder="Pick a date"
           inlinePlaceholder={true} />
         <br/>
         <mui.FlatButton label="Default" />

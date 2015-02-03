@@ -70,7 +70,7 @@ var NewQuestion = React.createClass({
           <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
             <div className="row collapse">
               <mui.Input ref="title" type="text" required={true} name="title" placeholder="Title" description="The title of your question." error={this.state.titleError}/>
-              <mui.Input multiline={false} ref="content" type="text" required={true} name="content" placeholder="Content" description="The content of your question." error={this.state.contentError}/>
+              <mui.Input multiline={true} rows={2} ref="content" type="text" required={true} name="content" placeholder="Content" description="The content of your question." error={this.state.contentError}/>
               <mui.FlatButton type="submit" label="Submit" />
             </div>
           </form>
