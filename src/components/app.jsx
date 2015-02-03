@@ -9,7 +9,7 @@ var Footer = require("./core/footer.jsx");
 var App = React.createClass({
   render: function() {
     return (
-      <section className="row">
+      <section>
         <Header/>
         <div className="main">
           <RouteHandler />

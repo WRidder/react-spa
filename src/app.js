@@ -32,6 +32,9 @@ module.exports = {
       require("client/core/syncDataProvider").hydrate(water);
     }
 
+    // React tap event plugin
+    require("react-tap-event-plugin")();
+
     // Init session
     require("client/helper/initSession");
 
