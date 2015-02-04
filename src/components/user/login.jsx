@@ -4,6 +4,7 @@ var connect= require("client/libraries/tmp_connect");
 
 var mui = require("material-ui");
 var Icon = mui.Icon;
+var DocumentTitle = require("react-document-title");
 
 var sessionStore = require("client/stores/session");
 var sessionActions = require("client/actions/sessionActions");
@@ -89,35 +90,37 @@ var Login = React.createClass({
     }
 
     return (
-      <div className="row">
-        <div className="large-12 columns">
-          <h1>Login</h1>
-          {msg}
-          <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
-            <div className="row collapse">
-              <mui.TextField
-                ref="username"
-                name="username"
-                required={true}
-                errorText={this.state.usernameError}
-                type="text"
-                floatingLabelText="Username" />
-              <br/>
-              <mui.TextField
-                ref="password"
-                name="password"
-                required={true}
-                errorText={this.state.passwordError}
-                type="password"
-                floatingLabelText="Password" />
-              <br/>
-              <mui.FlatButton type="submit" label="Submit" primary={true}/>
-            </div>
-          </form>
-          <br/>
-          <span>Accounts: (Admin/Admin), (Katy/Katy), (James/James)</span><br/>
+      <DocumentTitle title="Login - React-spa demo">
+        <div className="row">
+          <div className="large-12 columns">
+            <h1>Login</h1>
+            {msg}
+            <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
+              <div className="row collapse">
+                <mui.TextField
+                  ref="username"
+                  name="username"
+                  required={true}
+                  errorText={this.state.usernameError}
+                  type="text"
+                  floatingLabelText="Username" />
+                <br/>
+                <mui.TextField
+                  ref="password"
+                  name="password"
+                  required={true}
+                  errorText={this.state.passwordError}
+                  type="password"
+                  floatingLabelText="Password" />
+                <br/>
+                <mui.FlatButton type="submit" label="Submit" primary={true}/>
+              </div>
+            </form>
+            <br/>
+            <span>Accounts: (Admin/Admin), (Katy/Katy), (James/James)</span><br/>
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     );
   }
 });

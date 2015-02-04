@@ -6,6 +6,7 @@ var Icon = mui.Icon;
 var Paper = mui.Paper;
 var reflux = require("reflux");
 var connect= require("client/libraries/tmp_connect");
+var DocumentTitle = require("react-document-title");
 
 var questionStore = require("client/stores/question");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
@@ -15,9 +16,11 @@ var Question = React.createClass({
   mixins: [connect(questionStore), ImmutableRenderMixin, componentTransitionMixin("questions", "questionId")],
   render: function() {
     var view = this;
+    var title = "Q: " + view.state.get("title") + " - React-spa demo";
     var content;
     if (view.state) {
       content = (
+        <DocumentTitle title={title}>
           <div className="question">
             <Paper zDepth={1}>
               <div className="inner">
@@ -26,6 +29,7 @@ var Question = React.createClass({
               </div>
             </Paper>
           </div>
+        </DocumentTitle>
       );
     }
     else {

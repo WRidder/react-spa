@@ -5,7 +5,9 @@ var connect= require("client/libraries/tmp_connect");
 var mui = require("material-ui");
 var Icon = mui.Icon;
 var PaperButton = mui.PaperButton;
+var DocumentTitle = require("react-document-title");
 
+var sessionActions = require("client/actions/sessionActions");
 var sessionStore = require("client/stores/session");
 
 var Signup = React.createClass({
@@ -34,7 +36,7 @@ var Signup = React.createClass({
     var password = this.refs.password.getValue();
 
     if (this.validate(username, password)) {
-      sessionActions.login(username, password);
+      sessionActions.register(username, password);
     }
   },
   validate: function(username, password) {
@@ -79,19 +81,35 @@ var Signup = React.createClass({
     }
 
     return (
-      <div className="row">
-        <div className="large-12 columns">
-          <h1>Signup</h1>
-          {msg}
-          <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
-            <div className="row collapse">
-              <mui.Input ref="username" type="text" required={true} name="username" placeholder="Username" description="Your username" error={this.state.usernameError}/>
-              <mui.Input multiline={false} ref="password" type="text" required={true} name="Password" placeholder="Password" description="Your password" error={this.state.passwordError}/>
-              <mui.FlatButton type="submit" label="Create account" primary={true}/>
-            </div>
-          </form>
+      <DocumentTitle title="Signup - React-spa demo">
+        <div className="row">
+          <div className="large-12 columns">
+            <h1>Signup</h1>
+            {msg}
+            <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
+              <div className="row collapse">
+                <mui.TextField
+                  ref="username"
+                  name="username"
+                  required={true}
+                  errorText={this.state.usernameError}
+                  type="text"
+                  floatingLabelText="Your desired username" />
+                <br/>
+                <mui.TextField
+                  ref="password"
+                  name="password"
+                  required={true}
+                  errorText={this.state.passwordError}
+                  type="password"
+                  floatingLabelText="Your password" />
+                <br/>
+                <mui.FlatButton type="submit" label="Create account" primary={true}/>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     );
   }
 });

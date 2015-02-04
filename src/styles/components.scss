@@ -1,5 +1,11 @@
 @import "../../bower_components/foundation/scss/foundation/functions";
 
+// App
+section.app-container {
+  max-width: 62.5rem;
+  margin: 0 auto;
+}
+
 // Main
 .main {
   padding: 10px 10px;
@@ -52,8 +58,12 @@
   font-size: 0.8125rem;
 }
 
-.logo-bar {
-  padding: 0 10px;
+.top-bar li.active {
+  background: #008CBA;
+}
+
+.top-bar li.active:hover {
+  background: #0078a0;
 }
 
 // Loading indicator

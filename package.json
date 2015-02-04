@@ -11,12 +11,13 @@
     "material-ui": "~0.6.1",
     "q": "~1.1.2",
     "react": "~0.12.2",
+    "react-document-title": "^0.1.3",
     "react-immutable-render-mixin": "~0.8.0",
     "react-router": "0.11.6",
     "react-tap-event-plugin": "^0.1.3",
     "reflux": "0.2.4",
     "setimmediate2": "~1.1.4",
-    "socket.io-client": "1.3.2"
+    "socket.io-client": "1.3.3"
   },
   "devDependencies": {
     "del": "^1.1.1",

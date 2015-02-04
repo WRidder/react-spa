@@ -5,6 +5,7 @@ var sessionStore = require("client/stores/session");
 var approveTransitionMixin = require("client/mixins/approveTransition");
 var authRouteMixin = require("client/mixins/authRoute");
 var resourceActions = require("client/actions/resourceActions");
+var DocumentTitle = require("react-document-title");
 
 var NewQuestion = React.createClass({
   mixins: [authRouteMixin, approveTransitionMixin],
@@ -64,34 +65,36 @@ var NewQuestion = React.createClass({
   // Element
   render: function() {
     return (
-      <div className="row">
-        <div className="large-12 columns">
-          <h1>New Question</h1>
-          <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
-            <div className="row collapse">
-              <mui.TextField
-                ref="title"
-                name="title"
-                type="text"
-                required={true}
-                errorText={this.state.titleError}
-                floatingLabelText="The title of your question" />
-              <br/>
-              <mui.TextField
-                ref="content"
-                name="content"
-                type="text"
-                required={true}
-                errorText={this.state.contentError}
-                multiLine={true}
-                rows={2}
-                floatingLabelText="The content of your question" />
-              <br/>
-              <mui.FlatButton type="submit" label="Submit" />
-            </div>
-          </form>
+      <DocumentTitle title="New question - React-spa demo">
+        <div className="row">
+          <div className="large-12 columns">
+            <h1>New Question</h1>
+            <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
+              <div className="row collapse">
+                <mui.TextField
+                  ref="title"
+                  name="title"
+                  type="text"
+                  required={true}
+                  errorText={this.state.titleError}
+                  floatingLabelText="The title of your question" />
+                <br/>
+                <mui.TextField
+                  ref="content"
+                  name="content"
+                  type="text"
+                  required={true}
+                  errorText={this.state.contentError}
+                  multiLine={true}
+                  rows={2}
+                  floatingLabelText="The content of your question" />
+                <br/>
+                <mui.FlatButton type="submit" label="Submit" />
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     );
   }
 });

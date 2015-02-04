@@ -4,6 +4,7 @@ var connect= require("client/libraries/tmp_connect");
 var Router = require("react-router");
 var Link = Router.Link;
 var mui = require("material-ui");
+var DocumentTitle = require("react-document-title");
 
 var questionsStore = require("client/stores/questions");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
@@ -55,13 +56,15 @@ var QuestionList = React.createClass({
     }
 
     return (
-      <div className="questions">
-        <h1>Questions</h1>
-        {questions}
-        <Link to="questionsNew">
-          <mui.FlatButton label="Ask new question" />
-        </Link>
-      </div>
+      <DocumentTitle title="Questions - React-spa demo">
+        <div className="questions">
+          <h1>Questions</h1>
+          {questions}
+          <Link to="questionsNew">
+            <mui.FlatButton label="Ask new question" />
+          </Link>
+        </div>
+      </DocumentTitle>
     );
   }
 });

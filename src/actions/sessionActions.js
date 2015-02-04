@@ -53,3 +53,7 @@ actions.logout.listen(function(username, password) {
       actions.logoutError(textStatus, errorThrown);
     });
 });
+
+actions.register.listen(function(username, password) {
+  console.warn("React-spa demo: Registration not yet implemented");
+});

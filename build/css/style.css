@@ -5323,6 +5323,10 @@ th.hide-for-touch {
   th.show-for-print {
     display: table-cell !important; } }
 
+section.app-container {
+  max-width: 62.5rem;
+  margin: 0 auto; }
+
 .main {
   padding: 10px 10px; }
 
@@ -5357,8 +5361,11 @@ th.hide-for-touch {
 .top-bar-section .mui-icon {
   font-size: 0.8125rem; }
 
-.logo-bar {
-  padding: 0 10px; }
+.top-bar li.active {
+  background: #008CBA; }
+
+.top-bar li.active:hover {
+  background: #0078a0; }
 
 .loading {
   -webkit-animation: spin 1s linear infinite;

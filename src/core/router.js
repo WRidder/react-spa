@@ -2,6 +2,7 @@
 var routes = require('client/routes/routes.jsx');
 var React = require('react');
 var reactRouter = require('react-router');
+var navigationActions = require("client/actions/navigationActions");
 
 module.exports = {
   router: null,
@@ -14,7 +15,9 @@ module.exports = {
 
     // Run the app
     router.run(function (Handler, state) {
+      navigationActions.transitionStart();
       React.render(React.createElement(Handler), document.body);
+      navigationActions.transitionEnd();
     });
     this.router = router;
 
