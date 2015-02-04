@@ -5328,7 +5328,7 @@ section.app-container {
   margin: 0 auto; }
 
 .main {
-  padding: 10px 10px; }
+  padding: 0.75rem; }
 
 @media only screen and (max-width: 40em) {
   .logo-bar {
@@ -5354,8 +5354,8 @@ section.app-container {
 
 .top-bar .name a {
   line-height: 45px;
-  font-size: 1.0625rem;
-  margin: 0 10px;
+  font-size: 0.8125rem;
+  margin: 0 0.75rem;
   color: #FFFFFF; }
 
 .top-bar-section .mui-icon {
@@ -5386,7 +5386,10 @@ section.app-container {
     transform: rotate(360deg); } }
 
 .breadcrumbs {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  padding: 0.5625rem 0.75rem;
+  border-style: none;
+  background-color: transparent; }
 
 .breadcrumbs .mui-icon {
   font-size: 11px; }
