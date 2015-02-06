@@ -88,11 +88,15 @@ section.app-container {
 }
 
 // Questions listing
-.questions .question {
-  margin: 0 0 1rem 0;
-
-  .inner {
-    padding: 0.5rem;
+.questions {
+  .sort-controls {
+    margin-bottom: 0.5rem;
+  }
+  .question {
+    margin: 0 0 1rem 0;
+    .inner {
+      padding: 0.5rem;
+    }
   }
 }
 

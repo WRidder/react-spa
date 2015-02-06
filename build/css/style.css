@@ -5394,6 +5394,8 @@ section.app-container {
 .breadcrumbs .mui-icon {
   font-size: 11px; }
 
+.questions .sort-controls {
+  margin-bottom: 0.5rem; }
 .questions .question {
   margin: 0 0 1rem 0; }
   .questions .question .inner {

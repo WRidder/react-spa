@@ -9036,7 +9036,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          React.createElement("div", {className: "inner"}, 
 	            React.createElement(Link, {to: "questionWithTitle", params: {questionId: id, questionTitle: slug}}, "#", id, " ", title), 
 	            React.createElement("br", null), 
-	            React.createElement("span", null, "User: ", userId, " ")
+	            React.createElement("span", null, "User id: ", userId, " ")
 	          )
 	        )
 	      )
@@ -9097,12 +9097,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      React.createElement(DocumentTitle, {title: "Questions - React-spa demo"}, 
 	        React.createElement("div", {className: "questions"}, 
 	          React.createElement("h1", null, "Questions"), 
-	          React.createElement("span", null, "Sort by: "), 
-	          React.createElement(mui.FlatButton, {label: this.getSortLabel("Title", "title"), secondary: this.state.sortKey == "title", onClick: this.setSort.bind(this, "title")}), 
-	          React.createElement(mui.FlatButton, {label: this.getSortLabel("Id", "id"), secondary: this.state.sortKey == "id", onClick: this.setSort.bind(this, "id")}), 
-	          React.createElement(mui.FlatButton, {label: this.getSortLabel("User ID", "user_id"), secondary: this.state.sortKey == "user_id", onClick: this.setSort.bind(this, "user_id")}), 
-	          React.createElement("br", null), 
-	          React.createElement("br", null), 
+	          React.createElement("div", {className: "sort-controls"}, 
+	            React.createElement("span", null, "Sort by: "), 
+	            React.createElement(mui.FlatButton, {label: this.getSortLabel("Title", "title"), secondary: this.state.sortKey == "title", onClick: this.setSort.bind(this, "title")}), 
+	            React.createElement(mui.FlatButton, {label: this.getSortLabel("Id", "id"), secondary: this.state.sortKey == "id", onClick: this.setSort.bind(this, "id")}), 
+	            React.createElement(mui.FlatButton, {label: this.getSortLabel("User ID", "user_id"), secondary: this.state.sortKey == "user_id", onClick: this.setSort.bind(this, "user_id")})
+	          ), 
 	          questions, 
 	          React.createElement(Link, {to: "questionsNew"}, 
 	            React.createElement(mui.FlatButton, {label: "Ask new question"})

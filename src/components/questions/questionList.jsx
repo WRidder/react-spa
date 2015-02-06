@@ -30,7 +30,7 @@ var Question = React.createClass({
           <div className="inner">
             <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>#{id} {title}</Link>
             <br/>
-            <span>User: {userId} </span>
+            <span>User id: {userId} </span>
           </div>
         </mui.Paper>
       </div>
@@ -91,12 +91,12 @@ var QuestionList = React.createClass({
       <DocumentTitle title="Questions - React-spa demo">
         <div className="questions">
           <h1>Questions</h1>
-          <span>Sort by: </span>
-          <mui.FlatButton label={this.getSortLabel("Title", "title")} secondary={this.state.sortKey == "title"} onClick={this.setSort.bind(this, "title")}/>
-          <mui.FlatButton label={this.getSortLabel("Id", "id")} secondary={this.state.sortKey == "id"} onClick={this.setSort.bind(this, "id")}/>
-          <mui.FlatButton label={this.getSortLabel("User ID", "user_id")} secondary={this.state.sortKey == "user_id"} onClick={this.setSort.bind(this, "user_id")}/>
-          <br/>
-          <br/>
+          <div className="sort-controls">
+            <span>Sort by: </span>
+            <mui.FlatButton label={this.getSortLabel("Title", "title")} secondary={this.state.sortKey == "title"} onClick={this.setSort.bind(this, "title")}/>
+            <mui.FlatButton label={this.getSortLabel("Id", "id")} secondary={this.state.sortKey == "id"} onClick={this.setSort.bind(this, "id")}/>
+            <mui.FlatButton label={this.getSortLabel("User ID", "user_id")} secondary={this.state.sortKey == "user_id"} onClick={this.setSort.bind(this, "user_id")}/>
+          </div>
           {questions}
           <Link to="questionsNew">
             <mui.FlatButton label="Ask new question" />
