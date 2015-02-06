@@ -52,9 +52,6 @@ var QuestionList = React.createClass({
       <Question content={item} key={item.get("id")}/>
     );
   },
-  getSortLabel(title, key) {
-    return title += (this.state.sortKey == key) ? ((this.state.sortDir =="asc") ? " ▲" : " ▼") : "";
-  },
   render: function() {
     var view = this;
 

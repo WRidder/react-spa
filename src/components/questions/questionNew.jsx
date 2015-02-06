@@ -1,5 +1,6 @@
 var React = require("react");
 var Router = require("react-router");
+var Link = Router.Link;
 var mui = require("material-ui");
 var sessionStore = require("client/stores/session");
 var approveTransitionMixin = require("client/mixins/approveTransition");
@@ -90,6 +91,9 @@ var NewQuestion = React.createClass({
                   floatingLabelText="The content of your question" />
                 <br/>
                 <mui.FlatButton type="submit" label="Submit" />
+                <Link to="questions">
+                  <mui.FlatButton label="Cancel" />
+                </Link>
               </div>
             </form>
           </div>

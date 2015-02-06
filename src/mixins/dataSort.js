@@ -30,6 +30,9 @@ var immutableDataSortMixin = {
       sortKey: key,
       sortDir: dir
     });
+  },
+  getSortLabel: function(title, key) {
+    return title += (this.state.sortKey == key) ? ((this.state.sortDir =="asc") ? " ▲" : " ▼") : "";
   }
 };
 
