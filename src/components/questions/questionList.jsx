@@ -28,7 +28,7 @@ var Question = React.createClass({
       <div className="question">
         <mui.Paper zDepth={1}>
           <div className="inner">
-            <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>{title}</Link>
+            <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>#{id} {title}</Link>
             <br/>
             <span>User: {userId} </span>
           </div>
@@ -39,26 +39,64 @@ var Question = React.createClass({
 });
 
 var QuestionList = React.createClass({
-  mixins: [connect(questionsStore), ImmutableRenderMixin, componentTransitionMixin("questions")],
+  mixins: [connect(questionsStore, "questions"), ImmutableRenderMixin, componentTransitionMixin("questions")],
+  getInitialState: function() {
+    return {
+      sortKey: "title",
+      sortDir: "asc"
+    };
+  },
   asQuestion: function(item) {
     return (
       <Question content={item} key={item.get("id")}/>
     );
   },
+  setSort: function(key) {
+    var dir = "asc";
+    if (key == this.state.sortKey) {
+      dir = (this.state.sortDir == "asc") ? "desc" : "asc";
+    }
+    this.setState({
+      sortKey: key,
+      sortDir: dir
+    });
+  },
+  immutableDataSort: function(data, key, dir) {
+    return data.sort(function(a,b) {
+      var first = (dir == "asc") ? a.get(key) : b.get(key);
+      var last = (dir == "asc") ? b.get(key) : a.get(key);
+
+      if (typeof first == "string") {
+        return first.localeCompare(last);
+      }
+      return first - last;
+    });
+  },
+  getSortLabel(title, key) {
+    return title += (this.state.sortKey == key) ? ((this.state.sortDir =="asc") ? " ▲" : " ▼") : "";
+  },
   render: function() {
     var view = this;
+
+    // Questions
     var questions = <mui.Icon className="loading" icon="action-autorenew" />;
-    if (view.state.size > 0) {
-      var questions = [];
-      view.state.forEach(function(question) {
-        questions.push(view.asQuestion(question));
-      });
+    if (view.state.questions.size > 0) {
+      //TODO: The toJS() can be omitted in reactjs >= 0.13
+      questions = this.immutableDataSort(view.state.questions, view.state.sortKey, view.state.sortDir).map(function(question) {
+        return view.asQuestion(question);
+      }).toJS();
     }
 
     return (
       <DocumentTitle title="Questions - React-spa demo">
         <div className="questions">
           <h1>Questions</h1>
+          <span>Sort by: </span>
+          <mui.FlatButton label={this.getSortLabel("Title", "title")} secondary={this.state.sortKey == "title"} onClick={this.setSort.bind(this, "title")}/>
+          <mui.FlatButton label={this.getSortLabel("Id", "id")} secondary={this.state.sortKey == "id"} onClick={this.setSort.bind(this, "id")}/>
+          <mui.FlatButton label={this.getSortLabel("User ID", "user_id")} secondary={this.state.sortKey == "user_id"} onClick={this.setSort.bind(this, "user_id")}/>
+          <br/>
+          <br/>
           {questions}
           <Link to="questionsNew">
             <mui.FlatButton label="Ask new question" />
