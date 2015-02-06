@@ -9,6 +9,7 @@ var DocumentTitle = require("react-document-title");
 var questionsStore = require("client/stores/questions");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
 var componentTransitionMixin = require("client/mixins/componentTransition");
+var dataSortMixin = require("client/mixins/dataSort");
 var slugger = require("client/helper/slug");
 
 var Question = React.createClass({
@@ -39,7 +40,7 @@ var Question = React.createClass({
 });
 
 var QuestionList = React.createClass({
-  mixins: [connect(questionsStore, "questions"), ImmutableRenderMixin, componentTransitionMixin("questions")],
+  mixins: [connect(questionsStore, "questions"), ImmutableRenderMixin, componentTransitionMixin("questions"), dataSortMixin],
   getInitialState: function() {
     return {
       sortKey: "title",
@@ -50,27 +51,6 @@ var QuestionList = React.createClass({
     return (
       <Question content={item} key={item.get("id")}/>
     );
-  },
-  setSort: function(key) {
-    var dir = "asc";
-    if (key == this.state.sortKey) {
-      dir = (this.state.sortDir == "asc") ? "desc" : "asc";
-    }
-    this.setState({
-      sortKey: key,
-      sortDir: dir
-    });
-  },
-  immutableDataSort: function(data, key, dir) {
-    return data.sort(function(a,b) {
-      var first = (dir == "asc") ? a.get(key) : b.get(key);
-      var last = (dir == "asc") ? b.get(key) : a.get(key);
-
-      if (typeof first == "string") {
-        return first.localeCompare(last);
-      }
-      return first - last;
-    });
   },
   getSortLabel(title, key) {
     return title += (this.state.sortKey == key) ? ((this.state.sortDir =="asc") ? " ▲" : " ▼") : "";
