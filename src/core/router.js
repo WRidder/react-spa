@@ -15,9 +15,9 @@ module.exports = {
 
     // Run the app
     router.run(function (Handler, state) {
-      navigationActions.transitionStart();
+      navigationActions.transitionStart(state);
       React.render(React.createElement(Handler), document.body);
-      navigationActions.transitionEnd();
+      navigationActions.transitionEnd(state);
     });
     this.router = router;
 

@@ -8,12 +8,11 @@
 var Reflux = require("reflux");
 var Immutable = require("immutable");
 var navigationActions = require("client/actions/navigationActions");
-var Router = require("react-router");
-var State = Router.State;
 
 var NavigationStore = Reflux.createStore({
-  mixins: [State],
-  data: Immutable.Map({}),
+  data: Immutable.Map({
+    documentTitle: "doctitle"
+  }),
   listenables: navigationActions,
   getInitialState: function() {
     return this.data;
@@ -21,16 +20,22 @@ var NavigationStore = Reflux.createStore({
   setData: function(data) {
     this.data = this.data.merge(data);
   },
-  onTransitionEnd: function() {
-    this.trigger(this.data);
-  },
-
-  // Title handling
-  updateDocumentTitle: function () {
-    if (typeof document === 'undefined') {
-      return;
+  triggerUpdate: function() {
+    if (this.data.get("currentState") && this.data.get("availableRoutes") && this.data.get("documentTitle")) {
+      this.trigger(this.data);
     }
-    document.title = ""; //activeInstance.props.title;
+  },
+  onTransitionEnd: function(state) {
+    this.setData({ currentState: state});
+    this.triggerUpdate();
+  },
+  onRouteUpdate: function(routes) {
+    this.setData({ availableRoutes: routes});
+    this.triggerUpdate();
+  },
+  onDocumentTitleUpdate: function(title) {
+    this.setData({ documentTitle: title});
+    this.triggerUpdate();
   }
 });
 

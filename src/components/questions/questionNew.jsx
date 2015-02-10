@@ -6,7 +6,7 @@ var sessionStore = require("client/stores/session");
 var approveTransitionMixin = require("client/mixins/approveTransition");
 var authRouteMixin = require("client/mixins/authRoute");
 var resourceActions = require("client/actions/resourceActions");
-var DocumentTitle = require("react-document-title");
+var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
 var NewQuestion = React.createClass({
   mixins: [authRouteMixin, approveTransitionMixin],
@@ -66,7 +66,7 @@ var NewQuestion = React.createClass({
   // Element
   render: function() {
     return (
-      <DocumentTitle title="New question - React-spa demo">
+      <DocumentTitle title="New question">
         <div className="row">
           <div className="large-12 columns">
             <h1>New Question</h1>

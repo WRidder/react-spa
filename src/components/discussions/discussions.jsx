@@ -1,12 +1,12 @@
 var React = require("react");
 var Router = require("react-router");
 var mui = require("material-ui");
-var DocumentTitle = require("react-document-title");
+var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
 var Inbox = React.createClass({
   render: function() {
     return (
-      <DocumentTitle title="Discussions - React-spa demo">
+      <DocumentTitle title="Discussions">
         <div>
           <h1>Discussions</h1>
           <span>Some material-ui tests</span>

@@ -4,7 +4,7 @@ var connect= require("client/libraries/tmp_connect");
 var Router = require("react-router");
 var Link = Router.Link;
 var mui = require("material-ui");
-var DocumentTitle = require("react-document-title");
+var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
 var questionsStore = require("client/stores/questions");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
@@ -13,17 +13,10 @@ var dataSortMixin = require("client/mixins/dataSort");
 var slugger = require("client/helper/slug");
 
 var Question = React.createClass({
-  mixins: [React.addons.LinkedStateMixin, ImmutableRenderMixin],
-  getInitialState: function() {
-    return this.props.content;
-  },
-  componentWillReceiveProps: function(nextProps) {
-    this.replaceState(nextProps.content);
-  },
   render: function() {
-    var id = this.state.get("id");
-    var title = this.state.get("title");
-    var userId = this.state.get("user_id");
+    var id = this.props.content.get("id");
+    var title = this.props.content.get("title");
+    var userId = this.props.content.get("user_id");
     var slug = slugger(title);
     return (
       <div className="question">
@@ -40,7 +33,12 @@ var Question = React.createClass({
 });
 
 var QuestionList = React.createClass({
-  mixins: [connect(questionsStore, "questions"), ImmutableRenderMixin, componentTransitionMixin("questions"), dataSortMixin],
+  mixins: [
+    connect(questionsStore, "questions"),
+    ImmutableRenderMixin,
+    componentTransitionMixin("questions"),
+    dataSortMixin
+  ],
   getInitialState: function() {
     return {
       sortKey: "title",
@@ -65,7 +63,7 @@ var QuestionList = React.createClass({
     }
 
     return (
-      <DocumentTitle title="Questions - React-spa demo">
+      <DocumentTitle title="Questions">
         <div className="questions">
           <h1>Questions</h1>
           <div className="sort-controls">

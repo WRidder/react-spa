@@ -1,5 +1,5 @@
 var React = require("react");
-var DocumentTitle = require("react-document-title");
+var DocumentTitle = require("client/components/core/documentTitle");
 
 var NotFound = React.createClass({
   render: function() {

@@ -5,7 +5,7 @@ var connect= require("client/libraries/tmp_connect");
 var mui = require("material-ui");
 var Icon = mui.Icon;
 var PaperButton = mui.PaperButton;
-var DocumentTitle = require("react-document-title");
+var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
 var sessionActions = require("client/actions/sessionActions");
 var sessionStore = require("client/stores/session");
@@ -81,7 +81,7 @@ var Signup = React.createClass({
     }
 
     return (
-      <DocumentTitle title="Signup - React-spa demo">
+      <DocumentTitle title="Signup">
         <div className="row">
           <div className="large-12 columns">
             <h1>Signup</h1>

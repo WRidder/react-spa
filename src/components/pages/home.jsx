@@ -1,10 +1,10 @@
 var React = require("react");
-var DocumentTitle = require("react-document-title");
+var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
 var Inbox = React.createClass({
   render: function() {
     return (
-      <DocumentTitle title="Home - React-spa demo">
+      <DocumentTitle title="Home">
         <div>
           <h1>Home</h1>
           <p>This is a live demonstration site for the react-spa application build automatically from the latest version. You can login using the credentials provided on the login page</p>

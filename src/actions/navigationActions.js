@@ -3,6 +3,10 @@ var reflux = require("reflux");
 // Create actions
 var actions = reflux.createActions([
   "transitionStart",
-  "transitionEnd"
+  "transitionEnd",
+
+  "routeUpdate",
+
+  "documentTitleUpdate"
 ]);
 module.exports = actions;
