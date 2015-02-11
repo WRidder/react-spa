@@ -20,7 +20,7 @@ var Question = React.createClass({
   ],
   render: function() {
     var view = this;
-    var title = "Q: " + view.state.get("title");
+    var title = "Q: " + (view.state.get("title") || "");
     var content;
     if (view.state) {
       content = (

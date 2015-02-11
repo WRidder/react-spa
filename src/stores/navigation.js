@@ -11,7 +11,7 @@ var navigationActions = require("client/actions/navigationActions");
 
 var NavigationStore = Reflux.createStore({
   data: Immutable.Map({
-    documentTitle: "doctitle"
+    documentTitle: ""
   }),
   listenables: navigationActions,
   getInitialState: function() {

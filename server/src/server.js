@@ -1,8 +1,8 @@
-/**
- * Created by Wilbert van de Ridder on 9-11-14.
- */
+var settings = require("./helpers/settings");
 
-console.log("Starting server...");
+var disableLiveReload = process.argv[2] == "disableLiveReload";
+settings.disableLiveReload = disableLiveReload;
+console.log("Starting server... disableLiveReload: ", disableLiveReload);
 
 // Init routes
 require("./routes/auth");

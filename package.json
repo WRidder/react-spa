@@ -13,7 +13,7 @@
     "react": "~0.12.2",
     "react-document-title": "^0.1.3",
     "react-immutable-render-mixin": "~0.8.0",
-    "react-router": "0.11.6",
+    "react-router": "0.12.0",
     "react-tap-event-plugin": "^0.1.4",
     "reflux": "0.2.5",
     "setimmediate2": "~1.1.4",
@@ -31,7 +31,7 @@
     "gulp-if": "^1.2.5",
     "gulp-jsbeautifier": "^0.0.4",
     "gulp-jshint": "~1.9.2",
-    "gulp-less": "^2.0.1",
+    "gulp-less": "^2.0.2",
     "gulp-load-plugins": "^0.8.0",
     "gulp-minify-css": "^0.4.5",
     "gulp-plumber": "^0.6.6",
@@ -63,7 +63,7 @@
   },
   "scripts": {
     "postinstall": "cd ./server && npm install",
-    "start": "cd ./server/ && node ./src/server.js",
+    "start": "cd ./server/ && node ./src/server.js disableLiveReload",
     "preupdate-webdriver": "npm install"
   },
   "engines": {

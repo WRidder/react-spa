@@ -140,6 +140,7 @@ module.exports = {
           content: null,
           water: null
         });
+        console.log("send html", html);
         res.send(html);
       }
       else {
