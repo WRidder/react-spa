@@ -9,7 +9,7 @@ script: gulp build
 deploy:
   provider: heroku
   api_key:
-    secure: NeZ3hQ6LJlC82aCtpVD5Ytk/MLZ655TEQCYwQwmRoqfYSCQh3tIZz2f0peQGT2eU9lqgkgBIAbOM9T51Bku//NWbCXRhl3jZDWHfE5EBZM8MeckLdbd+lRmgaSxlnWk0njf8HM7RoteL2s37e5wAE7blUxfH7OLWdiMUOsXH6UI=
+    secure: GhUqyq9XeHEplRT+/nXyA+KZ8XVhkFvA2JNc5u89MFQW4sg6OncuZdUvurS9ah01GEwUmCLOXfPe4+zbR6VOWyIXu7wGLUxCFNMVVVeokP1gz5aKk7a0s56WGCLYHs//KJMleCCp8bKs7phIBtSPd9lb2mzehHfyfZ9/ZWpGmQw=
   app: react-spa
   on:
     repo: WRidder/react-spa
