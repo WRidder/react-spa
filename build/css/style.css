@@ -5391,8 +5391,8 @@ section.app-container {
   border-style: none;
   background-color: transparent; }
 
-.breadcrumbs .mui-icon {
-  font-size: 11px; }
+.breadcrumbs .mdi {
+  font-size: 0.6875rem !important; }
 
 .questions .sort-controls {
   margin-bottom: 0.5rem; }

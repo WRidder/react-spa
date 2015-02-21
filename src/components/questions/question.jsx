@@ -2,7 +2,6 @@ var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
 var mui = require("material-ui");
-var Icon = mui.Icon;
 var Paper = mui.Paper;
 var reflux = require("reflux");
 var connect= require("client/libraries/tmp_connect");
@@ -35,7 +34,7 @@ var Question = React.createClass({
       );
     }
     else {
-      content = (<Icon className="loading" icon="action-autorenew" />);
+      content = (<mui.FontIcon className="loading mdi mdi-reload" />);
     }
     return (content);
   }

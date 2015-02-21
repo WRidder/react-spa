@@ -1,7 +1,7 @@
 var React = require("react");
 var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
-var Inbox = React.createClass({
+var Home = React.createClass({
   render: function() {
     return (
       <DocumentTitle title="Home">
@@ -15,4 +15,4 @@ var Inbox = React.createClass({
   }
 });
 
-module.exports = Inbox;
+module.exports = Home;

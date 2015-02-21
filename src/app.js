@@ -58,8 +58,18 @@ module.exports = {
     // Init session
     require("client/helper/initSession");
 
+    // Render html body
+    var htmlBody = router.renderToString(path || "/");
+
+    // Get document title
+    var DocumentTitle = require("react-document-title");
+    var docTitle = DocumentTitle.rewind();
+
     // Render application
-    return router.renderToString(path || "/");
+    return {
+      body: htmlBody,
+      title: docTitle
+    };
   },
   getProfile: function() {
     return DI.getProfile();

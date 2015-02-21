@@ -29,7 +29,6 @@ app.use(compression({
 
 // Live reload support
 if(!settings.disableLiveReload) {
-  console.log("enabling live reload");
   app.use(require('connect-livereload')({port: 35729}));
 }
 

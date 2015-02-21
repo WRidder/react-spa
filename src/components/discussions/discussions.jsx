@@ -3,7 +3,7 @@ var Router = require("react-router");
 var mui = require("material-ui");
 var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
-var Inbox = React.createClass({
+var Discussions = React.createClass({
   render: function() {
     return (
       <DocumentTitle title="Discussions">
@@ -17,7 +17,7 @@ var Inbox = React.createClass({
             inlinePlaceholder={true} />
           <br/>
           <mui.FlatButton label="Default" />
-          <mui.Icon icon="action-home" />
+          <mui.FontIcon icon="mdi-home" />
 
           <form>
             <mui.Checkbox name="checkboxName" value="checkboxValue1" />
@@ -32,4 +32,4 @@ var Inbox = React.createClass({
   }
 });
 
-module.exports = Inbox;
+module.exports = Discussions;

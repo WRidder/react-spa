@@ -93,8 +93,10 @@ gulp.task('libraries', function() {
 
 gulp.task('fonts', function() {
   // Move fonts
-  gulp.src("bower_components/foundation-icons/foundation_icons_general/fonts/*.*")
-    .pipe(gulp.dest("build/fonts"));
+  gulp.src("bower_components/mdi/materialdesignicons.css")
+    .pipe(gulp.dest("build/css"));
+  gulp.src("bower_components/mdi/fonts/*.*")
+    .pipe(gulp.dest("build/css/fonts"));
 });
 
 gulp.task('vendor', ['libraries', 'fonts']);

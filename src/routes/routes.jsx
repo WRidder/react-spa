@@ -51,7 +51,7 @@ var routesObj = {
   path: "/",
   handler: App,
   crumbTitle: "Home",
-  crumbIcon: "action-home",
+  crumbIcon: "mdi mdi-home",
   children: [
     {
       component: DefaultRoute,
@@ -91,7 +91,7 @@ var routesObj = {
       name: "questions",
       path: "/questions",
       crumbTitle: "Questions",
-      crumbIcon: "action-question-answer",
+      crumbIcon: "mdi mdi-help-circle",
       handler: QuestionList
     },
     {

@@ -3,7 +3,6 @@ var reflux = require("reflux");
 var connect= require("client/libraries/tmp_connect");
 
 var mui = require("material-ui");
-var Icon = mui.Icon;
 var DocumentTitle = require("client/components/core/documentTitle.jsx");
 
 var sessionStore = require("client/stores/session");

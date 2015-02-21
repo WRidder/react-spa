@@ -54,7 +54,7 @@ var QuestionList = React.createClass({
     var view = this;
 
     // Questions
-    var questions = <mui.Icon className="loading" icon="action-autorenew" />;
+    var questions = <mui.FontIcon className="loading mdi mdi-reload"/>;
     if (view.state.questions.size > 0) {
       //TODO: The toJS() can be omitted in reactjs >= 0.13
       questions = this.immutableDataSort(view.state.questions, view.state.sortKey, view.state.sortDir).map(function(question) {

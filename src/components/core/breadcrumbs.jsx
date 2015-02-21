@@ -2,7 +2,6 @@ var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
 var mui = require("material-ui");
-var Icon = mui.Icon;
 var NavigationStore = require("client/stores/navigation");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
 var connect= require("client/libraries/tmp_connect");
@@ -15,7 +14,7 @@ var Breadcrumbs = React.createClass({
     var availableRoutes = this.state.get("availableRoutes");
     var documentTitle = this.state.get("documentTitle");
 
-    var crumbs = (<li className="current" key={-1}><Icon icon="action-home" /><Link to="/">Home</Link></li>);
+    var crumbs = (<li className="current" key={-1}><mui.FontIcon className="mdi mdi-home" /><Link to="/">Home</Link></li>);
     if (availableRoutes && navState && documentTitle) {
       if (navState.get("path") != "/" && navState.get("routes").size > 1) {
         crumbs = [];
@@ -35,7 +34,7 @@ var Breadcrumbs = React.createClass({
                 });
 
                 if (subRouteDefinition) {
-                  crumbs.push(<li key={i + "+" + j}>{(subRouteDefinition.get("crumbIcon")) ? (<Icon icon={subRouteDefinition.get("crumbIcon")} />) : null}
+                  crumbs.push(<li key={i + "+" + j}>{(subRouteDefinition.get("crumbIcon")) ? (<mui.FontIcon className={subRouteDefinition.get("crumbIcon")} />) : null}
                     <Link to={subRouteDefinition.get("path")}>{subRouteDefinition.get("crumbTitle")}</Link>
                   </li>);
                 }
@@ -58,7 +57,7 @@ var Breadcrumbs = React.createClass({
           var crumbClass = (i == currentRoutes.length - 1) ? "current" : null;
           var crumbTitle = ((i == currentRoutes.length - 1) && documentTitle) ? documentTitle : routeDefinition.get("crumbTitle");
           var params = (route.paramNames.length) ? navState.get("params").toJSON() : null;
-          crumbs.push(<li className={crumbClass} key={i}>{(routeDefinition.get("crumbIcon")) ? (<Icon icon={routeDefinition.get("crumbIcon")} />) : null}
+          crumbs.push(<li className={crumbClass} key={i}>{(routeDefinition.get("crumbIcon")) ? (<mui.FontIcon className={routeDefinition.get("crumbIcon")} />) : null}
             <Link to={route.path} params={params}>{crumbTitle}</Link>
           </li>);
         }

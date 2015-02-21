@@ -137,10 +137,10 @@ module.exports = {
       }
       else if (!enableIsomorphicApp) {
         var html = htmlTemplate({
+          documentTitle: "React-spa demo",
           content: null,
           water: null
         });
-        console.log("send html", html);
         res.send(html);
       }
       else {
@@ -153,8 +153,10 @@ module.exports = {
         }
 
         waterPlant(req.path, function(water) {
+          var renderResults = getSpaInstance().renderToString(req.path, water, true);
           var html = htmlTemplate({
-            content: getSpaInstance().renderToString(req.path, water, true),
+            documentTitle: renderResults.title || "React-spa demo",
+            content: renderResults.body,
             water: JSON.stringify(water)
           });
           if (!authenticated) {
