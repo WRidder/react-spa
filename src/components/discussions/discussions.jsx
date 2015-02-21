@@ -17,7 +17,7 @@ var Discussions = React.createClass({
             inlinePlaceholder={true} />
           <br/>
           <mui.FlatButton label="Default" />
-          <mui.FontIcon icon="mdi-home" />
+          <mui.FontIcon className="mdi mdi-home" />
 
           <form>
             <mui.Checkbox name="checkboxName" value="checkboxValue1" />

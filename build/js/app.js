@@ -9542,7 +9542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            inlinePlaceholder: true}), 
 	          React.createElement("br", null), 
 	          React.createElement(mui.FlatButton, {label: "Default"}), 
-	          React.createElement(mui.FontIcon, {icon: "mdi-home"}), 
+	          React.createElement(mui.FontIcon, {className: "mdi mdi-home"}), 
 
 	          React.createElement("form", null, 
 	            React.createElement(mui.Checkbox, {name: "checkboxName", value: "checkboxValue1"}), 
@@ -20789,7 +20789,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var sessionStore = __webpack_require__(5);
 	var ImmutableRenderMixin = __webpack_require__(125);
 	var LogoutLink = __webpack_require__(198);
-	var mui = __webpack_require__(130);
 
 	var Navigation = React.createClass({displayName: 'Navigation',
 	  mixins: [connect(sessionStore, "session"), ImmutableRenderMixin],

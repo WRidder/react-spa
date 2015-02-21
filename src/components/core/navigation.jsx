@@ -6,7 +6,6 @@ var connect= require("client/libraries/tmp_connect");
 var sessionStore = require("client/stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
 var LogoutLink = require("client/components/user/logoutLink.jsx");
-var mui = require("material-ui");
 
 var Navigation = React.createClass({
   mixins: [connect(sessionStore, "session"), ImmutableRenderMixin],
