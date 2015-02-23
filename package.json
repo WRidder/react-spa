@@ -62,7 +62,8 @@
     "tiny-lr": "~0.1.5"
   },
   "scripts": {
-    "postinstall": "npm install && gulp build && cd ./server && npm install",
+    "postinstall": "cd ./server && npm install",
+    "prestart": "gulp build",
     "start": "cd ./server/ && node ./src/server.js disableLiveReload",
     "preupdate-webdriver": "npm install"
   },
