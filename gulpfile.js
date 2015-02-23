@@ -92,11 +92,14 @@ gulp.task('libraries', function() {
 });
 
 gulp.task('fonts', function() {
-  // Move fonts
-  gulp.src("bower_components/mdi/materialdesignicons.css")
+  // Move and minify font css
+  gulp.src("bower_components/mdi/css/materialdesignicons.css")
+    .pipe($.if(RELEASE, $.minifyCss()))
     .pipe(gulp.dest("build/css"));
+
+  // Move font files
   gulp.src("bower_components/mdi/fonts/*.*")
-    .pipe(gulp.dest("build/css/fonts"));
+    .pipe(gulp.dest("build/fonts"));
 });
 
 gulp.task('vendor', ['libraries', 'fonts']);

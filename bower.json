@@ -27,6 +27,10 @@
   ],
   "dependencies": {
     "foundation": "5.5.0",
-    "foundation-icons": "*"
+    "foundation-icons": "*",
+    "mdi": "~0.9.21-alpha"
+  },
+  "resolutions": {
+    "mdi": "~0.9.21-alpha"
   }
 }

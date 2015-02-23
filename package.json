@@ -63,7 +63,8 @@
   },
   "scripts": {
     "preinstall": "npm install bower -g && bower install && cd ./server && npm install",
-    "postinstall": "npm run build",
+    "postinstall": "npm run buildrelease",
+    "buildrelease": "gulp build --release",
     "build": "gulp build",
     "start": "cd ./server/ && node ./src/server.js disableLiveReload"
   },
