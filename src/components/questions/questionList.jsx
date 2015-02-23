@@ -37,13 +37,25 @@ var QuestionList = React.createClass({
     connect(questionsStore, "questions"),
     ImmutableRenderMixin,
     componentTransitionMixin("questions"),
+    Router.Navigation,
+    Router.State,
     dataSortMixin
   ],
   getInitialState: function() {
-    return {
+    var sortState = {
       sortKey: "title",
       sortDir: "asc"
     };
+
+    // Get sort state from url query params if available
+    var queryParams = this.getQuery();
+    if (queryParams.sortKey) {
+      sortState.sortKey = queryParams.sortKey
+    }
+    if (queryParams.sortDir) {
+      sortState.sortDir = queryParams.sortDir
+    }
+    return sortState;
   },
   asQuestion: function(item) {
     return (
@@ -68,9 +80,15 @@ var QuestionList = React.createClass({
           <h1>Questions</h1>
           <div className="sort-controls">
             <span>Sort by: </span>
-            <mui.FlatButton label={this.getSortLabel("Title", "title")} secondary={this.state.sortKey == "title"} onClick={this.setSort.bind(this, "title")}/>
-            <mui.FlatButton label={this.getSortLabel("Id", "id")} secondary={this.state.sortKey == "id"} onClick={this.setSort.bind(this, "id")}/>
-            <mui.FlatButton label={this.getSortLabel("User ID", "user_id")} secondary={this.state.sortKey == "user_id"} onClick={this.setSort.bind(this, "user_id")}/>
+            <Link to="questions" query={{sortKey: "title", sortDir: (view.state.sortKey == "title") ? ((view.state.sortDir == "asc") ? "desc" : "asc") : "asc"}}>
+              <mui.FlatButton label={this.getSortLabel("Title", "title")} secondary={this.state.sortKey == "title"} onClick={this.setSort.bind(this, "title")}/>
+            </Link>
+            <Link to="questions" query={{sortKey: "id", sortDir: (view.state.sortKey == "id") ? ((view.state.sortDir == "asc") ? "desc" : "asc") : "asc"}}>
+              <mui.FlatButton label={this.getSortLabel("Id", "id")} secondary={this.state.sortKey == "id"} onClick={this.setSort.bind(this, "id")}/>
+            </Link>
+            <Link to="questions" query={{sortKey: "user_id", sortDir: (view.state.sortKey == "user_id") ? ((view.state.sortDir == "asc") ? "desc" : "asc") : "asc"}}>
+              <mui.FlatButton label={this.getSortLabel("User ID", "user_id")} secondary={this.state.sortKey == "user_id"} onClick={this.setSort.bind(this, "user_id")}/>
+            </Link>
           </div>
           {questions}
           <Link to="questionsNew">

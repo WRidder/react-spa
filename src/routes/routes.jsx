@@ -127,6 +127,8 @@ var routesObj = {
     // Discussion routes
     {
       component: Route,
+      crumbTitle: "Discussions",
+      crumbIcon: "mdi mdi-account-multiple",
       name: "discussions",
       path: "/discussions",
       handler: Discussions
