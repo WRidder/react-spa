@@ -63,7 +63,7 @@
   },
   "scripts": {
     "postinstall": "cd ./server && npm install",
-    "prestart": "gulp build",
+    "build": "gulp build",
     "start": "cd ./server/ && node ./src/server.js disableLiveReload",
     "preupdate-webdriver": "npm install"
   },
