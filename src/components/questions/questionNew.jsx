@@ -88,7 +88,7 @@ var NewQuestion = React.createClass({
                   ref="content"
                   saving={this.state.saving}
                   onSave={this.handleSave}
-                  placeholder="Write a new question"
+                  floatingLabelText="Write a new question"
                   showDelete={true}
                 />
                 <Link to="questions">
