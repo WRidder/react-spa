@@ -1,5 +1,10 @@
 @import "../../bower_components/foundation/scss/foundation/functions";
 
+// Helper classes
+.max-width {
+  width: 100%;
+}
+
 // App
 section.app-container {
   max-width: 62.5rem;
