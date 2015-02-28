@@ -59,7 +59,7 @@ var MaterialUiMarkdownEditor = React.createClass({
               onChange={this.handleContentChange}
               rows={1}
               defaultValue={this.state.value}
-              placeHolder="The content of your question" />
+              placeholder="The content of your question" />
             <br/>
 
           </mui.Tab>

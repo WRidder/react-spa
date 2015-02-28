@@ -17,23 +17,25 @@ var DataInterface = (function() {
   function DataInterface(){}
 
   // Rest methods
-  DataInterface.prototype.get = function(path) {
+  DataInterface.prototype.get = function(path, localOnly) {
     // Check for hydrated data
     var hydratedData = dataProvider.getDataByPath(path);
-    if(Object.getOwnPropertyNames(hydratedData).length !== 0){
+    if(Object.getOwnPropertyNames(hydratedData).length !== 0 || localOnly){
       _response = hydratedData;
+
+      if (localOnly && !_response) {
+        _response = {};
+      }
       return this;
     }
     else {
       if (_inDom) {
         var $ = require("jquery");
         return Q.when($.get("http://" + window.location.host + path)).then(function(result) {
-          //console.log("di(dom) get (" + path + "): ", result);
           return result;
         });
       }
       else {
-        //console.log("di(node) get: ", path);
         _response = dataProvider.getDataByPath(path);
 
         // Profiling
@@ -49,12 +51,10 @@ var DataInterface = (function() {
     if (_inDom) {
       var $ = require("jquery");
       return Q.when($.post("http://" + window.location.host + path, data)).then(function(result) {
-        //console.log("di(dom) post (" + path + "): ", result);
         return result;
       });
     }
     else {
-      //console.log("di(node) post: ", path, data);
       var dataProvider = require("client/core/syncDataProvider");
       _response = dataProvider.getDataByPath(path);
 

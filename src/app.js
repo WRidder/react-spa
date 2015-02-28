@@ -7,20 +7,8 @@ var Reflux = require("reflux");
 Reflux.nextTick(require('setimmediate2'));
 Reflux.PublisherMethods.triggerAsync = Reflux.PublisherMethods.trigger;
 
-// Init actions
-require("client/actions/resourceActions");
-require("client/actions/sessionActions");
-
-// Init stores
-require("client/stores/question");
-require("client/stores/questions");
-require("client/stores/session");
-
 // Data interface
 var DI = require("client/core/dataInterface");
-
-// Init routes
-var router = require('client/core/router');
 
 module.exports = {
   init: function() {
@@ -35,8 +23,13 @@ module.exports = {
     // React tap event plugin
     require("react-tap-event-plugin")();
 
-    // Init session
-    require("client/helper/initSession");
+    // Init routes
+    var router = require('client/core/router');
+
+    // Init stores
+    require("client/stores/session");
+    require("client/stores/question");
+    require("client/stores/questions");
 
     // Temporary tap event plugin
     var injectTapEventPlugin = require("react-tap-event-plugin");
@@ -55,8 +48,10 @@ module.exports = {
     // Hydrate data
     require("client/core/syncDataProvider").hydrate(water || {});
 
-    // Init session
-    require("client/helper/initSession");
+    // Init stores
+    require("client/stores/session");
+    require("client/stores/question");
+    require("client/stores/questions");
 
     // Render html body
     var htmlBody = router.renderToString(path || "/");

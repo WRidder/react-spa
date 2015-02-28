@@ -1,6 +1,8 @@
 var Reflux = require("reflux");
 var Immutable = require("immutable");
 var sessionActions = require("client/actions/sessionActions");
+var dataInterface = require("client/core/dataInterface");
+var $ = require("jquery");
 
 var defaultData = {
   id: -1,
@@ -12,8 +14,19 @@ var defaultData = {
 };
 
 var SessionStore = Reflux.createStore({
+  init: function() {
+    // Check session data locally
+    var initialData = {};
+    dataInterface.get("/auth/session", true)
+    .then(function(data) {
+      data.auth = (data.id > -1 && typeof data.username === "string");
+      initialData = $.extend({}, defaultData, data);
+    });
+
+    // Set data
+    this.data = Immutable.Map(initialData);
+  },
   listenables: sessionActions,
-  data: Immutable.Map(defaultData),
   getInitialState: function() {
     return this.data;
   },

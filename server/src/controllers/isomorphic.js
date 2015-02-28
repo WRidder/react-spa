@@ -136,10 +136,17 @@ module.exports = {
         res.send(htmlCache[req.path]);
       }
       else if (!enableIsomorphicApp) {
+        var water = null;
+        if (req.isAuthenticated()) {
+          water = {
+            "/auth/session": req.user
+          };
+        }
+
         var html = htmlTemplate({
           documentTitle: "React-spa demo",
           content: null,
-          water: null
+          water: (water) ? JSON.stringify(water) : null
         });
         res.send(html);
       }
