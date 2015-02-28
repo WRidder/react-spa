@@ -1,6 +1,7 @@
 var Q = require("q");
 var inDOMEnvironment = typeof window !== 'undefined';
 var dataProvider = require("client/core/syncDataProvider");
+var devSettings = require("client/helper/devSettings");
 
 var DataInterface = (function() {
   // "private" variables
@@ -31,7 +32,8 @@ var DataInterface = (function() {
     else {
       if (_inDom) {
         var $ = require("jquery");
-        return Q.when($.get("http://" + window.location.host + path)).then(function(result) {
+        // Check if we need artificial server delay for testing
+        return Q.when($.get("http://" + window.location.host + path)).delay((devSettings.serverDelay) ? devSettings.serverDelayValue : 0).then(function(result) {
           return result;
         });
       }
