@@ -4,7 +4,7 @@
 
 A Proof of Concept real-time single page application based on React and (Re)flux to discover best practices regarding a multitude of use cases. Contains a simple server with in-memory database in `./server`.
 
-<a href="http://react-spa.herokuapp.com/" target="_blank">**Demo on heroku**</a>  
+[**Demo on Heroku**](http://react-spa.herokuapp.com/)  
 (Automatically deployed from this repository on travis build)
 
 ### Installation

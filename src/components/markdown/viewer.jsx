@@ -2,6 +2,14 @@ var React = require("react");
 var $ = require("jquery");
 //var marked = require('imports?React=react!marked');
 var marked = require("marked");
+// TODO: check if we can use SimpleMarkdown. (Probably need custom rules for GFM).
+/*
+
+var SimpleMarkdown = require("simple-markdown");
+var mdParser = SimpleMarkdown.defaultBlockParse;
+var mdOutput = SimpleMarkdown.defaultOutput;
+console.log(SimpleMarkdown);
+*/
 
 var markedDefaultOptions = {
   gfm: true,
@@ -36,3 +44,4 @@ var MarkdownViewer = React.createClass({
   }
 });
 module.exports = MarkdownViewer;
+ //<div>{mdOutput(mdParser(this.props.value))}</div>
