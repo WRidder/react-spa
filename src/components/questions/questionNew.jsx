@@ -15,7 +15,8 @@ var NewQuestion = React.createClass({
   getInitialState: function() {
     return {
       titleError: null,
-      saved: false
+      saved: false,
+      saving: false
     };
   },
 
@@ -80,7 +81,6 @@ var NewQuestion = React.createClass({
                   ref="title"
                   name="title"
                   type="text"
-                  required={true}
                   errorText={this.state.titleError}
                   floatingLabelText="The title of your question" />
                 <br/><br/>
@@ -102,13 +102,3 @@ var NewQuestion = React.createClass({
   }
 });
 module.exports = NewQuestion;
-/*
-<mui.TextField
-  ref="content"
-  name="content"
-  type="text"
-  required={true}
-  errorText={this.state.contentError}
-  multiLine={true}
-  rows={2}
-  floatingLabelText="The content of your question" />*/

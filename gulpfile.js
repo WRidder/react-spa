@@ -14,15 +14,16 @@ var argv = require('minimist')(process.argv.slice(2));
 var DEST = './build';                         // The build output folder
 var RELEASE = !!argv.release;                 // Minimize and optimize during a build?
 var AUTOPREFIXER_BROWSERS = [                 // https://github.com/ai/autoprefixer
-  'ie >= 10',
+  'ie >= 8',
   'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 7',
-  'opera >= 23',
-  'ios >= 7',
-  'android >= 4.4',
-  'bb >= 10'
+  'ff >= 24',
+  'chrome >= 20',
+  'safari >= 6',
+  'opera >= 12',
+  'ios >= 6',
+  'bb >= 10',
+  'Android 2.3',
+  'Android >= 4'
 ];
 
 // Gulp src wrapper, see: https://gist.github.com/floatdrop/8269868
@@ -33,16 +34,6 @@ gulp.plumbedSrc = function () {
 
 var src = {};
 var watch = false;
-var pkgs = (function () {
-  var pkgs = {};
-  var map = function (source) {
-    for (var key in source) {
-      pkgs[key.replace(/[^a-z0-9]/gi, '')] = source[key].substring(1);
-    }
-  };
-  map(require('./package.json').dependencies);
-  return pkgs;
-}());
 
 // The default task
 gulp.task('default', ['watch']);
@@ -87,41 +78,26 @@ gulp.task('styles', ['sass-styles', 'mui-styles']);
 
 // CSS style sheets
 gulp.task('sass-styles', function () {
-  // Add filters for sass and less files
-  var sass_filter = $.filter('*.sass');
-  var less_filter = $.filter('*.less');
-  var material_filter = $.filter(['!material-ui.less']);
+  // Source files
+  src.styles = ["src/styles/style.sass"];
 
-  src.styles = [
-    "src/styles/style.sass"//,
-    //"src/styles/material-ui.less",
-    //"src/styles/foundation_icons.less"
-  ];//'src/styles/**.{css,less,sass}';
+  // Process
   return gulp.plumbedSrc(src.styles)
-    //.pipe($.sourcemaps.init())
-    .pipe(sass_filter)
-      .pipe($.sass({
-        sourceMap: !RELEASE,
-        sourceMapBasepath: __dirname
-      }))
-    .pipe(sass_filter.restore())
-    .pipe(less_filter)
-    .pipe($.less({
-      strictMath: true,
+    // Process sass files
+    .pipe($.sass({
       sourceMap: !RELEASE,
       sourceMapBasepath: __dirname
     }))
-    .pipe(less_filter.restore())
-    .pipe(material_filter)
-      .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
-      .pipe($.csscomb())
-    .pipe(material_filter.restore())
-    .pipe($.order(src.styles))
+
+    // Auto prefix, concat and format
+    .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe($.concat('style.css'))
-    .on('error', console.error.bind(console))
+    .pipe($.csscomb())
+
+    // If in release mode, minify the css
     .pipe($.if(RELEASE, $.minifyCss()))
 
-    //.pipe($.sourcemaps.write())
+    // Write resulting css file to disk
     .pipe(gulp.dest(DEST + '/css'))
     .pipe($.size({title: 'style'}));
 });
@@ -136,7 +112,6 @@ gulp.task('mui-styles', function () {
       sourceMap: !RELEASE,
       sourceMapBasepath: __dirname
     }))
-    .on('error', console.error.bind(console))
     .pipe($.if(RELEASE, $.minifyCss()))
     .pipe(gulp.dest(DEST + '/css'))
     .pipe($.size({title: 'style'}));
@@ -149,7 +124,6 @@ gulp.task('bundle', function (cb) {
   var bundler = webpack(config);
 
   function bundle(err, stats) {
-    console.log("JS files changed");
     if (err) {
       throw new $.util.PluginError('webpack', err);
     }
@@ -194,8 +168,6 @@ gulp.task('watch', function (cb) {
 
   runSequence('build', 'livereload', function () {
     gulp.watch(src.assets, ['assets']);
-    //gulp.watch(src.images, ['images']);
-    //gulp.watch(src.index, ['index']);
     gulp.watch(["src/styles/**.*"], ['styles']);
     gulp.watch(DEST + '/**/*.*', function (file) {
       var fileName = path.relative(__dirname, file.path);

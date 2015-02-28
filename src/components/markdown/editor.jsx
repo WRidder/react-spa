@@ -33,7 +33,7 @@ var MaterialUiMarkdownEditor = React.createClass({
     this.setState({value: this.refs.content.getValue()});
   },
   handleSave: function() {
-    this.props.onSave(this.refs.content.getValue());
+    this.props.onSave(this.state.value);
   },
   handleDelete: function() {
     this.setState({value: ""});
@@ -55,7 +55,6 @@ var MaterialUiMarkdownEditor = React.createClass({
               ref="content"
               name="content"
               type="text"
-              required={true}
               multiLine={true}
               onChange={this.handleContentChange}
               rows={1}
