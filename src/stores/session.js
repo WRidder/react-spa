@@ -10,7 +10,8 @@ var defaultData = {
   auth: false,
   roles: ["guest"],
   msg: null,
-  returnPath: null
+  returnPath: null,
+  pwdCheckState: null
 };
 
 var SessionStore = Reflux.createStore({
@@ -60,6 +61,20 @@ var SessionStore = Reflux.createStore({
   // Session information
   onSetLoginReturnPath: function(path) {
     this.setData({returnPath: path});
+  },
+
+  // Password checker
+  onLoadPasswordChecker: function() {
+    this.setData({pwdCheckerState: "loading"});
+    this.trigger(this.data);
+  },
+  onLoadPasswordCheckerSuccess: function() {
+    this.setData({pwdCheckerState: "ready"});
+    this.trigger(this.data);
+  },
+  onLoadPasswordCheckerFailed: function() {
+    this.setData({pwdCheckerState: "failed"});
+    this.trigger(this.data);
   },
 
   // API

@@ -69,6 +69,27 @@ var DataInterface = (function() {
     }
   };
 
+  DataInterface.prototype.loadScript = function(path) {
+    if (_inDom) {
+      $.cachedScript = function( url, options ) {
+
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+          dataType: "script",
+          cache: true,
+          url: url
+        });
+
+        // Use $.ajax() since it is more flexible than $.getScript
+        // Return the jqXHR object so we can chain callbacks
+        return $.ajax( options );
+      };
+
+      // Retrieve password checker
+      return Q.when($.cachedScript("http://" + window.location.host + path));
+    }
+  };
+
   // Callbacks
   DataInterface.prototype.then = function(callback) {
     if (!_error) {

@@ -55,7 +55,8 @@ gulp.task('libraries', function() {
     "bower_components/jquery/dist/jquery.min.js",
     "bower_components/foundation/js/foundation.min.js",
     "bower_components/modernizr/modernizr.js",
-    "bower_components/fastclick/lib/fastclick.js"
+    "bower_components/fastclick/lib/fastclick.js",
+    "src/vendor/zxcvbn.js"
   ];
   return gulp.src(src)
     .pipe(gulp.dest("build/js/vendor"));

@@ -29,7 +29,7 @@ module.exports = Backbone.Collection.extend({
   _maxId: 0,
   _initMaxId: function() {
     this._maxId = this.max(function(resource) {
-      return parseInt(resource.id)
+      return parseInt(resource.id);
     }).get("id");
   },
   _getMaxId: function() {

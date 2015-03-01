@@ -62,3 +62,13 @@ actions.logout.listen(function(username, password) {
 actions.register.listen(function(username, password) {
   console.warn("React-spa demo: Registration not yet implemented");
 });
+
+actions.loadPasswordChecker.listen(function() {
+  dataInterface.loadScript("/js/vendor/zxcvbn.js")
+    .then(function() {
+      actions.loadPasswordCheckerSuccess();
+    })
+    .catch(function() {
+      actions.loadPasswordCheckerError();
+    });
+});

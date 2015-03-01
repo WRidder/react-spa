@@ -27,6 +27,12 @@ var Signup = React.createClass({
     }
   },
 
+  componentWillMount: function() {
+    if (!this.state.session.get("pwdCheckerState")) {
+      sessionActions.loadPasswordChecker();
+    }
+  },
+
   // Helpers
   handleSubmit: function(evt) {
     evt.preventDefault();
@@ -35,6 +41,14 @@ var Signup = React.createClass({
 
     if (this.validate(username, password)) {
       sessionActions.register(username, password);
+    }
+  },
+  handlePwdChange: function() {
+    if(this.state.session.get("pwdCheckerState") == "ready") {
+      var pwdTest = zxcvbn(this.refs.password.getValue());
+      var qualities = ["Discusting", "Poor", "Fair", "Okay", "Great"];
+      var pwdQuality = qualities[pwdTest.score] + " (score: " + pwdTest.score + " (0-4); crack time: ~" + pwdTest.crack_time_display + ")";
+      this.setState({pwdQualityMsg: pwdQuality});
     }
   },
   validate: function(username, password) {
@@ -78,6 +92,17 @@ var Signup = React.createClass({
       msg = null;
     }
 
+    var pwdInfoMsg;
+    if(this.state.session.get("pwdCheckerState") == "loading") {
+      pwdInfoMsg = "Loading password quality checker...";
+    }
+    else if(this.state.session.get("pwdCheckerState") == "ready") {
+      pwdInfoMsg = null || this.state.pwdQualityMsg;
+    }
+    else if(this.state.session.get("pwdCheckerState") == "failed") {
+      pwdInfoMsg = "Failed loading password quality checker";
+    }
+
     return (
       <DocumentTitle title="Signup">
         <div className="row">
@@ -98,9 +123,11 @@ var Signup = React.createClass({
                   ref="password"
                   name="password"
                   required={true}
-                  errorText={this.state.passwordError}
+                  errorText={pwdInfoMsg}
+                  onChange={this.handlePwdChange}
                   type="password"
                   floatingLabelText="Your password" />
+                <br/>
                 <br/>
                 <mui.FlatButton type="submit" label="Create account" primary={true}/>
               </div>

@@ -43,7 +43,7 @@ module.exports = _.extend(base, {
       return this.resp("404", {
         reason: "Resource does not exist"
       });
-    }.bind(this))
+    }.bind(this));
   },
 
   // Post (create) operations
