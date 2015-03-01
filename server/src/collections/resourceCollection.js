@@ -1,3 +1,4 @@
+"use strict";
 var Backbone = require("backbone");
 var _ = require("lodash");
 
@@ -70,11 +71,11 @@ module.exports = Backbone.Collection.extend({
     }
     return this._sanitize(resource.toJSON());
   },
-  getByParentId: function(parent_id, parentType) {
+  getByParentId: function(parentId, parentType) {
     if (this._parentCollection) {
-      if (this._parentCollection._type == parentType && this._parentCollection.get(parent_id)) {
+      if (this._parentCollection._type == parentType && this._parentCollection.get(parentId)) {
         var resources = this.where({
-          "parent_id": parent_id
+          "parent_id": parentId
         });
         if (!resources) {
           return false;

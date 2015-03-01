@@ -1,3 +1,4 @@
+"use strict";
 var restRouter = require('express').Router();
 var server = require("./../config/server");
 var rest = require("./../controllers/rest");

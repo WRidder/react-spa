@@ -1,3 +1,4 @@
+"use strict";
 var session = require("express-session");
 var MemoryStore = session.MemoryStore;
 

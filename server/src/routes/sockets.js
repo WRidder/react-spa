@@ -1,3 +1,4 @@
+"use strict";
 var sio = require("../config/sockets");
 
 sio.on('connection', function (socket) {

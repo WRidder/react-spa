@@ -1,5 +1,5 @@
+"use strict";
 var path = require('path');
-var passport = require("passport");
 
 module.exports = {
   push: function(req, res) {

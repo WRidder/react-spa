@@ -1,3 +1,4 @@
+"use strict";
 var _ = require("lodash");
 var accessControl = require("./../helper/accessControl");
 var responses = require("./../helper/response");

@@ -1,7 +1,7 @@
 /**
  * see: http://stackoverflow.com/questions/19024878/simple-login-page-in-nodejs-using-express-and-passport-with-mongodb
  */
-
+"use strict";
 var passport = require('passport');
 var _ = require("lodash");
 

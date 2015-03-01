@@ -1,3 +1,4 @@
+"use strict";
 var Resource = require("./../database/models/resource");
 var _ = require("lodash");
 

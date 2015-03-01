@@ -24,7 +24,12 @@ var actions = reflux.createActions([
   "logoutError",
 
   // Set session info
-  "setLoginReturnPath"
+  "setLoginReturnPath",
+
+  // Password check script
+  "loadPasswordChecker",
+  "loadPasswordCheckerSuccess",
+  "loadPasswordCheckerFail"
 ]);
 module.exports = actions;
 

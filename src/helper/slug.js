@@ -6,6 +6,7 @@ module.exports = function (str) {
   str = str.toLowerCase();
 
   // remove accents, swap ñ for n, etc
+  // TODO: replace with unicode characters
   var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
   var to   = "aaaaeeeeiiiioooouuuunc------";
   for (var i=0, l=from.length ; i<l ; i++) {

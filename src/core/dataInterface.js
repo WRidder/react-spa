@@ -69,7 +69,7 @@ var DataInterface = (function() {
     }
   };
 
-  // Callbakcs
+  // Callbacks
   DataInterface.prototype.then = function(callback) {
     if (!_error) {
       callback(_response);
@@ -85,11 +85,11 @@ var DataInterface = (function() {
   };
 
   // Helper methods
-  DataInterface.prototype.enableProfiling = function(enable) {
+  DataInterface.prototype.enableProfiling = function() {
     _profiling = true;
   };
 
-  DataInterface.prototype.disableProfiling = function(enable) {
+  DataInterface.prototype.disableProfiling = function() {
     _profiling = false;
   };
 

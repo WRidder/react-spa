@@ -136,7 +136,8 @@ var routesObj = {
   ]
 };
 
-function createRouteElement(routesObject) {
+var recursiveRoutes;
+var createRouteElement = function createRouteElement(routesObject) {
   return React.createElement.apply(null,
     [
       routesObject.component,
@@ -147,9 +148,9 @@ function createRouteElement(routesObject) {
       }
     ].concat(recursiveRoutes(routesObject.children))
   );
-}
+};
 
-function recursiveRoutes(routeChildren) {
+recursiveRoutes = function recursiveRoutes(routeChildren) {
   if (!routeChildren) {
     return [];
   }
@@ -159,7 +160,7 @@ function recursiveRoutes(routeChildren) {
     tmpRoutes.push(createRouteElement(routeChildren[i]));
   }
   return tmpRoutes;
-}
+};
 
 var routes = createRouteElement(routesObj);
 

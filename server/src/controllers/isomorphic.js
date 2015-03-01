@@ -1,3 +1,4 @@
+"use strict";
 var _ = require("lodash");
 var path = require("path");
 var fs = require("fs");
@@ -32,8 +33,8 @@ var routes = [
   },
   {
     path: '/api/:type/:type_id',
-    handler: function (type, type_id) {
-      var result = Resource.getResourceById(type, type_id);
+    handler: function (type, typeId) {
+      var result = Resource.getResourceById(type, typeId);
       if (result.status === 200) {
         return result.content;
       }
@@ -44,8 +45,8 @@ var routes = [
   },
   {
     path: '/api/:parent_type/:parent_type_id/:type',
-    handler: function (parent_type, parent_type_id, type) {
-      var result = Resource.getResourcesByParentId(parent_type, parent_type_id, type);
+    handler: function (parentType, parentTypeId, type) {
+      var result = Resource.getResourcesByParentId(parentType, parentTypeId, type);
       if (result.status === 200) {
         return result.content;
       }

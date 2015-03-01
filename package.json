@@ -19,7 +19,8 @@
     "react-tap-event-plugin": "^0.1.4",
     "reflux": "0.2.5",
     "setimmediate2": "~1.1.4",
-    "socket.io-client": "1.3.4"
+    "socket.io-client": "1.3.4",
+    "zxcvbn": "^1.0.0"
   },
   "devDependencies": {
     "bower": "^1.3.12",

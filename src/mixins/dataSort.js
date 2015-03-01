@@ -32,7 +32,7 @@ var immutableDataSortMixin = {
     });
   },
   getSortLabel: function(title, key) {
-    return title += (this.state.sortKey == key) ? ((this.state.sortDir =="asc") ? " ▲" : " ▼") : "";
+    return title += (this.state.sortKey == key) ? ((this.state.sortDir =="asc") ? " \u25B2" : " \u25BC") : "";
   }
 };
 

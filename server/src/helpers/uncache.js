@@ -4,7 +4,7 @@
  * @param require
  * @returns {*}
  */
-
+"use strict";
 module.exports = function(require) {
   /**
    * Removes a module from the cache

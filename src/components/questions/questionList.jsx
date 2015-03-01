@@ -5,6 +5,7 @@ var Router = require("react-router");
 var Link = Router.Link;
 var mui = require("material-ui");
 var DocumentTitle = require("client/components/core/documentTitle.jsx");
+var ReactSpinner = require("react-spinner");
 
 var questionsStore = require("client/stores/questions");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
@@ -22,7 +23,7 @@ var Question = React.createClass({
       <div className="question">
         <mui.Paper zDepth={1}>
           <div className="inner">
-            <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>#{id} {title}</Link>
+            <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>{"#"}{id} {title}</Link>
             <br/>
             <span>User id: {userId} </span>
           </div>
@@ -66,7 +67,7 @@ var QuestionList = React.createClass({
     var view = this;
 
     // Questions
-    var questions = <div><mui.FontIcon className="loading mdi mdi-reload"/></div>;
+    var questions = <ReactSpinner/>;
     if (view.state.questions.size > 0) {
       //TODO: The toJS() can be omitted in reactjs >= 0.13
       questions = this.immutableDataSort(view.state.questions, view.state.sortKey, view.state.sortDir).map(function(question) {

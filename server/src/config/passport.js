@@ -1,7 +1,7 @@
 /**
  * See: https://github.com/scotch-io/easy-node-authentication
  */
-
+"use strict";
 var LocalStrategy = require('passport-local').Strategy;
 var db = require("./../database/db");
 var _ = require("lodash");

@@ -5,6 +5,7 @@ var mui = require("material-ui");
 var Paper = mui.Paper;
 var reflux = require("reflux");
 var MarkdownViewer = require('client/components/markdown/viewer.jsx');
+var ReactSpinner = require("react-spinner");
 
 var connect= require("client/libraries/tmp_connect");
 var DocumentTitle = require("client/components/core/documentTitle.jsx");
@@ -21,10 +22,10 @@ var Question = React.createClass({
   render: function() {
     var view = this;
     var title = "Q: " + (view.state.get("title") || "");
-    var body = view.state.get("content") || "No content available.";
+    var body = view.state.get("content");
 
     var content;
-    if (view.state) {
+    if (view.state.get("content")) {
       content = (
         <DocumentTitle title={title}>
           <div className="question">
@@ -37,7 +38,11 @@ var Question = React.createClass({
       );
     }
     else {
-      content = (<mui.FontIcon className="loading mdi mdi-reload" />);
+      content = (
+        <DocumentTitle title={"Loading question..."}>
+          <ReactSpinner/>
+        </DocumentTitle>
+      );
     }
     return (content);
   }

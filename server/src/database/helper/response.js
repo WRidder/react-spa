@@ -1,3 +1,4 @@
+"use strict";
 module.exports = {
   "200": {
     status: 200,

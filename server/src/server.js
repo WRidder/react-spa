@@ -1,3 +1,4 @@
+"use strict";
 var settings = require("./helpers/settings");
 
 var disableLiveReload = process.argv[2] == "disableLiveReload";

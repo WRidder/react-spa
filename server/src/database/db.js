@@ -1,3 +1,4 @@
+"use strict";
 var _ = require("lodash");
 var data = require("./../data.json");
 var ResourceCollection = require("./../collections/resourceCollection");
