@@ -20,7 +20,7 @@ module.exports = {
     }
   },
   getResourceById: function(req, res) {
-    var result = Resource.getResourceById(req.params.type, req.params.type_id);
+    var result = Resource.getResourceById(req.params.type, req.params.typeId);
     if (result.status === 200) {
       res.json(result.content);
     }
@@ -29,7 +29,7 @@ module.exports = {
     }
   },
   getResourcesByParentId: function(req, res) {
-    var result = Resource.getResourcesByParentId(req.params.parent_type, req.params.parent_type_id, req.params.type);
+    var result = Resource.getResourcesByParentId(req.params.parentType, req.params.parentTypeDd, req.params.type);
     if (result.status === 200) {
       res.json(result.content);
     }
@@ -55,13 +55,13 @@ module.exports = {
 
   // Update
   updateResource: function(req, res) {
-    var result = Resource.updateResource(req.params.type, req.params.type_id, req.body);
+    var result = Resource.updateResource(req.params.type, req.params.typeId, req.body);
     res.sendStatus(result.status);
   },
 
   // Remove
   removeResource: function(req, res) {
-    var result = Resource.removeResource(req.params.type, req.params.type_id);
+    var result = Resource.removeResource(req.params.type, req.params.typeId);
     res.sendStatus(result.status);
   }
 };

@@ -8,17 +8,17 @@ var urlEncodedParser = bodyParser.urlencoded({ extended: true });
 // Routes
 // Get
 restRouter.get('/:type', rest.getAllByType);
-restRouter.get('/:type/:type_id', rest.getResourceById);
-restRouter.get('/:parent_type/:parent_type_id/:type', rest.getResourcesByParentId);
+restRouter.get('/:type/:typeId', rest.getResourceById);
+restRouter.get('/:parentType/:parentTypeId/:type', rest.getResourcesByParentId);
 
 // Post
 restRouter.post('/:type', urlEncodedParser, rest.createResourceByType);
 
 // Put
-restRouter.delete('/:type/:type_id', rest.updateResource);
+restRouter.delete('/:type/:typeId', rest.updateResource);
 
 // Delete
-restRouter.delete('/:type/:type_id', rest.removeResource);
+restRouter.delete('/:type/:typeId', rest.removeResource);
 
 // Register routes
 server.appInstance.use('/api', restRouter);

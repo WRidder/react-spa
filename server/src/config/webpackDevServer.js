@@ -6,9 +6,8 @@ var config = require(path.resolve("../../config/webpack"))(false);
 var watch = true;
 
 // Edit paths
-config.entry = path.resolve("../../src/app.js")
+config.entry = path.resolve("../../src/app.js");
 config.output.path = path.resolve("../../build/js/");
-console.log(config);
 
 var compiler = webpack(config);
 var server = new WebpackDevServer(compiler, {

@@ -128,7 +128,11 @@ gulp.task('bundle', function (cb) {
       throw new $.util.PluginError('webpack', err);
     }
 
-    (true || !!argv.verbose) && $.util.log('[webpack]', stats.toString({colors: true}));
+    var verbose = true;//!!argv.verbose;
+    if (verbose) {
+      $.util.log('[webpack]', stats.toString({colors: true}));
+    }
+
     if (!started) {
       started = true;
       return cb();

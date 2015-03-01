@@ -31,7 +31,7 @@ module.exports = {
       }
       else
         var flashMsg = req.flash('loginMessage');
-        var msg = (_.isArray(flashMsg)) ? _.first(flashMsg) : flashMsg;
+        var msg = _.isArray(flashMsg) ? _.first(flashMsg) : flashMsg;
         res.json({
           success: false,
           message: msg
