@@ -44,11 +44,15 @@ var Signup = React.createClass({
     }
   },
   handlePwdChange: function() {
-    if(this.state.session.get("pwdCheckerState") == "ready") {
+    var pwd = this.refs.password.getValue();
+    if(this.state.session.get("pwdCheckerState") == "ready" && pwd) {
       var pwdTest = zxcvbn(this.refs.password.getValue());
-      var qualities = ["Discusting", "Poor", "Fair", "Okay", "Great"];
+      var qualities = ["Awful", "Poor", "Fair", "Okay", "Great"];
       var pwdQuality = qualities[pwdTest.score] + " (score: " + pwdTest.score + " (0-4); crack time: ~" + pwdTest.crack_time_display + ")";
       this.setState({pwdQualityMsg: pwdQuality});
+    }
+    else if (!pwd) {
+      this.setState({pwdQualityMsg: null});
     }
   },
   validate: function(username, password) {
@@ -114,7 +118,6 @@ var Signup = React.createClass({
                 <mui.TextField
                   ref="username"
                   name="username"
-                  required={true}
                   errorText={this.state.usernameError}
                   type="text"
                   floatingLabelText="Your desired username" />
@@ -122,7 +125,6 @@ var Signup = React.createClass({
                 <mui.TextField
                   ref="password"
                   name="password"
-                  required={true}
                   errorText={pwdInfoMsg}
                   onChange={this.handlePwdChange}
                   type="password"
