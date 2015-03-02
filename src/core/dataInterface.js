@@ -1,36 +1,38 @@
+"use strict";
 var Q = require("q");
-var inDOMEnvironment = typeof window !== 'undefined';
+var inDOMEnvironment = typeof window !== "undefined";
 var dataProvider = require("client/core/syncDataProvider");
 var devSettings = require("client/helper/devSettings");
 
-var DataInterface = (function() {
-  // "private" variables
-  var _inDom = inDOMEnvironment;
-  var _response = {};
-  var _error = false;
-  var _profiling = false;
-  var _profile = {
-    get: [],
-    post: []
-  };
-
-  // constructor
-  function DataInterface(){}
+// TODO: Remove the following eslint directive once
+// https://github.com/babel/babel-eslint/issues/21#issuecomment-76796488 is resolved
+/*eslint no-unused-vars: 1*/
+class DataInterface {
+  constructor() {
+    this.inDom = inDOMEnvironment;
+    this.response = {};
+    this.error = false;
+    this.profiling = false;
+    this.profile = {
+      get: [],
+      post: []
+    };
+  }
 
   // Rest methods
-  DataInterface.prototype.get = function(path, localOnly) {
+  get(path, localOnly) {
     // Check for hydrated data
     var hydratedData = dataProvider.getDataByPath(path);
     if(Object.getOwnPropertyNames(hydratedData).length !== 0 || localOnly){
-      _response = hydratedData;
+      this.response = hydratedData;
 
-      if (localOnly && !_response) {
-        _response = {};
+      if (localOnly && !this.response) {
+        this.response = {};
       }
       return this;
     }
     else {
-      if (_inDom) {
+      if (this.inDom) {
         var $ = require("jquery");
         // Check if we need artificial server delay for testing
         return Q.when($.get("http://" + window.location.host + path)).delay((devSettings.serverDelay) ? devSettings.serverDelayValue : 0).then(function(result) {
@@ -38,39 +40,39 @@ var DataInterface = (function() {
         });
       }
       else {
-        _response = dataProvider.getDataByPath(path);
+        this.response = dataProvider.getDataByPath(path);
 
         // Profiling
-        if (_profiling) {
-          _profile.get.push(path);
+        if (this.profiling) {
+          this.profile.get.push(path);
         }
         return this;
       }
     }
-  };
+  }
 
-  DataInterface.prototype.post = function(path, data) {
-    if (_inDom) {
+  post(path, data) {
+    if (this.inDom) {
       var $ = require("jquery");
       return Q.when($.post("http://" + window.location.host + path, data)).then(function(result) {
         return result;
       });
     }
     else {
-      var dataProvider = require("client/core/syncDataProvider");
-      _response = dataProvider.getDataByPath(path);
+      this.response = dataProvider.getDataByPath(path);
 
       // Profiling
-      if (_profiling) {
-        _profile.post.push(path);
+      if (this.profiling) {
+        this.profile.post.push(path);
       }
 
       return this;
     }
-  };
+  }
 
-  DataInterface.prototype.loadScript = function(path) {
-    if (_inDom) {
+  loadScript(path) {
+    if (this.inDom) {
+      var $ = require("jquery");
       $.cachedScript = function( url, options ) {
 
         // Allow user to set any option except for dataType, cache, and url
@@ -91,34 +93,32 @@ var DataInterface = (function() {
   };
 
   // Callbacks
-  DataInterface.prototype.then = function(callback) {
-    if (!_error) {
-      callback(_response);
+  then(callback) {
+    if (!this.error) {
+      callback(this.response);
     }
     return this;
   };
 
-  DataInterface.prototype.catch = function(callback) {
-    if (_error) {
+  catch(callback) {
+    if (this.error) {
       callback(null, "", "");
     }
     return this;
   };
 
   // Helper methods
-  DataInterface.prototype.enableProfiling = function() {
-    _profiling = true;
+  enableProfiling() {
+    this.profiling = true;
   };
 
-  DataInterface.prototype.disableProfiling = function() {
-    _profiling = false;
+  disableProfiling() {
+    this.profiling = false;
   };
 
-  DataInterface.prototype.getProfile = function() {
-    return _profile;
+  getProfile() {
+    return this.profile;
   };
-
-  return DataInterface;
-})();
+}
 
 module.exports = new DataInterface();

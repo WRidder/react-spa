@@ -1,7 +1,8 @@
+"use strict";
 var sessionStore = require("client/stores/session");
 var sessionActions = require("client/actions/sessionActions");
 var connect= require("client/libraries/tmp_connect");
-var State = require('react-router').State;
+var State = require("react-router").State;
 
 var authRoute = {
   mixins: [connect(sessionStore, "session"), State],

@@ -1,10 +1,11 @@
 /**
  * React-spa initialization
  */
+"use strict";
 
 // Reflux config
 var Reflux = require("reflux");
-Reflux.nextTick(require('setimmediate2'));
+Reflux.nextTick(require("setimmediate2"));
 Reflux.PublisherMethods.triggerAsync = Reflux.PublisherMethods.trigger;
 
 // Data interface
@@ -24,7 +25,7 @@ module.exports = {
     require("react-tap-event-plugin")();
 
     // Init routes
-    var router = require('client/core/router');
+    var router = require("client/core/router");
 
     // Init stores
     require("client/stores/session");
@@ -52,6 +53,9 @@ module.exports = {
     require("client/stores/session");
     require("client/stores/question");
     require("client/stores/questions");
+
+    // Init routes
+    var router = require("client/core/router");
 
     // Render html body
     var htmlBody = router.renderToString(path || "/");

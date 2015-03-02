@@ -1,5 +1,5 @@
+"use strict";
 var React = require("react");
-var reflux = require("reflux");
 var connect= require("client/libraries/tmp_connect");
 var Router = require("react-router");
 var Link = Router.Link;
@@ -51,10 +51,10 @@ var QuestionList = React.createClass({
     // Get sort state from url query params if available
     var queryParams = this.getQuery();
     if (queryParams.sortKey) {
-      sortState.sortKey = queryParams.sortKey
+      sortState.sortKey = queryParams.sortKey;
     }
     if (queryParams.sortDir) {
-      sortState.sortDir = queryParams.sortDir
+      sortState.sortDir = queryParams.sortDir;
     }
     return sortState;
   },
@@ -81,14 +81,14 @@ var QuestionList = React.createClass({
           <h1>Questions</h1>
           <div className="sort-controls">
             <span>Sort by: </span>
-            <Link to="questions" query={{sortKey: "title", sortDir: (view.state.sortKey == "title") ? ((view.state.sortDir == "asc") ? "desc" : "asc") : "asc"}}>
-              <mui.FlatButton label={this.getSortLabel("Title", "title")} secondary={this.state.sortKey == "title"} onClick={this.setSort.bind(this, "title")}/>
+            <Link to="questions" query={{sortKey: "title", sortDir: (view.state.sortKey === "title") ? ((view.state.sortDir === "asc") ? "desc" : "asc") : "asc"}}>
+              <mui.FlatButton label={this.getSortLabel("Title", "title")} secondary={this.state.sortKey === "title"} onClick={this.setSort.bind(this, "title")}/>
             </Link>
-            <Link to="questions" query={{sortKey: "id", sortDir: (view.state.sortKey == "id") ? ((view.state.sortDir == "asc") ? "desc" : "asc") : "asc"}}>
-              <mui.FlatButton label={this.getSortLabel("Id", "id")} secondary={this.state.sortKey == "id"} onClick={this.setSort.bind(this, "id")}/>
+            <Link to="questions" query={{sortKey: "id", sortDir: (view.state.sortKey === "id") ? ((view.state.sortDir === "asc") ? "desc" : "asc") : "asc"}}>
+              <mui.FlatButton label={this.getSortLabel("Id", "id")} secondary={this.state.sortKey === "id"} onClick={this.setSort.bind(this, "id")}/>
             </Link>
-            <Link to="questions" query={{sortKey: "user_id", sortDir: (view.state.sortKey == "user_id") ? ((view.state.sortDir == "asc") ? "desc" : "asc") : "asc"}}>
-              <mui.FlatButton label={this.getSortLabel("User ID", "user_id")} secondary={this.state.sortKey == "user_id"} onClick={this.setSort.bind(this, "user_id")}/>
+            <Link to="questions" query={{sortKey: "user_id", sortDir: (view.state.sortKey === "user_id") ? ((view.state.sortDir === "asc") ? "desc" : "asc") : "asc"}}>
+              <mui.FlatButton label={this.getSortLabel("User ID", "user_id")} secondary={this.state.sortKey === "user_id"} onClick={this.setSort.bind(this, "user_id")}/>
             </Link>
           </div>
           {questions}

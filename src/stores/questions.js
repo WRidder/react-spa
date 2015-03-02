@@ -1,3 +1,4 @@
+"use strict";
 var restApiActions = require("client/actions/resourceActions");
 var Reflux = require("reflux");
 var Immutable = require("immutable");
@@ -17,7 +18,7 @@ var QuestionsStore = Reflux.createStore({
   // Helpers
   forThisStore: function(type, id, childrenType) {
     id = (this.resourceDef.id) ? !!id : !id;
-    return type == this.resourceDef.type && id && childrenType == this.resourceDef.childrenType;
+    return type === this.resourceDef.type && id && childrenType === this.resourceDef.childrenType;
   },
 
   // Event handlers

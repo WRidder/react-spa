@@ -5,6 +5,7 @@
  * - Emit event upon navigation
  * - Create breadcrumbs
  */
+"use strict";
 var Reflux = require("reflux");
 var Immutable = require("immutable");
 var navigationActions = require("client/actions/navigationActions");

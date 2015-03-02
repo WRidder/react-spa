@@ -1,5 +1,5 @@
+"use strict";
 var React = require("react");
-var reflux = require("reflux");
 var connect= require("client/libraries/tmp_connect");
 
 var mui = require("material-ui");
@@ -45,7 +45,7 @@ var Signup = React.createClass({
   },
   handlePwdChange: function() {
     var pwd = this.refs.password.getValue();
-    if(this.state.session.get("pwdCheckerState") == "ready" && pwd) {
+    if(this.state.session.get("pwdCheckerState") === "ready" && pwd) {
       var pwdTest = zxcvbn(this.refs.password.getValue());
       var qualities = ["Awful", "Poor", "Fair", "Okay", "Great"];
       var pwdQuality = qualities[pwdTest.score] + " (score: " + pwdTest.score + " (0-4); crack time: ~" + pwdTest.crack_time_display + ")";
@@ -97,13 +97,13 @@ var Signup = React.createClass({
     }
 
     var pwdInfoMsg;
-    if(this.state.session.get("pwdCheckerState") == "loading") {
+    if(this.state.session.get("pwdCheckerState") === "loading") {
       pwdInfoMsg = "Loading password quality checker...";
     }
-    else if(this.state.session.get("pwdCheckerState") == "ready") {
+    else if(this.state.session.get("pwdCheckerState") === "ready") {
       pwdInfoMsg = null || this.state.pwdQualityMsg;
     }
-    else if(this.state.session.get("pwdCheckerState") == "failed") {
+    else if(this.state.session.get("pwdCheckerState") === "failed") {
       pwdInfoMsg = "Failed loading password quality checker";
     }
 

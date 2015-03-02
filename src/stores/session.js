@@ -1,3 +1,4 @@
+"use strict";
 var Reflux = require("reflux");
 var Immutable = require("immutable");
 var sessionActions = require("client/actions/sessionActions");

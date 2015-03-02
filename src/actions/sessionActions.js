@@ -1,3 +1,4 @@
+"use strict";
 var reflux = require("reflux");
 var dataInterface = require("client/core/dataInterface");
 

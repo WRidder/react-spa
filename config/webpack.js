@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require("webpack");
+var path = require("path");
 /**
  * Get configuration for Webpack
  *
@@ -14,12 +14,12 @@ var path = require('path');
  */
 module.exports = function(release) {
   return {
-    entry: './src/app.js',
+    entry: "./src/app.js",
 
     output: {
-      filename: 'app.js',
-      path: './build/js/',
-      publicPath: './build/',
+      filename: "app.js",
+      path: "./build/js/",
+      publicPath: "./build/",
 
       // Library settings
       library: "reactspa",
@@ -36,7 +36,7 @@ module.exports = function(release) {
     },
 
     plugins: release ? [
-      new webpack.DefinePlugin({'process.env.NODE_ENV': '"production"'}),
+      new webpack.DefinePlugin({"process.env.NODE_ENV": "production"}),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
       new webpack.optimize.OccurenceOrderPlugin(),
@@ -44,8 +44,8 @@ module.exports = function(release) {
     ] : [],
 
     resolve: {
-      extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
-      modulesDirectories: ['node_modules', 'bower_components'],
+      extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"],
+      modulesDirectories: ["node_modules", "bower_components"],
       alias: {
         client: path.join(__dirname, "../src")
       }
@@ -56,68 +56,44 @@ module.exports = function(release) {
       //  on the global var jQuery
       "jquery": "jQuery"
     },
-
-
-    // more options in the optional jshint object
-    jshint: {
-      // any jshint option http://www.jshint.com/docs/options/
-      // i. e.
-      camelcase: true,
-
-      // jshint errors are displayed by default as warnings
-      // set emitErrors to true to display them as errors
-      emitErrors: true,
-
-      // jshint to not interrupt the compilation
-      // if you want any file with jshint errors to fail
-      // set failOnHint to true
-      failOnHint: true,
-
-      // custom reporter function
-/*      reporter: function(errors) {
-        //console.log("args: ", arguments);
-        this.emitWarning("nooes", this.resourcePath);
-        //console.log(errors);
-      }*/
-    },
-
     module: {
       preLoaders: [
        {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           exclude: /node_modules|bower_components/,
-          loader: 'jshint'
+          loader: "eslint-loader"
         }
       ],
 
       loaders: [
         {
           test: /\.css$/,
-          loader: 'style!css'
+          loader: "style!css"
         },
         {
           test: /\.less$/,
-          loader: 'style!css!less'
+          loader: "style!css!less"
         },
         {
           test: /\.gif/,
-          loader: 'url-loader?limit=10000&mimetype=image/gif'
+          loader: "url-loader?limit=10000&mimetype=image/gif"
         },
         {
           test: /\.jpg/,
-          loader: 'url-loader?limit=10000&mimetype=image/jpg'
+          loader: "url-loader?limit=10000&mimetype=image/jpg"
         },
         {
           test: /\.png/,
-          loader: 'url-loader?limit=10000&mimetype=image/png'
+          loader: "url-loader?limit=10000&mimetype=image/png"
         },
         {
           test: /\.jsx?$/,
-          loader: 'jsx-loader?harmony'
+          exclude: /node_modules/,
+          loader: "babel-loader?experimental"
         },
         {
           test: /\.json/,
-          loader: 'json-loader'
+          loader: "json-loader"
         }
       ]
     }

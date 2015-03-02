@@ -1,5 +1,5 @@
+"use strict";
 var React = require("react");
-var Router = require("react-router");
 var mui = require("material-ui");
 var DocumentTitle = require("client/components/core/documentTitle.jsx");
 

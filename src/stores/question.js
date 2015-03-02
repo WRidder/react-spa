@@ -1,6 +1,6 @@
+"use strict";
 var Reflux = require("reflux");
 var Immutable = require("immutable");
-var Router = require("react-router");
 
 var resourceActions = require("client/actions/resourceActions");
 
@@ -19,7 +19,7 @@ var QuestionStore = Reflux.createStore({
   // Helpers
   forThisStore: function(type, id, childrenType) {
     id = (this.resourceDef.id) ? !!id : !id;
-    return type == this.resourceDef.type && id && childrenType == this.resourceDef.childrenType;
+    return type === this.resourceDef.type && id && childrenType === this.resourceDef.childrenType;
   },
 
   // Action handlers

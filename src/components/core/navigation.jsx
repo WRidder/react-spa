@@ -1,6 +1,5 @@
+"use strict";
 var React = require("react");
-var Router = require("react-router");
-var Link = Router.Link;
 var Mui = require("material-ui");
 var NavLink = require("./navLink.jsx");
 var connect= require("client/libraries/tmp_connect");
@@ -19,7 +18,7 @@ var Navigation = React.createClass({
 
   // Dev functions
   handleDevSettingsChange: function(evt, key, itemConfig) {
-    if (itemConfig.payload == "serverDelay") {
+    if (itemConfig.payload === "serverDelay") {
       devSettings.serverDelay = !devSettings.serverDelay;
     }
   },
@@ -30,8 +29,8 @@ var Navigation = React.createClass({
 
     // Dev settings toolbar
     var iconMenuItems = [
-      { text: 'DevelopmentSettings'},
-      { payload: 'serverDelay', text: 'Server delay', iconClassName: 'mdi mdi-clock', toggle: true, onItemClick: this.toggleServerDelay, defaultToggled: devSettings.serverDelay}
+      { text: "DevelopmentSettings"},
+      { payload: "serverDelay", text: "Server delay", iconClassName: "mdi mdi-clock", toggle: true, onItemClick: this.toggleServerDelay, defaultToggled: devSettings.serverDelay}
     ];
 
     return (

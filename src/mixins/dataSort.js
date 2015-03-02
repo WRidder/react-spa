@@ -1,10 +1,11 @@
+"use strict";
 var immutableDataSortMixin = {
   immutableDataSort: function(data, key, dir) {
     return data.sort(function (a, b) {
-      var first = (dir == "asc") ? a.get(key) : b.get(key);
-      var last = (dir == "asc") ? b.get(key) : a.get(key);
+      var first = (dir === "asc") ? a.get(key) : b.get(key);
+      var last = (dir === "asc") ? b.get(key) : a.get(key);
 
-      if (typeof first == "string") {
+      if (typeof first === "string") {
         return first.localeCompare(last);
       }
       return first - last;
@@ -12,10 +13,10 @@ var immutableDataSortMixin = {
   },
   dataSort: function(data, key, dir) {
     return data.sort(function (a, b) {
-      var first = (dir == "asc") ? a[key] : b[key];
-      var last = (dir == "asc") ? b[key] : a[key];
+      var first = (dir === "asc") ? a[key] : b[key];
+      var last = (dir === "asc") ? b[key] : a[key];
 
-      if (typeof first == "string") {
+      if (typeof first === "string") {
         return first.localeCompare(last);
       }
       return first - last;
@@ -23,8 +24,8 @@ var immutableDataSortMixin = {
   },
   setSort: function(key) {
     var dir = "asc";
-    if (key == this.state.sortKey) {
-      dir = (this.state.sortDir == "asc") ? "desc" : "asc";
+    if (key === this.state.sortKey) {
+      dir = (this.state.sortDir === "asc") ? "desc" : "asc";
     }
     this.setState({
       sortKey: key,
@@ -32,7 +33,8 @@ var immutableDataSortMixin = {
     });
   },
   getSortLabel: function(title, key) {
-    return title += (this.state.sortKey == key) ? ((this.state.sortDir =="asc") ? " \u25B2" : " \u25BC") : "";
+    title += (this.state.sortKey === key) ? ((this.state.sortDir ==="asc") ? " \u25B2" : " \u25BC") : "";
+    return title;
   }
 };
 

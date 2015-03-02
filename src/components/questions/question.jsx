@@ -1,10 +1,6 @@
+"use strict";
 var React = require("react");
-var Router = require("react-router");
-var Link = Router.Link;
-var mui = require("material-ui");
-var Paper = mui.Paper;
-var reflux = require("reflux");
-var MarkdownViewer = require('client/components/markdown/viewer.jsx');
+var MarkdownViewer = require("client/components/markdown/viewer.jsx");
 var ReactSpinner = require("react-spinner");
 
 var connect= require("client/libraries/tmp_connect");

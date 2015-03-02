@@ -1,7 +1,5 @@
+"use strict";
 var React = require("react");
-var Router = require("react-router");
-var Link = Router.Link;
-
 var sessionActions = require("client/actions/sessionActions");
 
 var LogoutLink = React.createClass({

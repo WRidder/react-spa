@@ -1,12 +1,12 @@
-// router.js
-var routes = require('client/routes/routes.jsx');
-var React = require('react');
-var reactRouter = require('react-router');
+"use strict";
+var routes = require("client/routes/routes.jsx");
+var React = require("react");
+var reactRouter = require("react-router");
 var navigationActions = require("client/actions/navigationActions");
 
 module.exports = {
   router: null,
-  renderToDom: function() {
+  renderToDom: function () {
     // Create a router
     var router = reactRouter.create({
       routes: routes,
@@ -23,9 +23,9 @@ module.exports = {
 
     return router;
   },
-  renderToString: function(path) {
+  renderToString: function (path) {
     var content;
-    reactRouter.run(routes, path, function(Handler) {
+    reactRouter.run(routes, path, function (Handler) {
       content = React.renderToString(React.createElement(Handler));
     });
     return content;

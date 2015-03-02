@@ -1,17 +1,18 @@
+"use strict";
 var React = require("react");
 var mui = require("material-ui");
-var MarkdownViewer = require('client/components/markdown/viewer.jsx');
-var Spinner = require('react-spinner');
+var MarkdownViewer = require("client/components/markdown/viewer.jsx");
+var Spinner = require("react-spinner");
 
 var MaterialUiMarkdownEditor = React.createClass({
   displayName: "MaterialUiMarkdownEditor",
   getDefaultProps: function() {
     return {
       buttonText: "Save",
-      onSave: function(value) {},
+      onSave: function() {},
       onDelete: function() {},
       onCancel: function() {},
-      onChange: function(value) {},
+      onChange: function() {},
       deleteButton: false,
       showSave: true,
       showCancel: false,
@@ -20,11 +21,11 @@ var MaterialUiMarkdownEditor = React.createClass({
       spinnerOptions: {
         className: "react-markdown-textarea__spinner"
       }
-    }
+    };
   },
   getInitialState: function() {
     return {
-      active: 'write',
+      active: "write",
       value: this.props.initialValue || "",
       contentError: ""
     };

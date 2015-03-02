@@ -1,3 +1,4 @@
+"use strict";
 var React = require("react");
 var DocTitle = require("react-document-title");
 var navigationActions = require("client/actions/navigationActions");
@@ -8,7 +9,7 @@ var DocumentTitle = React.createClass({
   },
   getDefaultProps: function () {
     return {
-      title: ''
+      title: ""
     };
   },
   getDocumentTitle: function() {

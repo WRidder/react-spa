@@ -1,3 +1,4 @@
+"use strict";
 var data = {};
 var syncDataProvider = {
   hydrate: function(water) {

@@ -1,10 +1,10 @@
+"use strict";
 var React = require("react");
 var Router = require("react-router");
-var classSet = require('react/lib/cx');
+var classSet = require("react/lib/cx");
 var Navigation = Router.Navigation;
 var State = Router.State;
 var Link = Router.Link;
-var mui = require("material-ui");
 
 var NavigationLink = React.createClass({
   mixins: [State, Navigation],
@@ -38,4 +38,3 @@ var NavigationLink = React.createClass({
   }
 });
 module.exports = NavigationLink;
-

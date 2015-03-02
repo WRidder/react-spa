@@ -1,5 +1,5 @@
+"use strict";
 var React = require("react");
-var reflux = require("reflux");
 var connect= require("client/libraries/tmp_connect");
 
 var mui = require("material-ui");

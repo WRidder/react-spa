@@ -1,9 +1,7 @@
+"use strict";
 var React = require("react");
-var Router = require("react-router");
-var connect= require("client/libraries/tmp_connect");
 var DocumentTitle = require("client/components/core/documentTitle");
 
-var sessionStore = require("client/stores/session");
 var ImmutableRenderMixin = require("react-immutable-render-mixin");
 var authRouteMixin = require("client/mixins/authRoute");
 

@@ -1,3 +1,4 @@
+"use strict";
 var React = require("react");
 var Markdown = require("../markdown/custom-md.jsx");
 var mdParser = Markdown.parse;
@@ -8,7 +9,7 @@ var MarkdownViewer = React.createClass({
   getInitialProps: function() {
     return {
       value: ""
-    }
+    };
   },
   render: function() {
     return (

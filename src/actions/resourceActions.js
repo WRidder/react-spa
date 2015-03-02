@@ -1,3 +1,4 @@
+"use strict";
 var reflux = require("reflux");
 var dataInterface = require("client/core/dataInterface");
 
@@ -37,19 +38,19 @@ actions.loadResource.listen(function(type, id, childrenType) {
 
 actions.createResource.listen(function(type, data, navigateTo) {
   dataInterface.post("/api/" + [type].filter(function(e){return e;}).join("/"), data)
-    .then(function(data) {
-      actions.createResourceSuccess(type, data);
+    .then(function(resultData) {
+      actions.createResourceSuccess(type, resultData);
 
       // Navigate to resource
       if (navigateTo) {
         var router = require("client/core/router").router;
         var urlCreator = require("client/helper/resourceUrlCreator");
-        var url = urlCreator(type, data);
+        var url = urlCreator(type, resultData);
         router.transitionTo(url);
       }
     })
     .catch(function(jqXHR, textStatus, errorThrown) {
-      actions.createResourceFail(type, id, childrenType, textStatus, errorThrown);
+      actions.createResourceFail(type, textStatus, errorThrown);
     });
 });
 

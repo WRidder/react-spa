@@ -1,6 +1,7 @@
+"use strict";
 var React = require("react");
 var Router = require("react-router");
-var classSet = require('react/lib/cx');
+var classSet = require("react/lib/cx");
 var NavigationStore = require("client/stores/navigation");
 var State = Router.State;
 var Link = Router.Link;
@@ -39,4 +40,3 @@ var NavigationLink = React.createClass({
   }
 });
 module.exports = NavigationLink;
-

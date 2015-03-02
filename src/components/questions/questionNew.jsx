@@ -1,10 +1,10 @@
+"use strict";
 var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
 var mui = require("material-ui");
 
-var MarkdownEditor = require('client/components/markdown/editor.jsx');
-var sessionStore = require("client/stores/session");
+var MarkdownEditor = require("client/components/markdown/editor.jsx");
 var approveTransitionMixin = require("client/mixins/approveTransition");
 var authRouteMixin = require("client/mixins/authRoute");
 var resourceActions = require("client/actions/resourceActions");

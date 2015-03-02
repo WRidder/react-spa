@@ -1,3 +1,4 @@
+"use strict";
 var restApiActions = require("client/actions/resourceActions");
 
 var componentTransition = function(type, id, childrenType) {

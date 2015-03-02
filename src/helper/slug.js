@@ -1,6 +1,7 @@
 // Slug from string
 // See: http://dense13.com/blog/2009/05/03/converting-string-to-slug-javascript/
 // http://stackoverflow.com/questions/2993119/creating-slugs-from-titles
+"use strict";
 module.exports = function (str) {
   str = str.replace(/^\s+|\s+$/g, ""); // trim
   str = str.toLowerCase();
@@ -8,8 +9,8 @@ module.exports = function (str) {
   // remove accents, swap ñ for n, etc
   // TODO: replace with unicode characters
   var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-  var to   = "aaaaeeeeiiiioooouuuunc------";
-  for (var i=0, l=from.length ; i<l ; i++) {
+  var to = "aaaaeeeeiiiioooouuuunc------";
+  for (var i=0, l=from.length; i<l; i++) {
     str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
   }
 

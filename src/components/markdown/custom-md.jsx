@@ -1,9 +1,8 @@
 // Custom markdown parser to create output from simple-markdown closer to GFM.
 // Special thanks to Aria Buckles (https://github.com/ariabuckles) for this solution.
 // Result from PR: https://github.com/WRidder/react-spa/pull/6
-
+"use strict";
 var $ = require("jquery");
-var React = require("react");
 var SimpleMarkdown = require("simple-markdown");
 
 var blockRegex = SimpleMarkdown.blockRegex;
@@ -30,16 +29,16 @@ var rules = $.extend({}, defaultRules, {
     // Make paragraphs output raw <p> tags, instead of
     // <div class="paragraph"> tags:
     paragraph: $.extend({}, defaultRules.paragraph, {
-        output: function(node, output) {
-            return <p>{output(node.content)}</p>;
+        output: function(node, outputter) {
+          return <p>{outputter(node.content)}</p>;
         }
     })
 });
 
 var rawBuiltParser = SimpleMarkdown.parserFor(rules);
 var parse = function(source) {
-    var blockSource = source + "\n\n";
-    return rawBuiltParser(blockSource, {inline: false});
+  var blockSource = source + "\n\n";
+  return rawBuiltParser(blockSource, {inline: false});
 };
 var output = SimpleMarkdown.outputFor(SimpleMarkdown.ruleOutput(rules));
 
