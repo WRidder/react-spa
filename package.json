@@ -70,7 +70,7 @@
   },
   "scripts": {
     "preinstall": "cd ./server && npm install",
-    "postinstall": "bower install && npm run buildrelease",
+    "postinstall": "bower install && npm run build",
     "buildrelease": "gulp build --release",
     "build": "gulp build",
     "start": "cd ./server/ && node ./src/server.js disableLiveReload",
