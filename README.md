@@ -75,6 +75,7 @@ This will be by no means a production ready application. Objectives and goals ar
 
 #### Layout
 **Home page**
+
 ```
 +---------------------------------------------------------------------------+
 | Logo                                                 Account   Updates(5) |
@@ -91,6 +92,7 @@ This will be by no means a production ready application. Objectives and goals ar
 |(c) notice                                                                 |
 +---------------------------------------------------------------------------+
 ```
+
 ### Libraries
 * [ReactJS](https://facebook.github.io/react/)
 * [Reflux](https://github.com/spoike/refluxjs)
