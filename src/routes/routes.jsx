@@ -13,6 +13,7 @@ var NavigationActions = require("client/actions/navigationActions");
 var App = require("client/components/app.jsx");
 var NotFound = require("client/components/core/notfound.jsx");
 var Home = require("client/components/pages/home.jsx");
+var About = require("client/components/pages/about.jsx");
 var Login = require("client/components/user/login.jsx");
 var Signup = require("client/components/user/signup.jsx");
 var Profile = require("client/components/user/profile.jsx");
@@ -60,6 +61,15 @@ var routesObj = {
     {
       component: NotFoundRoute,
       handler: NotFound
+    },
+
+    // Page routes
+    {
+      component: Route,
+      name: "about",
+      path: "/about",
+      crumbTitle: "About",
+      handler: About
     },
 
     // Session routes
