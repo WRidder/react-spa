@@ -1,3 +1,7 @@
+// Custom markdown parser to create output from simple-markdown closer to GFM.
+// Special thanks to Aria Buckles (https://github.com/ariabuckles) for this solution.
+// Result from PR: https://github.com/WRidder/react-spa/pull/6
+
 var $ = require("jquery");
 var React = require("react");
 var SimpleMarkdown = require("simple-markdown");

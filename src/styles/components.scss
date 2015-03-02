@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+// Elements
+pre > code {
+  display: block;
+}
+
 // App
 section.app-container {
   max-width: 62.5rem;
