@@ -4,6 +4,7 @@
 "use strict";
 var $ = require("jquery");
 var SimpleMarkdown = require("simple-markdown");
+var React = require("react");
 
 var blockRegex = SimpleMarkdown.blockRegex;
 var defaultRules = SimpleMarkdown.defaultRules;
@@ -30,7 +31,11 @@ var rules = $.extend({}, defaultRules, {
     // <div class="paragraph"> tags:
     paragraph: $.extend({}, defaultRules.paragraph, {
         output: function(node, outputter) {
-          return <p>{outputter(node.content)}</p>;
+          return React.createElement(
+            "p",
+            null,
+            outputter(node.content)
+          );
         }
     })
 });
