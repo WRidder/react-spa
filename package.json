@@ -52,6 +52,7 @@
     "gulp-uglify": "^1.1.0",
     "gulp-util": "^3.0.4",
     "imports-loader": "~0.6.3",
+    "jest-cli": "^0.4.0",
     "jshint": "^2.6.2",
     "jshint-loader": "^0.8.3",
     "jshint-stylish": "~1.0.1",
@@ -61,6 +62,7 @@
     "minimist": "^1.1.0",
     "protractor": "^1.7.0",
     "psi": "^1.0.6",
+    "react-tools": "^0.12.2",
     "run-sequence": "^1.0.2",
     "tiny-lr": "~0.1.5",
     "url-loader": "^0.5.5",
@@ -71,9 +73,15 @@
     "postinstall": "bower install && npm run buildrelease",
     "buildrelease": "gulp build --release",
     "build": "gulp build",
-    "start": "cd ./server/ && node ./src/server.js disableLiveReload"
+    "start": "cd ./server/ && node ./src/server.js disableLiveReload",
+    "test": "jest"
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"]
   }
 }

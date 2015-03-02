@@ -15,7 +15,7 @@ restRouter.get('/:parentType/:parentTypeId/:type', rest.getResourcesByParentId);
 restRouter.post('/:type', urlEncodedParser, rest.createResourceByType);
 
 // Put
-restRouter.delete('/:type/:typeId', rest.updateResource);
+restRouter.put('/:type/:typeId', rest.updateResource);
 
 // Delete
 restRouter.delete('/:type/:typeId', rest.removeResource);

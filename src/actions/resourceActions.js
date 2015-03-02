@@ -14,6 +14,9 @@ var actions = reflux.createActions([
   "createResourceFail",
 
   // Update
+  "updateResource",
+  "updateResourceSuccess",
+  "updateResourceFail",
 
   // Remove
 
