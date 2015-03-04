@@ -3,3 +3,10 @@ Security
 - http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication#477579
 Accessibility
 - See: https://carmenwiki.osu.edu/display/10292/HTML5+Accessibility+Code+Examples
+
+
+Small:
+- Use superagent for requests
+- Use 'aug' instead of $.extend
+- Get rid of jquery (thus replace foundation menu),
+  check http://medialoot.com/blog/how-to-create-a-responsive-navigation-menu-using-only-css/

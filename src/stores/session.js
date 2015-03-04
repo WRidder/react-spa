@@ -3,7 +3,7 @@ var Reflux = require("reflux");
 var Immutable = require("immutable");
 var sessionActions = require("client/actions/sessionActions");
 var dataInterface = require("client/core/dataInterface");
-var $ = require("jquery");
+var aug = require("aug");
 
 var defaultData = {
   id: -1,
@@ -22,7 +22,7 @@ var SessionStore = Reflux.createStore({
     dataInterface.get("/auth/session", true)
     .then(function(data) {
       data.auth = (data.id > -1 && typeof data.username === "string");
-      initialData = $.extend({}, defaultData, data);
+      initialData = aug({}, defaultData, data);
     });
 
     // Set data

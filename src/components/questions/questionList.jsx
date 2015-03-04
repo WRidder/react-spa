@@ -16,6 +16,7 @@ var slugger = require("client/helper/slug");
 var Question = React.createClass({
   render: function() {
     var id = this.props.content.get("id");
+    var idText = "#" + id;
     var title = this.props.content.get("title");
     var userId = this.props.content.get("user_id");
     var slug = slugger(title);
@@ -23,7 +24,7 @@ var Question = React.createClass({
       <div className="question">
         <mui.Paper zDepth={1}>
           <div className="inner">
-            <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>{"#"}{id} {title}</Link>
+            <Link to="questionWithTitle" params={{questionId: id, questionTitle: slug}}>{idText} {title}</Link>
             <br/>
             <span>User id: {userId} </span>
           </div>

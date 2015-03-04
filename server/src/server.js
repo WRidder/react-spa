@@ -9,7 +9,6 @@ console.log("Starting server... disableLiveReload: ", disableLiveReload);
 require("./routes/auth");
 require("./routes/api");
 require("./routes/sockets");
-//require("./routes/pushState");
 require("./routes/isomorphic");
 
 

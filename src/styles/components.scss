@@ -183,16 +183,6 @@ $text-color: #fff;
   }
 }
 
-// DEBUG
-.db-element-update {
-  background-color: #FF0000;
-  -webkit-transition: background-color 5s ease-in-out;
-  -moz-transition: background-color 5s ease-in-out;
-  -o-transition: background-color 5s ease-in-out;
-  -ms-transition: background-color 5s ease-in-out;
-  transition: background-color 5s ease-in-out;
-}
-
 // Input
 .mui-input-description {
   font-size: .8em;
@@ -210,19 +200,6 @@ $text-color: #fff;
 .mui-date-picker-calendar ul {
   margin: 0;
 }
-
-// Input valid colors
-/*.mui-input input:focus + .mui-input-placeholder, .mui-input input:valid + .mui-input-placeholder {
-  color: green;
-}
-
-.mui-input input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description, .mui-input input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar + .mui-input-description {
-  color: green;
-}
-
-.mui-input input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before, .mui-input input:focus + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after, .mui-input input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::before, .mui-input input:valid + .mui-input-placeholder + .mui-input-highlight + .mui-input-bar::after {
-  background-color: green;
-}*/
 
 // React spinner
 .react-spinner {
