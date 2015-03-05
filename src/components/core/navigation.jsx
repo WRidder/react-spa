@@ -50,7 +50,7 @@ var Navigation = React.createClass({
              {loginoutLink}
           </ul>
           <ul className="right">
-            <Mui.DropDownIcon preventCloseOnMenuItemClick={true} onChange={this.handleDevSettingsChange} iconClassName="mdi mdi-chevron-down dev-dropdown-icon" menuItems={iconMenuItems} />
+            <Mui.DropDownIcon closeOnMenuItemClick={false} onChange={this.handleDevSettingsChange} iconClassName="mdi mdi-chevron-down dev-dropdown-icon" menuItems={iconMenuItems} />
           </ul>
         </section>
       </nav>
