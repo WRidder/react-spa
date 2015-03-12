@@ -8,7 +8,7 @@ var Resource = require("./../database/models/resource");
 require("./../helpers/uncache")(require);
 
 // Create template
-var htmlTemplate = _.template(fs.readFileSync(path.resolve("./../src/templates/index.tpl")).toString());
+var htmlTemplate = _.template(fs.readFileSync(path.resolve("./../client/templates/index.tpl")).toString());
 
 // Load library, make sure it's freshly instantiated
 var getSpaInstance = function() {

@@ -43,7 +43,7 @@ gulp.task("clean", del.bind(null, [DEST]));
 
 // Static files
 gulp.task("assets", function () {
-  src.assets = "src/assets/**";
+  src.assets = "client/assets/**";
   return gulp.src(src.assets)
     .pipe($.changed(DEST))
     .pipe(gulp.dest(DEST))
@@ -56,7 +56,7 @@ gulp.task("libraries", function() {
     "bower_components/foundation/js/foundation.min.js",
     "bower_components/modernizr/modernizr.js",
     "bower_components/fastclick/lib/fastclick.js",
-    "src/vendor/zxcvbn.js"
+    "./client/vendor/zxcvbn.js"
   ];
   return gulp.src(src)
     .pipe(gulp.dest("build/js/vendor"));
@@ -81,7 +81,7 @@ gulp.task("styles", ["sass-styles", "mui-styles"]);
 gulp.task("languageBundles", ["language_en"]);
 
 gulp.task("language_en", function() {
-  gulp.src("./src/**/locale_en.json")
+  gulp.src("./client/src/**/locale_en.json")
     .pipe($.extend("app.json"))
     .pipe(gulp.dest("build/locales/en/"));
 });
@@ -89,7 +89,7 @@ gulp.task("language_en", function() {
 // CSS style sheets
 gulp.task("sass-styles", function () {
   // Source files
-  src.styles = ["src/styles/style.sass"];
+  src.styles = ["client/styles/style.sass"];
 
   // Process
   return gulp.plumbedSrc(src.styles)
@@ -114,7 +114,7 @@ gulp.task("sass-styles", function () {
 
 gulp.task("mui-styles", function () {
   src.styles = [
-    "src/styles/material-ui.less"
+    "client/styles/material-ui.less"
   ];
   return gulp.plumbedSrc(src.styles)
     .pipe($.less({
@@ -182,7 +182,7 @@ gulp.task("watch", function (cb) {
 
   runSequence("build", "livereload", function () {
     gulp.watch(src.assets, ["assets"]);
-    gulp.watch(["src/styles/**.*"], ["styles"]);
+    gulp.watch(["client/styles/**.*"], ["styles"]);
     gulp.watch(DEST + "/**/*.*", function (file) {
       var fileName = path.relative(__dirname, file.path);
       notifyLiveReload(fileName);

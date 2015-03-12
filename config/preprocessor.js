@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var ReactTools = require('react-tools');
+var ReactTools = require("react-tools");
 
 module.exports = {
   process: function(src, path) {

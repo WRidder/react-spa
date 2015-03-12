@@ -7,6 +7,5 @@ Accessibility
 
 Small:
 - Use superagent for requests
-- Use 'aug' instead of $.extend
 - Get rid of jquery (thus replace foundation menu),
   check http://medialoot.com/blog/how-to-create-a-responsive-navigation-menu-using-only-css/

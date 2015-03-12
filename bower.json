@@ -6,7 +6,7 @@
     "Wilbert van de Ridder <wilbert.ridder@gmail.com>"
   ],
   "description": "Community site SPA Proof of Concept based on ReactJS",
-  "main": "src/app.js",
+  "main": "client/src/app.js",
   "moduleType": [
     "amd"
   ],

@@ -14,7 +14,7 @@ var path = require("path");
  */
 module.exports = function(release) {
   return {
-    entry: "./src/app.js",
+    entry: "./client/src/app.js",
 
     output: {
       filename: "app.js",
@@ -47,7 +47,7 @@ module.exports = function(release) {
       extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"],
       modulesDirectories: ["node_modules", "bower_components"],
       alias: {
-        client: path.join(__dirname, "../src")
+        local: path.join(__dirname, "../client/src/")
       }
     },
 
