@@ -29,6 +29,7 @@ module.exports = function(release) {
     cache: !release,
     debug: !release,
     devtool: false,
+    "display-error-details": true,
 
     stats: {
       colors: true,

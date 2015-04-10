@@ -7,7 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Routes
 router.post('/login', urlencodedParser, auth.login);
-router.get('/logout', auth.logout);
+router.post('/logout', auth.logout);
 router.post('/signup', urlencodedParser, auth.signup);
 router.get('/session', auth.checkSession);
 

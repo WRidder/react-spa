@@ -4,6 +4,7 @@ var Reflux = require("reflux");
 var Immutable = require("immutable");
 
 var QuestionsStore = Reflux.createStore({
+  storeName: "QuestionsStore",
   listenables: restApiActions,
   data: Immutable.List([]),
   resourceDef: {

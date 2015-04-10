@@ -1,3 +1,9 @@
+/**
+ * Session actions
+ *
+ * For details on security, see: http://stackoverflow.com/questions/15051712/how-to-do-authentication-with-a-rest-api-right-browser-native-clients
+ */
+
 "use strict";
 var reflux = require("reflux");
 var dataInterface = require("local/core/dataInterface");
@@ -51,7 +57,7 @@ actions.login.listen(function(username, password) {
 });
 
 actions.logout.listen(function(username, password) {
-  dataInterface.get("/auth/logout")
+  dataInterface.post("/auth/logout")
     .then(function(data) {
       actions.logoutSuccess();
     })

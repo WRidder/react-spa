@@ -5,6 +5,7 @@ var Immutable = require("immutable");
 var resourceActions = require("local/actions/resourceActions");
 
 var QuestionStore = Reflux.createStore({
+  storeName: "QuestionStore",
   listenables: resourceActions,
   data: Immutable.Map({}),
   getInitialState: function() {
