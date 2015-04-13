@@ -42,6 +42,7 @@ module.exports = {
   // Log out a user
   logout: function(req, res){
     req.logout();
+    // Respond with json. Empty response (res.end()) raises an error in firefox.
     res.json({
       success: true
     });

@@ -1,7 +1,7 @@
 /**
  * Resource store mixin
  *
- * Meant for stores using listening to resource actions. This mixin determines whether a resource belongs to this store.
+ * Meant for stores listening to resource actions. This mixin determines whether a resource belongs to this store.
  *
  * A store requires the following definition to be set:
  *   resourceDef: {
