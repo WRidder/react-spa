@@ -2,18 +2,17 @@
 var restApiActions = require("local/actions/resourceActions");
 var Reflux = require("reflux");
 var Immutable = require("immutable");
+var resourceStoreMixin = require("local/mixins/resourceStore");
 
 var resourceStore = Reflux.createStore({
+  mixins: [resourceStoreMixin],
   listenables: restApiActions,
   data: Immutable.List([]),
   resourceDef: {
     type: "comments",
     id: null,
     childrenType: null
-  },
-  getInitialState: function() {
-    return this.data;
-  },
+  }
 
 /*  // Semi factory pattern similar to below. However, that's focused on a single active instance while we're targeting for more.
   statics: {
@@ -46,25 +45,6 @@ var resourceStore = Reflux.createStore({
     resourceStore.mountedInstances.splice(index, 1);
     resourceStore.updateDocumentTitle();
   },*/
-
-  // Helpers
-  forThisStore: function(type, id, childrenType) {
-    id = (this.resourceDef.id) ? !!id : !id;
-    return type === this.resourceDef.type && id && childrenType === this.resourceDef.childrenType;
-  },
-
-  // Event handlers
-  onLoadResourceSuccess: function(type, id, childrenType, data) {
-    if (this.forThisStore.apply(null, arguments)) {
-      this.data = Immutable.fromJS(data);
-      this.trigger(this.data);
-    }
-  },
-  onLoadResourceFail: function(type, id, childrenType) {
-    if (this.forThisStore.apply(null, arguments)) {
-      console.log("comments loading failed!");
-    }
-  }
 });
 
 module.exports = resourceStore;
