@@ -42,7 +42,9 @@ module.exports = {
   // Log out a user
   logout: function(req, res){
     req.logout();
-    res.end();
+    res.json({
+      success: true
+    });
   },
 
   // process the signup form
