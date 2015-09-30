@@ -69,7 +69,7 @@ This will be by no means a production ready application. Objectives and goals ar
 * Moderator
   * Can edit/delete questions, discussions and comments from other users
 * Administrator
-  * Can access adminstrative area
+  * Can access administrative area
   * Can list/disable/remove users
 
 #### Layout
