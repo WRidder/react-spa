@@ -2,40 +2,20 @@
  * NotFoundPage
  *
  * This is the page we show when the user visits a url that doesn't have a route
+ *
+ * NOTE: while this component should technically be a stateless functional
+ * component (SFC), hot reloading does not currently support SFCs. If hot
+ * reloading is not a neccessity for you then you can refactor it and remove
+ * the linting exception.
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 
-import Button from 'components/Button';
-import H1 from 'components/H1';
+export default class NotFound extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-export function NotFound(props) {
-  return (
-    <article>
-      <H1>Page not found.</H1>
-      <Button
-        handleRoute={function redirect() {
-          props.changeRoute('/');
-        }}
-      >
-        Home
-      </Button>
-    </article>
-  );
+  render() {
+    return (
+      <h1>Page Not Found</h1>
+    );
+  }
 }
-
-NotFound.propTypes = {
-  changeRoute: React.PropTypes.func,
-};
-
-// react-redux stuff
-function mapDispatchToProps(dispatch) {
-  return {
-    changeRoute: (url) => dispatch(push(url)),
-  };
-}
-
-// Wrap the component to inject dispatch and state into it
-export default connect(null, mapDispatchToProps)(NotFound);
