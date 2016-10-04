@@ -12,20 +12,26 @@
  */
 
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TopNav from "../../components/TopNav";
 
-import styles from './styles.css';
-
-export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
+class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
-    children: React.PropTypes.node,
+    children: React.PropTypes.node
   };
 
   render() {
     return (
-      <div className={styles.container}>
-        {this.props.children}
-      </div>
+      <MuiThemeProvider>
+        <div style={{display: "block"}}>
+          <TopNav routes={this.props.routes} params={this.props.params}/>
+          <div style={{"paddingRight": "10px", "paddingLeft": "10px"}}>
+            {this.props.children}
+          </div>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
+
+export default App;

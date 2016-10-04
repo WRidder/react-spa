@@ -1,0 +1,67 @@
+.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Float the list items side by side */
+.topnav li {float: left;}
+
+  /* Style the links inside the list items */
+.topnav li a {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+  /* Change background color of links on hover */
+.topnav li a:hover {background-color: #111;}
+
+  /* Hide the list item that contains the link that should open and close the topnav on small screens */
+.icon {display: none;}
+
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width:680px) {
+  .topnav li:not(:first-child):not(:last-child) {display: none;}
+  .icon {
+    float: right;
+    display: inline-block;
+  }
+  .header {display: none}
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+@media screen and (max-width:680px) {
+  .responsive {position: relative;}
+  .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .responsive li {
+    float: none;
+    display: inline !important;
+  }
+  .responsive li a {
+    display: block;
+    text-align: left;
+  }
+}
+
+.header img {
+  width: 100px;
+}
+
+.breadcrumbs {
+  padding-left: 10px;
+}
+
+.auth {
+  float: right !important;
+}

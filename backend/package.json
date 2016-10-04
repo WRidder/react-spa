@@ -1,0 +1,35 @@
+{
+  "name": "react-spa-backend",
+  "description": "Backend server for react-spa",
+  "author": "Wilbert van de Ridder <wilbert.ridder+github@gmail.com>",
+  "version": "0.0.1",
+  "keywords": [
+    "api",
+    "rest",
+    "restful",
+    "restify"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "bson": "^0.5.2",
+    "cors": "^2.7.1",
+    "jwt-simple": "^0.5.0",
+    "mongoose": "3.8.36",
+    "passport": "0.3.x",
+    "passport-http": "0.3.x",
+    "passport-jwt": "^2.1.0",
+    "restify": "4.1.x",
+    "restify-cors-middleware": "0.0.7",
+    "restify-mongoose": "^1.0.0",
+    "socket.io": "^1.4.8",
+    "tingodb": "^0.4.2",
+    "tungus": "0.0.5"
+  },
+  "devDependencies": {
+    "mocha": "2.5.x",
+    "nodemon": "1.x.x",
+    "should": "9.0.x"
+  }
+}

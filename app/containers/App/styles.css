@@ -7,3 +7,9 @@
 .container {
   display: block;
 }
+
+.content {
+  display: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}

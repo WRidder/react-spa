@@ -5,8 +5,8 @@
  * code.
  */
 import 'babel-polyfill';
+//localStorage.appToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjMifQ.ZyilQUer5fhwGiUrjmIVK_JHkKXUXiVrtNNZyEjhHXs";
 
-// TODO constrain eslint import/no-unresolved rule to this block
 // Load the manifest.json file and the .htaccess file
 import '!file?name=[name].[ext]!./manifest.json';  // eslint-disable-line import/no-unresolved
 import 'file?name=[name].[ext]!./.htaccess';      // eslint-disable-line import/no-unresolved
@@ -14,50 +14,52 @@ import 'file?name=[name].[ext]!./.htaccess';      // eslint-disable-line import/
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import useScroll from 'react-router-scroll';
-import configureStore from './store';
+import { useScroll } from 'react-router-scroll';
+import gyre from "mainGyre";
+gyre.issue("checkAuthToken");
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
-
-// Create redux store with history
-// this uses the singleton browserHistory provided by react-router
-// Optionally, this could be changed to leverage a created history
-// e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
-const initialState = {};
-const store = configureStore(initialState, browserHistory);
-
-// Sync history and store, as the react-router-redux reducer
-// is under the non-default key ("routing"), selectLocationState
-// must be provided for resolving how to retrieve the "route" in the state
-import { selectLocationState } from 'containers/App/selectors';
-const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: selectLocationState(),
-});
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 // Set up the router, wrapping all Routes in the App component
+const css = []; // CSS for all rendered React components
+const context = {
+  insertCss: (styles) => {
+    if (window) {
+      styles._insertCss();
+    }
+    else {
+      css.push(styles._getCss())
+    }
+  }
+};
 import App from 'containers/App';
+App.prototype.getChildContext = () => context;
+App.childContextTypes = {
+  insertCss: React.PropTypes.any
+};
+
 import createRoutes from './routes';
 const rootRoute = {
   component: App,
-  childRoutes: createRoutes(store),
+  childRoutes: createRoutes()
 };
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router
-      history={history}
-      routes={rootRoute}
-      render={
-        // Scroll to top when going to a new page, imitating default browser
-        // behaviour
-        applyRouterMiddleware(useScroll())
-      }
-    />
-  </Provider>,
+  <Router
+    history={browserHistory}
+    routes={rootRoute}
+    render={
+      // Scroll to top when going to a new page, imitating default browser
+      // behaviour
+      applyRouterMiddleware(useScroll())
+    }
+  />,
   document.getElementById('app')
 );
 
@@ -66,3 +68,25 @@ ReactDOM.render(
 // we do not want it installed
 import { install } from 'offline-plugin/runtime';
 install();
+
+// Socket connection
+import io from "socket.io-client";
+var socket = io('http://localhost:4000/');
+socket.on('connect', function () {
+  socket.on('counter', function (msg) {
+    gyre.trigger("countUpdated", msg.value);
+  });
+});
+
+// Vue test
+import Vue from "vue";
+
+let valObj = gyre.value("counter");
+gyre.addListener("counter", data => {
+  Object.assign(valObj, data);
+});
+
+new Vue({
+  el: '#vueApp',
+  data: valObj
+});

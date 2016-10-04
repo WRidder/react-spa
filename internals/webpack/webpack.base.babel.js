@@ -22,7 +22,12 @@ module.exports = (options) => ({
       test: /\.css$/,
       exclude: /node_modules/,
       loader: options.cssLoaders,
-    }, {
+    },
+    {
+      test: /\.scss$/,
+      loaders: ["style", "css", "sass"],
+    },
+    {
       // Do not transform vendor's CSS with CSS-modules
       // The point is that they remain in global scope.
       // Since we require these CSS files in our JS or CSS files,
@@ -49,7 +54,8 @@ module.exports = (options) => ({
     }, {
       test: /\.(mp4|webm)$/,
       loader: 'url-loader?limit=10000',
-    }],
+    }
+    ]
   },
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({
@@ -73,12 +79,17 @@ module.exports = (options) => ({
       '',
       '.js',
       '.jsx',
-      '.react.js',
+      '.react.js'
     ],
     packageMains: [
       'jsnext:main',
-      'main',
+      'main'
     ],
+    alias: {
+      "mainGyre": path.resolve(__dirname, '..', '..', 'app', 'gyre'),
+      "assets": path.resolve(__dirname, '..', '..', 'app', 'assets'),
+      "components": path.resolve(__dirname, '..', '..', 'app', 'components')
+    }
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
